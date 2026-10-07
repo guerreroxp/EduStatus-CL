@@ -8,7 +8,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Chart.js -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <!-- FontAwesome -->
+    <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Google Fonts Inter -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -160,13 +160,13 @@
                 <div class="max-w-3xl space-y-3 relative z-10">
                     <span class="bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider inline-flex items-center space-x-2">
                         <i class="fa-solid fa-shield-halved"></i>
-                        <span>ECOO EMPRESAS &bull; Plataformas Educativas Chile</span>
+                        <span>ECOO EMPRESAS &bull; Monitoreo de Plataformas Educativas Chile</span>
                     </span>
                     <h1 class="text-2xl sm:text-4xl font-black text-white leading-tight">
                         Selecciona la plataforma educativa que deseas revisar o reportar
                     </h1>
                     <p class="text-gray-400 text-sm sm:text-base">
-                        Monitorea la estabilidad, velocidad y fallas del libro de clases digital, firmas, notas e inicio de sesión de colegios y liceos en Chile.
+                        Monitorea en tiempo real la estabilidad, logos oficiales, velocidad y fallas reportadas por docentes y apoderados en Chile.
                     </p>
                 </div>
             </div>
@@ -198,7 +198,7 @@
                 <!-- Buscador -->
                 <div class="relative w-full md:w-96">
                     <i class="fa-solid fa-magnifying-glass absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 text-sm"></i>
-                    <input type="text" id="search-input" placeholder="Buscar Syscol, Lirmi, Mateo, SIGE..." class="w-full bg-brand-card border border-brand-border focus:border-brand-accent rounded-2xl pl-11 pr-4 py-3 text-sm text-white placeholder-gray-500 outline-none transition shadow-inner">
+                    <input type="text" id="search-input" placeholder="Buscar Syscol, Lirmi, Mateo, SIGE, Canvas..." class="w-full bg-brand-card border border-brand-border focus:border-brand-accent rounded-2xl pl-11 pr-4 py-3 text-sm text-white placeholder-gray-500 outline-none transition shadow-inner">
                 </div>
 
                 <!-- Botones Categoría -->
@@ -218,7 +218,7 @@
                 </div>
             </div>
 
-            <!-- Grilla Principal de Plataformas -->
+            <!-- Grilla Principal de Plataformas con Logos Oficiales -->
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="platforms-grid">
                 <!-- Se inyecta dinámicamente con JavaScript -->
             </div>
@@ -289,8 +289,8 @@
             <div id="detail-banner" class="bg-brand-card border border-brand-border rounded-3xl p-6 sm:p-8 shadow-2xl relative overflow-hidden">
                 <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-6 relative z-10">
                     <div class="flex items-center space-x-5">
-                        <div id="detail-icon" class="w-16 h-16 rounded-2xl flex items-center justify-center text-3xl text-white shadow-xl flex-shrink-0">
-                            <!-- Icono dinámico -->
+                        <div id="detail-icon" class="w-16 h-16 rounded-2xl bg-brand-dark p-2 border border-brand-border flex items-center justify-center shadow-xl flex-shrink-0">
+                            <!-- Logo dinámico -->
                         </div>
                         <div>
                             <div class="flex items-center space-x-3 flex-wrap gap-y-1">
@@ -478,7 +478,7 @@
             </div>
 
             <p class="text-xs text-gray-500 max-w-2xl mx-auto">
-                EduStatus CL es un servicio público independiente desarrollado por ECOO EMPRESAS para monitorear plataformas educativas en Chile. Las marcas Syscol, Lirmi, Mateo, Webclass, SIGE Mineduc y Napsis pertenecen a sus respectivos dueños.
+                EduStatus CL es un servicio público independiente desarrollado por ECOO EMPRESAS para monitorear plataformas educativas en Chile. Las marcas Syscol, Lirmi, Mateo, Webclass, SIGE Mineduc, Napsis, Canvas y Google pertenecen a sus respectivos dueños.
             </p>
 
             <p class="text-[11px] text-gray-600">
@@ -488,20 +488,17 @@
     </footer>
 
     <script>
-        // Datos de Plataformas Educativas Chilenas
-        // Quality Score: 0 a 100
-        // - < 40: Rojo (Mala web, se cae mucho, soporte deficiente)
-        // - 40 - 75: Amarillo (Regular, soporta carga moderada, pequeñas lentitudes)
-        // - > 75: Verde (Excelente web, muy estable, alto rendimiento)
+        // Datos de Plataformas Educativas Chilenas con Dominio para Favicon/Logo Oficial
+        // Domain se usa para descargar automáticamente el logo oficial de Google Favicons API
         const platformsData = [
             {
                 id: 'syscol',
                 name: 'Syscol',
+                domain: 'web.syscol.com',
                 category: 'libro',
                 categoryLabel: 'Libro Digital & Gestión Escolar',
-                iconClass: 'fa-solid fa-book-bookmark',
                 color: 'from-blue-600 to-indigo-700',
-                status: 'danger', // danger, warning, success
+                status: 'danger',
                 statusText: 'Interrupciones Severas',
                 url: 'https://web.syscol.com/', // URL Oficial Syscol
                 qualityScore: 28, // ROJO: Se cae seguido en horas peak
@@ -522,9 +519,9 @@
             {
                 id: 'lirmi',
                 name: 'Lirmi',
+                domain: 'lirmi.com',
                 category: 'libro',
                 categoryLabel: 'LMS & Evaluaciones Escolares',
-                iconClass: 'fa-solid fa-laptop-code',
                 color: 'from-purple-600 to-pink-600',
                 status: 'warning',
                 statusText: 'Lentitud Detectada',
@@ -547,9 +544,9 @@
             {
                 id: 'mateo',
                 name: 'Mateo / MateoNet',
+                domain: 'mateonet.cl',
                 category: 'libro',
                 categoryLabel: 'Gestión Institucional',
-                iconClass: 'fa-solid fa-calculator',
                 color: 'from-teal-600 to-emerald-700',
                 status: 'success',
                 statusText: 'Operativo',
@@ -571,9 +568,9 @@
             {
                 id: 'webclass',
                 name: 'Webclass',
+                domain: 'webclass.com',
                 category: 'libro',
                 categoryLabel: 'Plataforma Curricular',
-                iconClass: 'fa-solid fa-layer-group',
                 color: 'from-orange-500 to-amber-600',
                 status: 'success',
                 statusText: 'Operativo',
@@ -595,14 +592,14 @@
             {
                 id: 'sige',
                 name: 'SIGE / Mineduc',
+                domain: 'mineduc.cl',
                 category: 'mineduc',
                 categoryLabel: 'Sistema de Información General Mineduc',
-                iconClass: 'fa-solid fa-building-columns',
                 color: 'from-red-700 to-red-900',
                 status: 'warning',
                 statusText: 'Saturación en Cierre de Mes',
                 url: 'https://sige.mineduc.cl',
-                qualityScore: 35, // ROJO: Inestable en cierres de mes
+                qualityScore: 35, // ROJO: Inestable en cierres
                 qualityLabel: 'Mala Estabilidad (Caídas frecuentes en cierres)',
                 qualityColor: 'bg-red-500',
                 qualityTextColor: 'text-red-400',
@@ -620,9 +617,9 @@
             {
                 id: 'napsis',
                 name: 'Napsis',
+                domain: 'napsis.cl',
                 category: 'libro',
                 categoryLabel: 'Plataforma de Gestión Escolar',
-                iconClass: 'fa-solid fa-school-flag',
                 color: 'from-cyan-600 to-blue-700',
                 status: 'success',
                 statusText: 'Operativo',
@@ -644,9 +641,9 @@
             {
                 id: 'classroom',
                 name: 'Google Classroom',
+                domain: 'classroom.google.com',
                 category: 'global',
                 categoryLabel: 'Aula Virtual Global',
-                iconClass: 'fa-brands fa-google',
                 color: 'from-yellow-600 to-emerald-600',
                 status: 'success',
                 statusText: 'Operativo',
@@ -664,6 +661,30 @@
                     { name: 'Notificaciones de correo', percent: 50 }
                 ],
                 hourlyData: [1, 1, 0, 0, 1, 2, 3, 4, 6, 5, 4, 3, 3, 2, 2, 1]
+            },
+            {
+                id: 'canvas',
+                name: 'Canvas LMS',
+                domain: 'instructure.com',
+                category: 'global',
+                categoryLabel: 'Plataforma Universitaria & Escolar',
+                color: 'from-red-600 to-rose-700',
+                status: 'success',
+                statusText: 'Operativo',
+                url: 'https://www.instructure.com/canvas',
+                qualityScore: 91,
+                qualityLabel: 'Excelente Estabilidad Global',
+                qualityColor: 'bg-emerald-500',
+                qualityTextColor: 'text-emerald-400',
+                totalReportsToday: 9,
+                lastReportTime: 'Hace 1 hora',
+                serverStatus: 'Servidores Normales',
+                affectedModules: 'Sin afección',
+                issues: [
+                    { name: 'Carga de archivos multimedia', percent: 60 },
+                    { name: 'Aviso de tareas', percent: 40 }
+                ],
+                hourlyData: [0, 0, 0, 1, 0, 1, 1, 2, 2, 1, 1, 0, 0, 0, 0, 0]
             }
         ];
 
@@ -673,7 +694,7 @@
             "📊 **Barra de Calidad**: Consulta qué plataformas tienen mejor soporte y menor nivel de caídas.",
             "⚡ **Lirmi**: Registra lentitud en la carga de instrumentos de evaluación.",
             "🏛️ **SIGE Mineduc**: Alta congestión en validación de matrículas.",
-            "🚀 **ECOO EMPRESAS**: Sistema de monitoreo en tiempo real activo."
+            "🚀 **ECOO EMPRESAS**: Monitoreo dinámico con obtención automática de logos oficiales."
         ];
 
         // Comentarios comunitarios iniciales
@@ -707,7 +728,7 @@
             }
         ];
 
-        // Variables de Estado
+        // Variables de Estado Global
         let activeCategoryFilter = 'all';
         let selectedPlatform = null;
         let detailChartInstance = null;
@@ -724,6 +745,18 @@
         // Renderizar marquesina
         function renderTicker() {
             document.getElementById('ticker-content').innerHTML = alertTickerItems.join('&nbsp;&nbsp;&nbsp;&bull;&nbsp;&nbsp;&nbsp;');
+        }
+
+        // Obtener URL de Logo Oficial automáticamente por Dominio
+        function getOfficialLogoUrl(domain) {
+            return `https://www.google.com/s2/favicons?domain=${domain}&sz=128`;
+        }
+
+        // Handler cuando falla la imagen del logo (fallback a avatar con iniciales)
+        function handleLogoError(imgElement, platformName) {
+            const parent = imgElement.parentElement;
+            const initials = platformName.substring(0, 2).toUpperCase();
+            parent.innerHTML = `<div class="w-full h-full rounded-2xl bg-gradient-to-tr from-brand-accent to-blue-800 flex items-center justify-center text-white font-black text-base">${initials}</div>`;
         }
 
         // Llenar Selects de Formularios
@@ -760,7 +793,7 @@
             document.getElementById('detail-title').innerText = platform.name;
             document.getElementById('detail-category').innerText = platform.categoryLabel;
             
-            // Enlace Oficial (Asegurando https://web.syscol.com/ para Syscol)
+            // Enlace Oficial
             document.getElementById('detail-official-link').href = platform.url;
             document.getElementById('detail-url-text').innerText = platform.url;
 
@@ -768,10 +801,14 @@
             document.getElementById('detail-server-status').innerText = platform.serverStatus;
             document.getElementById('detail-affected-modules').innerText = platform.affectedModules;
 
-            // Icono
-            const iconDiv = document.getElementById('detail-icon');
-            iconDiv.className = `w-16 h-16 rounded-2xl bg-gradient-to-tr ${platform.color} flex items-center justify-center text-3xl text-white shadow-xl flex-shrink-0`;
-            iconDiv.innerHTML = `<i class="${platform.iconClass}"></i>`;
+            // Logo oficial en detalle
+            const iconContainer = document.getElementById('detail-icon');
+            iconContainer.innerHTML = `
+                <img src="${getOfficialLogoUrl(platform.domain)}" 
+                     alt="${platform.name}" 
+                     class="w-10 h-10 object-contain"
+                     onerror="handleLogoError(this, '${platform.name}')">
+            `;
 
             // Badge Estado
             const badge = document.getElementById('detail-status-badge');
@@ -885,7 +922,7 @@
             });
         }
 
-        // Renderizar Grilla Principal de Plataformas con BARRA DE CALIDAD
+        // Renderizar Grilla Principal de Plataformas con LOGOS OFICIALES Y BARRA DE CALIDAD
         function renderPlatformsGrid() {
             const grid = document.getElementById('platforms-grid');
             const searchQuery = document.getElementById('search-input').value.toLowerCase();
@@ -922,16 +959,21 @@
                     iconStatus = '<i class="fa-solid fa-circle-exclamation text-amber-400"></i>';
                 }
 
+                const logoUrl = getOfficialLogoUrl(p.domain);
+
                 const card = document.createElement('div');
                 card.className = `bg-brand-card rounded-2xl border ${borderGlow} p-6 shadow-xl hover:shadow-2xl transition duration-300 flex flex-col justify-between group relative overflow-hidden`;
 
                 card.innerHTML = `
                     <div class="space-y-4">
-                        <!-- Cabecera de la Tarjeta -->
+                        <!-- Cabecera de la Tarjeta con Logo Oficial -->
                         <div class="flex items-start justify-between">
                             <div class="flex items-center space-x-3 cursor-pointer" onclick="showPlatformDetail('${p.id}')">
-                                <div class="w-12 h-12 rounded-2xl bg-gradient-to-tr ${p.color} flex items-center justify-center text-white text-xl shadow-md group-hover:scale-105 transition transform">
-                                    <i class="${p.iconClass}"></i>
+                                <div class="w-12 h-12 rounded-2xl bg-brand-dark p-2 border border-brand-border/80 flex items-center justify-center shadow-md group-hover:scale-105 transition transform flex-shrink-0">
+                                    <img src="${logoUrl}" 
+                                         alt="${p.name}" 
+                                         class="w-8 h-8 object-contain"
+                                         onerror="handleLogoError(this, '${p.name}')">
                                 </div>
                                 <div>
                                     <h3 class="font-black text-white text-lg group-hover:text-brand-accent transition flex items-center space-x-1.5">
@@ -1151,7 +1193,7 @@
                 target.totalReportsToday += 1;
                 target.hourlyData[target.hourlyData.length - 1] += 1;
 
-                // Reducir ligeramente el score de calidad por nuevos reportes en tiempo real
+                // Reducir ligeramente el score de calidad por nuevos reportes
                 if (target.qualityScore > 10) {
                     target.qualityScore -= 2;
                 }
