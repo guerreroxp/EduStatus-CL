@@ -3,15 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EduStatus CL - Estado de Plataformas Educativas en Chile</title>
+    <title>EduStatus CL - Estado de Plataformas Educativas | ECOO EMPRESAS</title>
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Chart.js para gráficos detallados -->
+    <!-- Chart.js -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <!-- FontAwesome para iconografía -->
+    <!-- FontAwesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Google Fonts Inter -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     
     <script>
         tailwind.config = {
@@ -23,10 +23,11 @@
                     },
                     colors: {
                         brand: {
-                            dark: '#0B0F17',
-                            card: '#151C28',
-                            border: '#232D3F',
+                            dark: '#0A0E17',
+                            card: '#131A26',
+                            border: '#202B3C',
                             accent: '#3B82F6',
+                            ecoo: '#10B981',
                             success: '#10B981',
                             warning: '#F59E0B',
                             danger: '#EF4444',
@@ -39,97 +40,91 @@
     
     <style>
         body {
-            background-color: #0B0F17;
+            background-color: #0A0E17;
             color: #F3F4F6;
             font-family: 'Inter', sans-serif;
         }
         
-        .pulse-glow-danger {
+        .pulse-danger {
             box-shadow: 0 0 15px rgba(239, 68, 68, 0.4);
-            animation: pulse-danger 2s infinite;
+            animation: pulse-red 2s infinite;
         }
         
-        .pulse-glow-warning {
+        .pulse-warning {
             box-shadow: 0 0 15px rgba(245, 158, 11, 0.4);
-            animation: pulse-warning 2s infinite;
+            animation: pulse-yellow 2s infinite;
         }
 
-        .pulse-glow-success {
-            box-shadow: 0 0 10px rgba(16, 185, 129, 0.2);
-        }
-
-        @keyframes pulse-danger {
+        @keyframes pulse-red {
             0% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.6); }
             70% { box-shadow: 0 0 0 10px rgba(239, 68, 68, 0); }
             100% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0); }
         }
 
-        @keyframes pulse-warning {
+        @keyframes pulse-yellow {
             0% { box-shadow: 0 0 0 0 rgba(245, 158, 11, 0.6); }
             70% { box-shadow: 0 0 0 10px rgba(245, 158, 11, 0); }
             100% { box-shadow: 0 0 0 0 rgba(245, 158, 11, 0); }
         }
 
-        /* Scrollbar styling */
         ::-webkit-scrollbar {
             width: 8px;
             height: 8px;
         }
         ::-webkit-scrollbar-track {
-            background: #0B0F17;
+            background: #0A0E17;
         }
         ::-webkit-scrollbar-thumb {
-            background: #232D3F;
+            background: #202B3C;
             border-radius: 4px;
-        }
-        ::-webkit-scrollbar-thumb:hover {
-            background: #374151;
         }
     </style>
 </head>
 <body class="min-h-screen flex flex-col justify-between">
 
-    <!-- Encabezado / Navbar -->
-    <header class="border-b border-brand-border bg-brand-card/80 backdrop-blur-md sticky top-0 z-40">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
-            <div class="flex items-center space-x-3">
-                <!-- Logo de la Web / Branding -->
-                <div class="flex items-center space-x-3">
-                    <div class="bg-gradient-to-tr from-blue-600 via-indigo-600 to-purple-600 p-2.5 rounded-xl shadow-lg border border-blue-400/30 flex items-center justify-center w-11 h-11">
-                        <!-- Placeholder/Espacio para el logo oficial de la web -->
-                        <i class="fa-solid fa-graduation-cap text-xl text-white"></i>
+    <!-- Header / Navbar -->
+    <header class="border-b border-brand-border bg-brand-card/90 backdrop-blur-md sticky top-0 z-40">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            
+            <!-- Logo & Branding ECOO EMPRESAS -->
+            <div class="flex items-center space-x-3 cursor-pointer" onclick="showPlatformGrid()">
+                <div class="bg-gradient-to-tr from-emerald-500 via-teal-600 to-blue-600 p-3 rounded-2xl shadow-lg flex items-center justify-center text-white">
+                    <i class="fa-solid fa-graduation-cap text-2xl"></i>
+                </div>
+                <div>
+                    <div class="flex items-center space-x-2">
+                        <span class="font-black text-2xl tracking-tight text-white">EduStatus</span>
+                        <span class="bg-red-500/20 text-red-400 border border-red-500/30 text-[10px] font-black px-2 py-0.5 rounded-full">CL</span>
                     </div>
-                    <div>
-                        <div class="flex items-center space-x-2">
-                            <span class="font-extrabold text-xl tracking-tight bg-gradient-to-r from-white via-gray-200 to-gray-400 bg-clip-text text-transparent">EduStatus</span>
-                            <span class="bg-red-500/20 text-red-400 border border-red-500/30 text-xs font-bold px-2 py-0.5 rounded-full">CL</span>
-                        </div>
-                        <p class="text-[10px] text-blue-400 font-semibold tracking-wide flex items-center space-x-1">
-                            <span>Hecho por</span>
-                            <span class="font-bold text-white uppercase bg-blue-600/30 px-1.5 py-0.2 rounded border border-blue-500/30">ECOO EMPRESAS</span>
-                        </p>
+                    <div class="flex items-center space-x-1.5 text-xs text-emerald-400 font-bold">
+                        <span>Hecho por ECOO EMPRESAS</span>
+                        <i class="fa-solid fa-circle-check text-[10px]"></i>
                     </div>
                 </div>
             </div>
 
+            <!-- Redes Sociales y Acciones -->
             <div class="flex items-center space-x-3 sm:space-x-4">
-                <!-- Redes Sociales Header -->
-                <div class="hidden lg:flex items-center space-x-2 bg-brand-dark/80 px-3 py-1.5 rounded-xl border border-brand-border text-xs">
-                    <span class="text-gray-400 font-medium mr-1">Síguenos:</span>
-                    <a href="https://www.instagram.com/ecooempresas/" target="_blank" rel="noopener noreferrer" class="text-pink-400 hover:text-pink-300 transition p-1" title="Instagram @ecooempresas">
-                        <i class="fa-brands fa-instagram text-base"></i>
+                <!-- Redes ECOO EMPRESAS -->
+                <div class="hidden sm:flex items-center space-x-2 border-r border-brand-border pr-4 my-1">
+                    <a href="https://www.instagram.com/ecooempresas/" target="_blank" rel="noopener noreferrer" class="bg-brand-dark hover:bg-pink-600/20 text-gray-300 hover:text-pink-400 border border-brand-border hover:border-pink-500/50 p-2 rounded-xl text-xs font-semibold flex items-center space-x-1.5 transition">
+                        <i class="fa-brands fa-instagram text-sm"></i>
+                        <span class="hidden md:inline">@ecooempresas</span>
                     </a>
-                    <a href="https://www.youtube.com/ecooempresas" target="_blank" rel="noopener noreferrer" class="text-red-500 hover:text-red-400 transition p-1" title="YouTube ecooempresas">
-                        <i class="fa-brands fa-youtube text-base"></i>
+                    <a href="https://www.youtube.com/ecooempresas" target="_blank" rel="noopener noreferrer" class="bg-brand-dark hover:bg-red-600/20 text-gray-300 hover:text-red-400 border border-brand-border hover:border-red-500/50 p-2 rounded-xl text-xs font-semibold flex items-center space-x-1.5 transition">
+                        <i class="fa-brands fa-youtube text-sm"></i>
+                        <span class="hidden md:inline">YouTube</span>
                     </a>
                 </div>
 
-                <div class="hidden md:flex items-center space-x-2 text-xs text-gray-400 bg-brand-dark px-3 py-1.5 rounded-lg border border-brand-border">
-                    <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-                    <span>En vivo</span>
-                </div>
+                <!-- Botón Inicio Selector -->
+                <button onclick="showPlatformGrid()" class="bg-brand-dark hover:bg-brand-border text-gray-200 px-3 py-2 rounded-xl text-xs font-bold transition flex items-center space-x-2 border border-brand-border">
+                    <i class="fa-solid fa-table-cells text-sm"></i>
+                    <span class="hidden sm:inline">Elegir Plataforma</span>
+                </button>
 
-                <button onclick="triggerQuickReportModal()" class="bg-gradient-to-r from-red-600 to-orange-600 hover:from-red-500 hover:to-orange-500 text-white font-semibold text-xs sm:text-sm px-4 py-2 rounded-lg transition duration-200 shadow-md hover:shadow-red-900/30 flex items-center space-x-2">
+                <!-- Botón Reportar General -->
+                <button onclick="openGlobalReportModal()" class="bg-gradient-to-r from-red-600 to-orange-600 hover:from-red-500 hover:to-orange-500 text-white font-black text-xs sm:text-sm px-4 py-2.5 rounded-xl shadow-lg hover:shadow-red-900/30 transition flex items-center space-x-2">
                     <i class="fa-solid fa-triangle-exclamation"></i>
                     <span>Reportar Fallo</span>
                 </button>
@@ -138,13 +133,13 @@
     </header>
 
     <!-- Ticker de Alertas de la Comunidad -->
-    <div class="bg-brand-dark/90 border-b border-brand-border py-2 px-4 overflow-hidden">
+    <div class="bg-brand-dark/95 border-b border-brand-border py-2.5 px-4 overflow-hidden">
         <div class="max-w-7xl mx-auto flex items-center space-x-3">
-            <span class="flex h-2 w-2 relative">
+            <span class="flex h-2.5 w-2.5 relative">
               <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
-              <span class="relative inline-flex rounded-full h-2 w-2 bg-red-500"></span>
+              <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-red-500"></span>
             </span>
-            <span class="text-xs font-bold text-red-400 uppercase tracking-wider flex-shrink-0">Últimas Alertas:</span>
+            <span class="text-xs font-black text-red-400 uppercase tracking-wider flex-shrink-0">Monitoreo en Vivo:</span>
             <div class="overflow-hidden relative w-full text-xs text-gray-300">
                 <div id="ticker-content" class="whitespace-nowrap transition-all duration-500">
                     <!-- Dinámico vía JS -->
@@ -153,791 +148,688 @@
         </div>
     </div>
 
-    <!-- Contenido Principal -->
     <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 w-full flex-grow space-y-8">
 
-        <!-- Hero Status Banner -->
-        <div id="hero-banner" class="rounded-2xl p-6 sm:p-8 bg-gradient-to-r from-brand-card to-brand-card border border-brand-border shadow-2xl relative overflow-hidden transition-all duration-300">
-            <div class="absolute -right-10 -bottom-10 opacity-5 pointer-events-none text-9xl">
-                <i class="fa-solid fa-shield-cat"></i>
-            </div>
+        <!-- ========================================================= -->
+        <!-- VISTA 1: INICIO Y SELECTOR COMPLETO DE PLATAFORMAS -->
+        <!-- ========================================================= -->
+        <div id="view-grid" class="space-y-8">
             
-            <div class="flex flex-col md:flex-row md:items-center justify-between gap-6 relative z-10">
-                <div class="space-y-2">
-                    <div class="flex items-center space-x-3">
-                        <span id="overall-status-badge" class="px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-red-500/20 text-red-400 border border-red-500/30 flex items-center space-x-2">
-                            <i class="fa-solid fa-circle-exclamation"></i>
-                            <span>Problemas Detectados Hoy</span>
-                        </span>
-                        <span class="text-xs text-gray-400" id="last-update-time">Actualizado hace un momento</span>
-                    </div>
-                    <h1 id="hero-title" class="text-2xl sm:text-3xl font-extrabold text-white">
-                        Alta incidencia de fallas en plataformas de libro digital
+            <!-- Hero Header de Selección Inicial -->
+            <div class="bg-gradient-to-r from-brand-card via-brand-card to-gray-900 border border-brand-border rounded-3xl p-6 sm:p-10 shadow-2xl relative overflow-hidden">
+                <div class="max-w-3xl space-y-3 relative z-10">
+                    <span class="bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider inline-flex items-center space-x-2">
+                        <i class="fa-solid fa-shield-halved"></i>
+                        <span>ECOO EMPRESAS &bull; Plataformas Educativas Chile</span>
+                    </span>
+                    <h1 class="text-2xl sm:text-4xl font-black text-white leading-tight">
+                        Selecciona la plataforma educativa que deseas revisar o reportar
                     </h1>
-                    <p id="hero-subtitle" class="text-gray-400 text-sm max-w-2xl">
-                        Múltiples profesores y colegios reportan intermitencia al ingresar al libro de clases digital durante el horario de la jornada escolar.
+                    <p class="text-gray-400 text-sm sm:text-base">
+                        Monitorea la estabilidad, velocidad y fallas del libro de clases digital, firmas, notas e inicio de sesión de colegios y liceos en Chile.
                     </p>
                 </div>
+            </div>
 
-                <div class="flex items-center gap-4 bg-brand-dark/60 p-4 rounded-xl border border-brand-border flex-shrink-0">
-                    <div class="text-center px-3">
-                        <div class="text-2xl font-bold text-white" id="stat-total-reports">1,420</div>
-                        <div class="text-[11px] text-gray-400 font-medium">Reportes hoy</div>
+            <!-- Leyenda de Barra de Calidad / Estabilidad -->
+            <div class="bg-brand-card/80 border border-brand-border rounded-2xl p-4 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 text-xs">
+                <div class="flex items-center space-x-2 text-gray-300 font-bold">
+                    <i class="fa-solid fa-chart-bar text-brand-accent text-sm"></i>
+                    <span>¿Cómo interpretar la Barra de Calidad y Estabilidad Web?</span>
+                </div>
+                <div class="flex flex-wrap items-center gap-4 text-[11px] font-semibold">
+                    <div class="flex items-center space-x-1.5">
+                        <span class="w-3 h-3 rounded-full bg-emerald-500 inline-block"></span>
+                        <span class="text-emerald-400">Excelente (Muy Estable)</span>
                     </div>
-                    <div class="h-8 w-px bg-brand-border"></div>
-                    <div class="text-center px-3">
-                        <div class="text-2xl font-bold text-red-400" id="stat-affected-platforms">2</div>
-                        <div class="text-[11px] text-gray-400 font-medium">Con caídas</div>
+                    <div class="flex items-center space-x-1.5">
+                        <span class="w-3 h-3 rounded-full bg-amber-500 inline-block"></span>
+                        <span class="text-amber-400">Regular (Lentitud/Fallas)</span>
                     </div>
-                    <div class="h-8 w-px bg-brand-border"></div>
-                    <div class="text-center px-3">
-                        <div class="text-2xl font-bold text-emerald-400" id="stat-operational-platforms">8</div>
-                        <div class="text-[11px] text-gray-400 font-medium">Operativas</div>
+                    <div class="flex items-center space-x-1.5">
+                        <span class="w-3 h-3 rounded-full bg-red-500 inline-block"></span>
+                        <span class="text-red-400">Mala (Se cae seguido / Inestable)</span>
                     </div>
                 </div>
             </div>
-        </div>
 
-        <!-- Barra de Búsqueda y Filtros por Categoria -->
-        <div class="flex flex-col md:flex-row gap-4 items-center justify-between">
-            <!-- Buscador -->
-            <div class="relative w-full md:w-96">
-                <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-1/2 -translate-y-1/2 text-gray-500 text-sm"></i>
-                <input type="text" id="search-input" placeholder="Buscar Syscol, Lirmi, Mateo, SIGE..." class="w-full bg-brand-card border border-brand-border focus:border-brand-accent focus:ring-1 focus:ring-brand-accent rounded-xl pl-10 pr-4 py-2.5 text-sm text-white placeholder-gray-500 transition outline-none">
-            </div>
-
-            <!-- Categorías -->
-            <div class="flex flex-wrap items-center gap-2 w-full md:w-auto" id="category-filters">
-                <button data-cat="all" class="filter-btn active bg-brand-accent text-white px-3.5 py-2 rounded-xl text-xs font-semibold transition border border-transparent">
-                    Todas las Plataformas
-                </button>
-                <button data-cat="libro" class="filter-btn bg-brand-card hover:bg-gray-800 text-gray-300 px-3.5 py-2 rounded-xl text-xs font-semibold transition border border-brand-border">
-                    Libros Digitales / LMS
-                </button>
-                <button data-cat="mineduc" class="filter-btn bg-brand-card hover:bg-gray-800 text-gray-300 px-3.5 py-2 rounded-xl text-xs font-semibold transition border border-brand-border">
-                    Mineduc & Gobierno
-                </button>
-                <button data-cat="global" class="filter-btn bg-brand-card hover:bg-gray-800 text-gray-300 px-3.5 py-2 rounded-xl text-xs font-semibold transition border border-brand-border">
-                    Aulas Globales
-                </button>
-            </div>
-        </div>
-
-        <!-- Grid de Tarjetas de Plataformas -->
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="platforms-grid">
-            <!-- Las tarjetas se generan dinámicamente con JS -->
-        </div>
-
-        <!-- Muro de Comentarios / Feed de Profesores y Apoderados -->
-        <div class="bg-brand-card rounded-2xl border border-brand-border p-6 shadow-xl space-y-6">
-            <div class="flex items-center justify-between border-b border-brand-border pb-4">
-                <div class="flex items-center space-x-3">
-                    <div class="p-2 bg-blue-500/10 text-brand-accent rounded-lg">
-                        <i class="fa-regular fa-comments text-lg"></i>
-                    </div>
-                    <div>
-                        <h2 class="text-lg font-bold text-white">Comentarios de Profesores y Apoderados</h2>
-                        <p class="text-xs text-gray-400">Reportes de la comunidad educativa en tiempo real desde colegios de Chile</p>
-                    </div>
+            <!-- Filtros y Buscador -->
+            <div class="flex flex-col md:flex-row gap-4 items-center justify-between">
+                <!-- Buscador -->
+                <div class="relative w-full md:w-96">
+                    <i class="fa-solid fa-magnifying-glass absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 text-sm"></i>
+                    <input type="text" id="search-input" placeholder="Buscar Syscol, Lirmi, Mateo, SIGE..." class="w-full bg-brand-card border border-brand-border focus:border-brand-accent rounded-2xl pl-11 pr-4 py-3 text-sm text-white placeholder-gray-500 outline-none transition shadow-inner">
                 </div>
-                <span class="text-xs bg-brand-dark px-3 py-1 rounded-full border border-brand-border text-gray-400" id="comments-count">12 comentarios</span>
-            </div>
 
-            <!-- Formulario para agregar comentario rápido -->
-            <form id="comment-form" class="space-y-3">
-                <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
-                    <input type="text" id="comment-author" placeholder="Tu Nombre o Rol (ej. Prof. Carlos, Colegio X)" required class="bg-brand-dark border border-brand-border focus:border-brand-accent rounded-xl px-3.5 py-2 text-xs text-white placeholder-gray-500 outline-none">
-                    <select id="comment-platform-select" class="bg-brand-dark border border-brand-border focus:border-brand-accent rounded-xl px-3.5 py-2 text-xs text-white outline-none">
-                        <!-- Llenado dinámicamente -->
-                    </select>
-                    <select id="comment-region" class="bg-brand-dark border border-brand-border focus:border-brand-accent rounded-xl px-3.5 py-2 text-xs text-white outline-none">
-                        <option value="RM">Región Metropolitana</option>
-                        <option value="Valparaíso">Región de Valparaíso</option>
-                        <option value="Bío Bío">Región del Bío Bío</option>
-                        <option value="Coquimbo">Región de Coquimbo</option>
-                        <option value="Araucanía">Región de la Araucanía</option>
-                        <option value="Antofagasta">Región de Antofagasta</option>
-                        <option value="O'Higgins">Región de O'Higgins</option>
-                        <option value="Maule">Región del Maule</option>
-                        <option value="Los Lagos">Región de Los Lagos</option>
-                        <option value="Otra">Otra Región</option>
-                    </select>
-                </div>
-                <div class="flex gap-2">
-                    <input type="text" id="comment-text" placeholder="Describe brevemente qué falla estás experimentando..." required class="flex-grow bg-brand-dark border border-brand-border focus:border-brand-accent rounded-xl px-4 py-2 text-xs text-white placeholder-gray-500 outline-none">
-                    <button type="submit" class="bg-brand-accent hover:bg-blue-600 text-white font-semibold px-4 py-2 rounded-xl text-xs transition flex items-center space-x-1 flex-shrink-0">
-                        <i class="fa-solid fa-paper-plane"></i>
-                        <span class="hidden sm:inline">Publicar</span>
+                <!-- Botones Categoría -->
+                <div class="flex flex-wrap items-center gap-2 w-full md:w-auto" id="category-filters">
+                    <button data-cat="all" class="filter-btn active bg-brand-accent text-white px-4 py-2.5 rounded-xl text-xs font-bold transition">
+                        Todas
+                    </button>
+                    <button data-cat="libro" class="filter-btn bg-brand-card hover:bg-gray-800 text-gray-300 px-4 py-2.5 rounded-xl text-xs font-bold transition border border-brand-border">
+                        Libro Digital & Gestión
+                    </button>
+                    <button data-cat="mineduc" class="filter-btn bg-brand-card hover:bg-gray-800 text-gray-300 px-4 py-2.5 rounded-xl text-xs font-bold transition border border-brand-border">
+                        Sistemas Mineduc
+                    </button>
+                    <button data-cat="global" class="filter-btn bg-brand-card hover:bg-gray-800 text-gray-300 px-4 py-2.5 rounded-xl text-xs font-bold transition border border-brand-border">
+                        Aulas Virtuales
                     </button>
                 </div>
-            </form>
-
-            <!-- Lista de comentarios -->
-            <div class="space-y-3 max-h-80 overflow-y-auto pr-1" id="comments-container">
-                <!-- Comentarios insertados vía JS -->
             </div>
+
+            <!-- Grilla Principal de Plataformas -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="platforms-grid">
+                <!-- Se inyecta dinámicamente con JavaScript -->
+            </div>
+
+            <!-- Muro de Comentarios Globales -->
+            <div class="bg-brand-card rounded-2xl border border-brand-border p-6 shadow-2xl space-y-6">
+                <div class="flex items-center justify-between border-b border-brand-border pb-4">
+                    <div>
+                        <h2 class="text-lg font-extrabold text-white flex items-center space-x-2">
+                            <i class="fa-regular fa-comments text-brand-accent"></i>
+                            <span>Reportes y Opiniones de Profesores y Apoderados</span>
+                        </h2>
+                        <p class="text-xs text-gray-400">Espacio colaborativo de la comunidad escolar en Chile</p>
+                    </div>
+                    <span id="global-comments-count" class="bg-brand-dark px-3 py-1 rounded-full text-xs border border-brand-border text-gray-300 font-semibold">0 comentarios</span>
+                </div>
+
+                <!-- Formulario Publicar -->
+                <form id="global-comment-form" class="space-y-3">
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                        <input type="text" id="comment-author" placeholder="Tu Nombre / Rol (ej: Prof. Carmen)" required class="bg-brand-dark border border-brand-border focus:border-brand-accent rounded-xl px-4 py-2.5 text-xs text-white placeholder-gray-500 outline-none">
+                        <select id="comment-platform-select" class="bg-brand-dark border border-brand-border focus:border-brand-accent rounded-xl px-4 py-2.5 text-xs text-white outline-none">
+                            <!-- Inyectado por JS -->
+                        </select>
+                        <select id="comment-region" class="bg-brand-dark border border-brand-border focus:border-brand-accent rounded-xl px-4 py-2.5 text-xs text-white outline-none">
+                            <option value="RM">Región Metropolitana</option>
+                            <option value="Valparaíso">Región de Valparaíso</option>
+                            <option value="Bío Bío">Región del Bío Bío</option>
+                            <option value="Coquimbo">Región de Coquimbo</option>
+                            <option value="Araucanía">Región de la Araucanía</option>
+                            <option value="Antofagasta">Región de Antofagasta</option>
+                            <option value="O'Higgins">Región de O'Higgins</option>
+                            <option value="Maule">Región del Maule</option>
+                            <option value="Los Lagos">Región de Los Lagos</option>
+                            <option value="Otra">Otra Región</option>
+                        </select>
+                    </div>
+                    <div class="flex gap-2">
+                        <input type="text" id="comment-text" placeholder="Escribe tu reporte o comentario sobre la plataforma..." required class="flex-grow bg-brand-dark border border-brand-border focus:border-brand-accent rounded-xl px-4 py-2.5 text-xs text-white placeholder-gray-500 outline-none">
+                        <button type="submit" class="bg-brand-accent hover:bg-blue-600 text-white font-bold px-5 py-2.5 rounded-xl text-xs transition flex items-center space-x-2">
+                            <i class="fa-solid fa-paper-plane"></i>
+                            <span>Publicar</span>
+                        </button>
+                    </div>
+                </form>
+
+                <!-- Lista de Comentarios -->
+                <div class="space-y-3 max-h-80 overflow-y-auto pr-1" id="global-comments-container">
+                    <!-- Inyectado por JS -->
+                </div>
+            </div>
+        </div>
+
+        <!-- ========================================================= -->
+        <!-- VISTA 2: VISTA DETALLADA DE PLATAFORMA SELECCIONADA -->
+        <!-- ========================================================= -->
+        <div id="view-detail" class="hidden space-y-8">
+            
+            <!-- Botón Volver -->
+            <div>
+                <button onclick="showPlatformGrid()" class="bg-brand-card hover:bg-gray-800 text-gray-300 font-bold px-4 py-2.5 rounded-xl text-xs border border-brand-border flex items-center space-x-2 transition shadow">
+                    <i class="fa-solid fa-arrow-left"></i>
+                    <span>Volver a Seleccionar Plataforma</span>
+                </button>
+            </div>
+
+            <!-- Banner Principal de la Plataforma -->
+            <div id="detail-banner" class="bg-brand-card border border-brand-border rounded-3xl p-6 sm:p-8 shadow-2xl relative overflow-hidden">
+                <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-6 relative z-10">
+                    <div class="flex items-center space-x-5">
+                        <div id="detail-icon" class="w-16 h-16 rounded-2xl flex items-center justify-center text-3xl text-white shadow-xl flex-shrink-0">
+                            <!-- Icono dinámico -->
+                        </div>
+                        <div>
+                            <div class="flex items-center space-x-3 flex-wrap gap-y-1">
+                                <h2 id="detail-title" class="text-2xl sm:text-3xl font-black text-white">Nombre Plataforma</h2>
+                                <span id="detail-status-badge" class="px-3 py-1 rounded-full text-xs font-black uppercase tracking-wider border">
+                                    Estado
+                                </span>
+                            </div>
+                            <p id="detail-category" class="text-xs text-gray-400 mt-1">Categoría</p>
+                            
+                            <!-- Enlace oficial con comprobación para Syscol https://web.syscol.com/ -->
+                            <a id="detail-official-link" href="#" target="_blank" rel="noopener noreferrer" class="inline-flex items-center space-x-1.5 text-xs text-brand-accent hover:underline font-bold mt-2">
+                                <span>Sitio Web Oficial: <span id="detail-url-text">https://...</span></span>
+                                <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 w-full md:w-auto">
+                        <button onclick="openReportModalForSelected()" class="bg-red-600 hover:bg-red-500 text-white font-black text-xs sm:text-sm px-5 py-3 rounded-xl shadow-lg hover:shadow-red-900/40 transition flex items-center justify-center space-x-2">
+                            <i class="fa-solid fa-circle-exclamation"></i>
+                            <span>Dejar Reporte para esta Plataforma</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Detalle de Calidad y Rendimiento -->
+            <div class="bg-brand-card border border-brand-border rounded-2xl p-6 shadow-xl space-y-4">
+                <h3 class="text-sm font-black text-gray-200 uppercase tracking-wider flex items-center space-x-2">
+                    <i class="fa-solid fa-gauge-high text-brand-accent"></i>
+                    <span>Índice Histórico de Calidad y Estabilidad</span>
+                </h3>
+                <div id="detail-quality-container" class="space-y-2">
+                    <!-- Dinámico por JS -->
+                </div>
+            </div>
+
+            <!-- Gráfico de Reportes en las últimas 24 horas -->
+            <div class="bg-brand-card border border-brand-border rounded-2xl p-6 shadow-xl space-y-4">
+                <div class="flex flex-col sm:flex-row justify-between sm:items-center gap-2">
+                    <div>
+                        <h3 class="text-base font-extrabold text-white flex items-center space-x-2">
+                            <i class="fa-solid fa-chart-line text-brand-accent"></i>
+                            <span>Fallas e Incidencias reportadas en las últimas 24 horas</span>
+                        </h3>
+                        <p class="text-xs text-gray-400">Visualización de picos de caída e interrupciones en el servicio</p>
+                    </div>
+                    <span class="text-xs bg-brand-dark px-3 py-1.5 rounded-xl border border-brand-border text-gray-300 font-semibold self-start sm:self-auto" id="detail-reports-today">
+                        0 reportes hoy
+                    </span>
+                </div>
+
+                <div class="bg-brand-dark border border-brand-border rounded-xl p-4 h-64 w-full">
+                    <canvas id="detailChart"></canvas>
+                </div>
+            </div>
+
+            <!-- Desglose de Problemas y Servidores -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- Fallas Comunes -->
+                <div class="bg-brand-card border border-brand-border rounded-2xl p-6 shadow-xl space-y-4">
+                    <h4 class="text-xs font-black text-gray-300 uppercase tracking-wider">Principales problemas reportados por usuarios</h4>
+                    <div id="detail-issues-list" class="space-y-3">
+                        <!-- Inyectado por JS -->
+                    </div>
+                </div>
+
+                <!-- Información Técnica -->
+                <div class="bg-brand-card border border-brand-border rounded-2xl p-6 shadow-xl space-y-4">
+                    <h4 class="text-xs font-black text-gray-300 uppercase tracking-wider">Detalles de Servidor y Soporte</h4>
+                    <div class="space-y-3 text-xs">
+                        <div class="flex justify-between py-2 border-b border-brand-border/60">
+                            <span class="text-gray-400">Estado del servidor:</span>
+                            <span id="detail-server-status" class="font-bold text-white">Normal</span>
+                        </div>
+                        <div class="flex justify-between py-2 border-b border-brand-border/60">
+                            <span class="text-gray-400">Módulos más afectados:</span>
+                            <span id="detail-affected-modules" class="font-bold text-white">Ninguno</span>
+                        </div>
+                        <div class="flex justify-between py-2 border-b border-brand-border/60">
+                            <span class="text-gray-400">Monitoreo ECOO EMPRESAS:</span>
+                            <span class="font-bold text-emerald-400 flex items-center space-x-1">
+                                <i class="fa-solid fa-check-circle"></i>
+                                <span>Activo en tiempo real</span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Comentarios específicos de esta plataforma -->
+            <div class="bg-brand-card rounded-2xl border border-brand-border p-6 shadow-xl space-y-4">
+                <h4 class="text-sm font-extrabold text-white flex items-center space-x-2">
+                    <i class="fa-regular fa-comments text-brand-accent"></i>
+                    <span>Comentarios específicos sobre esta plataforma</span>
+                </h4>
+                <div id="detail-comments-container" class="space-y-3">
+                    <!-- Inyectado por JS -->
+                </div>
+            </div>
+
         </div>
 
     </main>
 
-    <!-- Modal de Detalle de Plataforma / Reporte -->
-    <div id="platform-modal" class="fixed inset-0 bg-black/70 backdrop-blur-sm z-50 flex items-center justify-center p-4 opacity-0 pointer-events-none transition-opacity duration-300">
-        <div class="bg-brand-card border border-brand-border w-full max-w-3xl rounded-2xl shadow-2xl overflow-hidden flex flex-col max-h-[90vh] transform scale-95 transition-transform duration-300" id="modal-container">
-            
-            <!-- Modal Header -->
-            <div class="p-6 border-b border-brand-border flex items-center justify-between bg-brand-dark/50">
-                <div class="flex items-center space-x-4">
-                    <div id="modal-platform-icon" class="w-12 h-12 rounded-xl flex items-center justify-center text-xl text-white font-bold shadow-md">
-                        <!-- Icono -->
-                    </div>
-                    <div>
-                        <div class="flex items-center space-x-2">
-                            <h3 id="modal-platform-name" class="text-xl font-extrabold text-white">Nombre Plataforma</h3>
-                            <span id="modal-platform-badge" class="px-2.5 py-0.5 rounded-full text-[10px] font-bold uppercase">Estado</span>
-                        </div>
-                        <p id="modal-platform-category" class="text-xs text-gray-400">Categoría</p>
-                    </div>
-                </div>
-                <button onclick="closeModal()" class="text-gray-400 hover:text-white p-2 rounded-lg hover:bg-brand-border transition">
-                    <i class="fa-solid fa-xmark text-xl"></i>
+    <!-- Modal para enviar reporte rápido -->
+    <div id="report-modal" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4 opacity-0 pointer-events-none transition-opacity duration-300">
+        <div class="bg-brand-card border border-brand-border w-full max-w-lg rounded-3xl shadow-2xl overflow-hidden p-6 space-y-5">
+            <div class="flex justify-between items-center border-b border-brand-border pb-3">
+                <h3 class="text-lg font-black text-white flex items-center space-x-2">
+                    <i class="fa-solid fa-triangle-exclamation text-red-500"></i>
+                    <span>Enviar Reporte de Fallo</span>
+                </h3>
+                <button onclick="closeReportModal()" class="text-gray-400 hover:text-white text-lg">
+                    <i class="fa-solid fa-xmark"></i>
                 </button>
             </div>
 
-            <!-- Modal Content (Scrollable) -->
-            <div class="p-6 overflow-y-auto space-y-6 flex-grow">
-                
-                <!-- Quick Report Button Box -->
-                <div class="bg-gradient-to-r from-red-950/40 via-brand-dark to-brand-dark border border-red-500/30 p-4 rounded-xl flex flex-col sm:flex-row items-center justify-between gap-4">
-                    <div>
-                        <h4 class="text-sm font-bold text-white flex items-center gap-2">
-                            <i class="fa-solid fa-circle-exclamation text-red-400"></i>
-                            ¿Tienes problemas con esta plataforma ahora mismo?
-                        </h4>
-                        <p class="text-xs text-gray-400">Tu reporte ayuda a otros colegios a confirmar si la caída es general.</p>
-                    </div>
-                    <button id="modal-report-btn" onclick="openSubmitReportForm()" class="bg-red-600 hover:bg-red-500 text-white text-xs font-bold px-4 py-2.5 rounded-lg shadow-lg hover:shadow-red-900/40 transition whitespace-nowrap">
-                        Reportar un problema
-                    </button>
+            <div class="space-y-4 text-xs">
+                <div>
+                    <label class="block font-bold text-gray-300 mb-1">Elige la plataforma afectada:</label>
+                    <select id="modal-select-platform" class="w-full bg-brand-dark border border-brand-border focus:border-brand-accent rounded-xl p-3 text-white outline-none font-semibold">
+                        <!-- Inyectado por JS -->
+                    </select>
                 </div>
 
-                <!-- Formulario desplegable para reportar -->
-                <div id="quick-report-box" class="hidden bg-brand-dark p-4 rounded-xl border border-brand-border space-y-3 animate-fade-in">
-                    <h5 class="text-xs font-bold text-white uppercase tracking-wider">Selecciona la falla que estás experimentando:</h5>
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-2" id="report-issues-options">
-                        <!-- Opciones de fallas específicas -->
-                    </div>
-                    <div class="flex justify-end gap-2 pt-2">
-                        <button onclick="closeSubmitReportForm()" class="text-xs text-gray-400 hover:text-white px-3 py-1.5 rounded-lg">Cancelar</button>
-                        <button onclick="submitIssueReport()" class="bg-brand-accent hover:bg-blue-600 text-white text-xs font-semibold px-4 py-1.5 rounded-lg">Enviar Reporte</button>
-                    </div>
-                </div>
-
-                <!-- Gráfico de 24 Horas -->
-                <div class="space-y-2">
-                    <div class="flex justify-between items-center">
-                        <h4 class="text-sm font-bold text-white flex items-center space-x-2">
-                            <i class="fa-solid fa-chart-line text-brand-accent"></i>
-                            <span>Informes de problemas en las últimas 24 horas</span>
-                        </h4>
-                        <span class="text-[11px] text-gray-400">Límite normal: 15 reportes/hr</span>
-                    </div>
-                    <div class="bg-brand-dark border border-brand-border rounded-xl p-4 h-56">
-                        <canvas id="modalChart"></canvas>
+                <div>
+                    <label class="block font-bold text-gray-300 mb-2">Selecciona el problema principal:</label>
+                    <div class="space-y-2" id="modal-issues-options">
+                        <label class="flex items-center space-x-2 bg-brand-dark p-3 rounded-xl border border-brand-border/60 cursor-pointer hover:border-brand-accent">
+                            <input type="radio" name="modal-issue" value="No permite iniciar sesión / RUT invalido" checked class="text-brand-accent">
+                            <span class="text-gray-200">No permite iniciar sesión / RUT invalido</span>
+                        </label>
+                        <label class="flex items-center space-x-2 bg-brand-dark p-3 rounded-xl border border-brand-border/60 cursor-pointer hover:border-brand-accent">
+                            <input type="radio" name="modal-issue" value="No guarda notas o firmas en libro digital" class="text-brand-accent">
+                            <span class="text-gray-200">No guarda notas o firmas en libro digital</span>
+                        </label>
+                        <label class="flex items-center space-x-2 bg-brand-dark p-3 rounded-xl border border-brand-border/60 cursor-pointer hover:border-brand-accent">
+                            <input type="radio" name="modal-issue" value="Lentitud extrema / Carga infinita" class="text-brand-accent">
+                            <span class="text-gray-200">Lentitud extrema / Carga infinita</span>
+                        </label>
+                        <label class="flex items-center space-x-2 bg-brand-dark p-3 rounded-xl border border-brand-border/60 cursor-pointer hover:border-brand-accent">
+                            <input type="radio" name="modal-issue" value="Plataforma completamente caída / Servidor Offline" class="text-brand-accent">
+                            <span class="text-gray-200">Plataforma completamente caída / Servidor Offline</span>
+                        </label>
                     </div>
                 </div>
-
-                <!-- Desglose de Tipos de Problemas -->
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div class="bg-brand-dark border border-brand-border rounded-xl p-4 space-y-3">
-                        <h4 class="text-xs font-bold text-gray-300 uppercase tracking-wider">Desglose de Fallas Comunes</h4>
-                        <div class="space-y-2" id="issues-breakdown-container">
-                            <!-- Inyectado por JS -->
-                        </div>
-                    </div>
-
-                    <div class="bg-brand-dark border border-brand-border rounded-xl p-4 space-y-3">
-                        <h4 class="text-xs font-bold text-gray-300 uppercase tracking-wider">Detalles del Sistema</h4>
-                        <ul class="text-xs space-y-2 text-gray-300">
-                            <li class="flex justify-between py-1 border-b border-brand-border/50">
-                                <span class="text-gray-400">Estado de Servidores:</span>
-                                <span id="modal-server-status" class="font-semibold">Normal</span>
-                            </li>
-                            <li class="flex justify-between py-1 border-b border-brand-border/50">
-                                <span class="text-gray-400">Módulos más afectados:</span>
-                                <span id="modal-affected-modules" class="font-semibold">Ninguno</span>
-                            </li>
-                            <li class="flex justify-between py-1 border-b border-brand-border/50">
-                                <span class="text-gray-400">Reportes última hora:</span>
-                                <span id="modal-recent-reports" class="font-semibold">0</span>
-                            </li>
-                            <li class="flex justify-between py-1 border-b border-brand-border/50">
-                                <span class="text-gray-400">Sitio Web Oficial:</span>
-                                <a id="modal-official-link" href="#" target="_blank" class="text-brand-accent hover:underline">Visitar <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i></a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-
-                <!-- Muro de Comentarios de la plataforma actual -->
-                <div class="space-y-3">
-                    <h4 class="text-xs font-bold text-gray-300 uppercase tracking-wider">Comentarios recientes sobre esta plataforma</h4>
-                    <div class="space-y-2 max-h-48 overflow-y-auto" id="modal-platform-comments">
-                        <!-- Comentarios específicos de esta plataforma -->
-                    </div>
-                </div>
-
             </div>
-            
-            <!-- Modal Footer -->
-            <div class="p-4 border-t border-brand-border bg-brand-dark/50 flex justify-end">
-                <button onclick="closeModal()" class="bg-brand-border hover:bg-gray-700 text-white font-semibold px-4 py-2 rounded-xl text-xs transition">
-                    Cerrar
-                </button>
+
+            <div class="flex justify-end space-x-2 pt-2">
+                <button onclick="closeReportModal()" class="px-4 py-2.5 rounded-xl text-xs font-bold text-gray-400 hover:text-white bg-brand-dark">Cancelar</button>
+                <button onclick="submitReportModal()" class="px-5 py-2.5 rounded-xl text-xs font-black text-white bg-red-600 hover:bg-red-500 shadow-lg">Registrar Reporte</button>
             </div>
         </div>
     </div>
 
     <!-- Footer -->
-    <footer class="border-t border-brand-border bg-brand-card/50 mt-12 py-8">
-        <div class="max-w-7xl mx-auto px-4 text-center space-y-4">
-            <!-- Branding central en Footer -->
-            <div class="flex flex-col sm:flex-row items-center justify-center gap-3">
-                <div class="flex items-center space-x-2">
-                    <div class="bg-gradient-to-tr from-blue-600 to-purple-600 text-white font-black text-xs px-2.5 py-1 rounded-lg shadow">
-                        ECOO EMPRESAS
+    <footer class="border-t border-brand-border bg-brand-card mt-16 py-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6 text-center">
+            
+            <div class="flex flex-col sm:flex-row items-center justify-between gap-4 border-b border-brand-border/60 pb-6">
+                <!-- Logo Footer -->
+                <div class="flex items-center space-x-3">
+                    <div class="bg-gradient-to-tr from-emerald-500 to-blue-600 p-2.5 rounded-xl text-white">
+                        <i class="fa-solid fa-graduation-cap text-xl"></i>
                     </div>
-                    <span class="text-xs font-semibold text-gray-300">EduStatus CL</span>
+                    <div class="text-left">
+                        <div class="font-extrabold text-lg text-white">EduStatus CL</div>
+                        <div class="text-xs text-emerald-400 font-bold">Un proyecto de ECOO EMPRESAS</div>
+                    </div>
                 </div>
-                <span class="hidden sm:inline text-gray-600">&bull;</span>
-                <p class="text-xs text-gray-400">Plataforma de monitoreo comunitario e independiente</p>
+
+                <!-- Enlaces Redes Sociales Footer -->
+                <div class="flex items-center space-x-3">
+                    <a href="https://www.instagram.com/ecooempresas/" target="_blank" rel="noopener noreferrer" class="bg-brand-dark hover:bg-pink-600/20 text-gray-300 hover:text-pink-400 border border-brand-border hover:border-pink-500/50 px-4 py-2 rounded-xl text-xs font-bold flex items-center space-x-2 transition">
+                        <i class="fa-brands fa-instagram text-base"></i>
+                        <span>@ecooempresas</span>
+                    </a>
+                    <a href="https://www.youtube.com/ecooempresas" target="_blank" rel="noopener noreferrer" class="bg-brand-dark hover:bg-red-600/20 text-gray-300 hover:text-red-400 border border-brand-border hover:border-pink-500/50 px-4 py-2 rounded-xl text-xs font-bold flex items-center space-x-2 transition">
+                        <i class="fa-brands fa-youtube text-base"></i>
+                        <span>YouTube ECOO EMPRESAS</span>
+                    </a>
+                </div>
             </div>
 
-            <!-- Botones Sociales en Footer -->
-            <div class="flex items-center justify-center space-x-4 pt-1">
-                <a href="https://www.instagram.com/ecooempresas/" target="_blank" rel="noopener noreferrer" class="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-500 hover:to-pink-500 text-white text-xs font-medium px-3.5 py-1.5 rounded-xl shadow transition flex items-center space-x-2">
-                    <i class="fa-brands fa-instagram text-sm"></i>
-                    <span>@ecooempresas</span>
-                </a>
-                <a href="https://www.youtube.com/ecooempresas" target="_blank" rel="noopener noreferrer" class="bg-red-600 hover:bg-red-500 text-white text-xs font-medium px-3.5 py-1.5 rounded-xl shadow transition flex items-center space-x-2">
-                    <i class="fa-brands fa-youtube text-sm"></i>
-                    <span>YouTube ECOO Empresarial</span>
-                </a>
-            </div>
-
-            <p class="text-xs text-gray-500 max-w-xl mx-auto leading-relaxed">
-                EduStatus CL no está afiliado oficialmente con Syscol, Lirmi, MateoNet, Mineduc ni ninguna otra institución comercial o gubernamental. Los estados se determinan mediante el análisis automático de los informes de la comunidad educativa en tiempo real.
+            <p class="text-xs text-gray-500 max-w-2xl mx-auto">
+                EduStatus CL es un servicio público independiente desarrollado por ECOO EMPRESAS para monitorear plataformas educativas en Chile. Las marcas Syscol, Lirmi, Mateo, Webclass, SIGE Mineduc y Napsis pertenecen a sus respectivos dueños.
             </p>
 
             <p class="text-[11px] text-gray-600">
-                &copy; 2026 <strong>Hecho por ECOO EMPRESAS</strong> &bull; Todos los derechos reservados.
+                &copy; 2026 ECOO EMPRESAS &bull; Todos los derechos reservados.
             </p>
         </div>
     </footer>
 
     <script>
-        // Data Principal de Plataformas Edu en Chile
+        // Datos de Plataformas Educativas Chilenas
+        // Quality Score: 0 a 100
+        // - < 40: Rojo (Mala web, se cae mucho, soporte deficiente)
+        // - 40 - 75: Amarillo (Regular, soporta carga moderada, pequeñas lentitudes)
+        // - > 75: Verde (Excelente web, muy estable, alto rendimiento)
         const platformsData = [
             {
                 id: 'syscol',
                 name: 'Syscol',
                 category: 'libro',
-                categoryLabel: 'Libro Digital & Gestión',
+                categoryLabel: 'Libro Digital & Gestión Escolar',
                 iconClass: 'fa-solid fa-book-bookmark',
                 color: 'from-blue-600 to-indigo-700',
                 status: 'danger', // danger, warning, success
-                statusText: 'Caída Parcial / Lento',
-                url: 'https://www.syscol.cl',
-                totalReportsToday: 680,
-                lastReportTime: 'Hace 2 min',
-                serverStatus: 'Degradado severe',
-                affectedModules: 'Libro de Clases, Notas, Asistencia',
+                statusText: 'Interrupciones Severas',
+                url: 'https://web.syscol.com/', // URL Oficial Syscol
+                qualityScore: 28, // ROJO: Se cae seguido en horas peak
+                qualityLabel: 'Mala Estabilidad (Se cae seguido / Lentitud al firmar)',
+                qualityColor: 'bg-red-500',
+                qualityTextColor: 'text-red-400',
+                totalReportsToday: 740,
+                lastReportTime: 'Hace 1 min',
+                serverStatus: 'Sobrecarga en Servidores de Firma Digital',
+                affectedModules: 'Libro de Clases, Registro de Notas y Asistencia',
                 issues: [
-                    { name: 'Error al firmar/guardar clase', percent: 65 },
-                    { name: 'Carga infinitamente (Timeout)', percent: 25 },
-                    { name: 'No inicia sesión', percent: 10 }
+                    { name: 'Falla al guardar o firmar clase', percent: 68 },
+                    { name: 'Carga infinitamente (Timeout 504)', percent: 22 },
+                    { name: 'Error de inicio de sesión / RUT', percent: 10 }
                 ],
-                hourlyData: [5, 3, 2, 1, 4, 8, 12, 45, 120, 180, 240, 210, 195, 140, 95, 80] // Horas
+                hourlyData: [12, 5, 2, 1, 4, 15, 30, 85, 160, 240, 290, 230, 190, 140, 95, 80]
             },
             {
                 id: 'lirmi',
                 name: 'Lirmi',
                 category: 'libro',
-                categoryLabel: 'LMS & Evaluaciones',
+                categoryLabel: 'LMS & Evaluaciones Escolares',
                 iconClass: 'fa-solid fa-laptop-code',
                 color: 'from-purple-600 to-pink-600',
                 status: 'warning',
-                statusText: 'Intermitencias',
+                statusText: 'Lentitud Detectada',
                 url: 'https://www.lirmi.com',
-                totalReportsToday: 420,
-                lastReportTime: 'Hace 5 min',
-                serverStatus: 'Sobrecarga de Tráfico',
-                affectedModules: 'Módulo de Evaluaciones, App Apoderados',
+                qualityScore: 58, // AMARILLO: Regular
+                qualityLabel: 'Estabilidad Moderada (Lentitud en pruebas)',
+                qualityColor: 'bg-amber-500',
+                qualityTextColor: 'text-amber-400',
+                totalReportsToday: 380,
+                lastReportTime: 'Hace 4 min',
+                serverStatus: 'Alta carga en Módulo de Pruebas',
+                affectedModules: 'Evaluaciones, App Apoderados',
                 issues: [
-                    { name: 'Lentitud al subir pruebas', percent: 50 },
-                    { name: 'App móvil no sincroniza', percent: 35 },
+                    { name: 'Lentitud al rendir o corregir evaluaciones', percent: 58 },
+                    { name: 'App móvil desincronizada', percent: 27 },
                     { name: 'Error de credenciales', percent: 15 }
                 ],
-                hourlyData: [2, 1, 0, 0, 2, 5, 15, 35, 85, 110, 95, 80, 60, 45, 30, 25]
+                hourlyData: [3, 1, 0, 0, 2, 6, 14, 40, 95, 120, 102, 85, 60, 45, 35, 30]
             },
             {
                 id: 'mateo',
                 name: 'Mateo / MateoNet',
                 category: 'libro',
-                categoryLabel: 'Gestión Escolar',
+                categoryLabel: 'Gestión Institucional',
                 iconClass: 'fa-solid fa-calculator',
                 color: 'from-teal-600 to-emerald-700',
                 status: 'success',
                 statusText: 'Operativo',
                 url: 'https://www.mateonet.cl',
-                totalReportsToday: 18,
+                qualityScore: 88, // VERDE: Buena
+                qualityLabel: 'Excelente Estabilidad (Muy confiable)',
+                qualityColor: 'bg-emerald-500',
+                qualityTextColor: 'text-emerald-400',
+                totalReportsToday: 15,
                 lastReportTime: 'Hace 45 min',
-                serverStatus: '100% Funcional',
-                affectedModules: 'Ninguno',
+                serverStatus: 'Servidores estables al 100%',
+                affectedModules: 'Sin afección',
                 issues: [
-                    { name: 'Consulta de certificados', percent: 60 },
-                    { name: 'Olvido de clave', percent: 40 }
+                    { name: 'Consulta de boletines PDF', percent: 60 },
+                    { name: 'Restablecer clave', percent: 40 }
                 ],
-                hourlyData: [0, 0, 1, 0, 0, 2, 4, 3, 5, 4, 2, 1, 3, 2, 1, 2]
+                hourlyData: [0, 0, 1, 0, 0, 2, 3, 4, 4, 3, 2, 1, 2, 1, 1, 2]
             },
             {
                 id: 'webclass',
                 name: 'Webclass',
                 category: 'libro',
-                categoryLabel: 'Plataforma Educativa',
+                categoryLabel: 'Plataforma Curricular',
                 iconClass: 'fa-solid fa-layer-group',
                 color: 'from-orange-500 to-amber-600',
                 status: 'success',
                 statusText: 'Operativo',
                 url: 'https://www.webclass.com',
-                totalReportsToday: 32,
+                qualityScore: 82, // VERDE
+                qualityLabel: 'Muy Buena Estabilidad y Soporte',
+                qualityColor: 'bg-emerald-500',
+                qualityTextColor: 'text-emerald-400',
+                totalReportsToday: 28,
                 lastReportTime: 'Hace 20 min',
-                serverStatus: '100% Funcional',
-                affectedModules: 'Ninguno',
+                serverStatus: 'Servicio Normal',
+                affectedModules: 'Sin afección',
                 issues: [
-                    { name: 'Carga lenta en horas peak', percent: 70 },
-                    { name: 'Exportar informes a PDF', percent: 30 }
+                    { name: 'Lentitud ligera en hora punta', percent: 70 },
+                    { name: 'Carga de planificaciones', percent: 30 }
                 ],
-                hourlyData: [1, 0, 0, 0, 1, 3, 6, 8, 12, 10, 8, 5, 4, 3, 2, 3]
+                hourlyData: [1, 0, 0, 0, 1, 3, 4, 6, 10, 8, 6, 5, 4, 3, 2, 2]
+            },
+            {
+                id: 'sige',
+                name: 'SIGE / Mineduc',
+                category: 'mineduc',
+                categoryLabel: 'Sistema de Información General Mineduc',
+                iconClass: 'fa-solid fa-building-columns',
+                color: 'from-red-700 to-red-900',
+                status: 'warning',
+                statusText: 'Saturación en Cierre de Mes',
+                url: 'https://sige.mineduc.cl',
+                qualityScore: 35, // ROJO: Inestable en cierres de mes
+                qualityLabel: 'Mala Estabilidad (Caídas frecuentes en cierres)',
+                qualityColor: 'bg-red-500',
+                qualityTextColor: 'text-red-400',
+                totalReportsToday: 210,
+                lastReportTime: 'Hace 6 min',
+                serverStatus: 'Saturación de consultas de subvención',
+                affectedModules: 'Módulo de Asistencia y Matrícula',
+                issues: [
+                    { name: 'Error 504 / Tiempo de espera agotado', percent: 55 },
+                    { name: 'Clave Única no conecta', percent: 30 },
+                    { name: 'Cierre automático de sesión', percent: 15 }
+                ],
+                hourlyData: [2, 0, 0, 0, 2, 5, 10, 32, 70, 85, 52, 40, 35, 20, 15, 12]
             },
             {
                 id: 'napsis',
                 name: 'Napsis',
                 category: 'libro',
-                categoryLabel: 'Gestión Institucional',
+                categoryLabel: 'Plataforma de Gestión Escolar',
                 iconClass: 'fa-solid fa-school-flag',
                 color: 'from-cyan-600 to-blue-700',
                 status: 'success',
                 statusText: 'Operativo',
                 url: 'https://www.napsis.cl',
+                qualityScore: 78, // VERDE
+                qualityLabel: 'Buena Disponibilidad de Servidores',
+                qualityColor: 'bg-emerald-500',
+                qualityTextColor: 'text-emerald-400',
                 totalReportsToday: 12,
-                lastReportTime: 'Hace 1 hora',
-                serverStatus: '100% Funcional',
-                affectedModules: 'Ninguno',
+                lastReportTime: 'Hace 50 min',
+                serverStatus: 'Funcionamiento Correcto',
+                affectedModules: 'Sin afección',
                 issues: [
-                    { name: 'Inicio de sesión con RUT', percent: 80 },
-                    { name: 'Descarga de boletines', percent: 20 }
+                    { name: 'Vista celular desajustada', percent: 60 },
+                    { name: 'Descarga de informes', percent: 40 }
                 ],
-                hourlyData: [0, 0, 0, 0, 0, 1, 2, 4, 3, 2, 2, 1, 1, 1, 0, 1]
+                hourlyData: [0, 0, 0, 0, 0, 1, 2, 3, 3, 2, 2, 1, 1, 1, 0, 1]
             },
             {
-                id: 'sige',
-                name: 'Aula Virtual Mineduc / SIGE',
-                category: 'mineduc',
-                categoryLabel: 'Mineduc / Gobierno',
-                iconClass: 'fa-solid fa-building-columns',
-                color: 'from-red-700 to-red-900',
-                status: 'warning',
-                statusText: 'Lentitud de Respuesta',
-                url: 'https://sige.mineduc.cl',
-                totalReportsToday: 195,
-                lastReportTime: 'Hace 8 min',
-                serverStatus: 'Alta Carga Gubernamental',
-                affectedModules: 'Validación de Asistencia, Subvenciones',
-                issues: [
-                    { name: 'Error de servidor 504 Gateway', percent: 55 },
-                    { name: 'Clave Única no responde', percent: 35 },
-                    { name: 'Cierre de sesión inesperado', percent: 10 }
-                ],
-                hourlyData: [1, 0, 0, 0, 2, 5, 10, 30, 65, 80, 50, 40, 35, 20, 15, 12]
-            },
-            {
-                id: 'puntaje-nacional',
-                name: 'Puntaje Nacional',
-                category: 'libro',
-                categoryLabel: 'Preuniversitario & Ensayos',
-                iconClass: 'fa-solid fa-pen-ruler',
-                color: 'from-green-600 to-teal-700',
-                status: 'success',
-                statusText: 'Operativo',
-                url: 'https://www.puntajenacional.cl',
-                totalReportsToday: 15,
-                lastReportTime: 'Hace 30 min',
-                serverStatus: '100% Funcional',
-                affectedModules: 'Ninguno',
-                issues: [
-                    { name: 'Video explicativo no reproduce', percent: 60 },
-                    { name: 'Resultados de ensayos demorados', percent: 40 }
-                ],
-                hourlyData: [0, 0, 0, 0, 0, 1, 2, 5, 4, 3, 2, 1, 2, 1, 1, 0]
-            },
-            {
-                id: 'google-classroom',
-                name: 'Google Classroom / Workspace',
+                id: 'classroom',
+                name: 'Google Classroom',
                 category: 'global',
-                categoryLabel: 'Aula Global',
+                categoryLabel: 'Aula Virtual Global',
                 iconClass: 'fa-brands fa-google',
-                color: 'from-yellow-600 to-green-600',
+                color: 'from-yellow-600 to-emerald-600',
                 status: 'success',
                 statusText: 'Operativo',
                 url: 'https://classroom.google.com',
-                totalReportsToday: 24,
-                lastReportTime: 'Hace 15 min',
-                serverStatus: 'Servidores Globales Normales',
-                affectedModules: 'Ninguno',
+                qualityScore: 95, // VERDE EXCELENTE
+                qualityLabel: 'Excelente Rendimiento Global',
+                qualityColor: 'bg-emerald-500',
+                qualityTextColor: 'text-emerald-400',
+                totalReportsToday: 18,
+                lastReportTime: 'Hace 12 min',
+                serverStatus: 'Infraestructura Google OK',
+                affectedModules: 'Sin afección',
                 issues: [
-                    { name: 'Adjuntar archivos de Drive', percent: 50 },
-                    { name: 'Notificaciones por correo', percent: 50 }
+                    { name: 'Adjuntar archivos pesados', percent: 50 },
+                    { name: 'Notificaciones de correo', percent: 50 }
                 ],
-                hourlyData: [1, 1, 0, 0, 1, 2, 4, 6, 8, 7, 5, 4, 3, 2, 2, 1]
-            },
-            {
-                id: 'teams-edu',
-                name: 'Microsoft Teams Education',
-                category: 'global',
-                categoryLabel: 'Aula Global',
-                iconClass: 'fa-brands fa-microsoft',
-                color: 'from-blue-600 to-indigo-800',
-                status: 'success',
-                statusText: 'Operativo',
-                url: 'https://teams.microsoft.com',
-                totalReportsToday: 19,
-                lastReportTime: 'Hace 22 min',
-                serverStatus: 'Servidores Globales Normales',
-                affectedModules: 'Ninguno',
-                issues: [
-                    { name: 'Calidad de Audio en Videollamada', percent: 70 },
-                    { name: 'Sincronización de OneNote Class', percent: 30 }
-                ],
-                hourlyData: [0, 0, 0, 1, 1, 2, 3, 5, 7, 6, 4, 3, 2, 2, 1, 1]
-            },
-            {
-                id: 'moodle-canvas',
-                name: 'Moodle / Canvas Educativo',
-                category: 'global',
-                categoryLabel: 'LMS Universitario/Escolar',
-                iconClass: 'fa-solid fa-graduation-cap',
-                color: 'from-red-600 to-orange-700',
-                status: 'success',
-                statusText: 'Operativo',
-                url: 'https://moodle.org',
-                totalReportsToday: 14,
-                lastReportTime: 'Hace 50 min',
-                serverStatus: '100% Funcional',
-                affectedModules: 'Ninguno',
-                issues: [
-                    { name: 'Carga de cuestionarios pesados', percent: 80 },
-                    { name: 'Mantenimiento programado', percent: 20 }
-                ],
-                hourlyData: [0, 0, 0, 0, 0, 1, 2, 4, 5, 3, 2, 2, 1, 1, 0, 1]
+                hourlyData: [1, 1, 0, 0, 1, 2, 3, 4, 6, 5, 4, 3, 3, 2, 2, 1]
             }
         ];
 
-        // Ticker de noticias
+        // Ticker de Alertas de Marquesina
         const alertTickerItems = [
-            "⚠️ **Syscol**: Profesores de la RM y Valparaíso reportan bloqueos al firmar libro de clases.",
-            "⚡ **Lirmi**: Incremento de reportes por lentitud en módulo de evaluaciones desde las 09:30 hrs.",
-            "🏛️ **SIGE Mineduc**: Respuesta lenta durante el cierre del registro de asistencia mensual.",
-            "✅ **MateoNet & Webclass**: Servidores operando con total normalidad en todo el país."
+            "⚠️ **Syscol (https://web.syscol.com/)**: Profesores reportan caídas al guardar firmas en el libro digital.",
+            "📊 **Barra de Calidad**: Consulta qué plataformas tienen mejor soporte y menor nivel de caídas.",
+            "⚡ **Lirmi**: Registra lentitud en la carga de instrumentos de evaluación.",
+            "🏛️ **SIGE Mineduc**: Alta congestión en validación de matrículas.",
+            "🚀 **ECOO EMPRESAS**: Sistema de monitoreo en tiempo real activo."
         ];
 
-        // Muro de Comentarios inicial
+        // Comentarios comunitarios iniciales
         let commentsData = [
             {
                 author: "Prof. María Elena",
-                role: "Docente Básica",
+                role: "Docente Educación Básica",
                 region: "Región Metropolitana",
                 platform: "Syscol",
-                text: "Imposible firmar el libro de clases desde las 10:00 AM. Se queda pegado en 'Guardando registro' y se pierde lo ingresado.",
-                time: "Hace 12 min",
-                likes: 18
+                text: "En Syscol (web.syscol.com) lleva más de 1 hora sin dejar firmar el libro de clases. Sale constantemente error 504.",
+                time: "Hace 8 min",
+                likes: 22
             },
             {
                 author: "Ignacio Soto",
                 role: "Coordinador UTP",
                 region: "Valparaíso",
                 platform: "Lirmi",
-                text: "En nuestro colegio los profesores no pueden desplegar las pautas de evaluación. Ojalá lo solucionen pronto.",
-                time: "Hace 25 min",
-                likes: 9
+                text: "Lirmi con bastante lentitud en el módulo de evaluaciones durante la mañana.",
+                time: "Hace 18 min",
+                likes: 11
             },
             {
                 author: "Claudia R.",
-                role: "Administradora SIGE",
+                role: "Administradora Escolar",
                 region: "Bío Bío",
-                platform: "SIGE Mineduc",
-                text: "El sistema SIGE sacando error 504 cada 5 minutos. Típico de fin de mes cuando todos intentan subir la asistencia.",
-                time: "Hace 40 min",
+                platform: "SIGE / Mineduc",
+                text: "Imposible validar las asistencias en el SIGE hoy, la página no carga el formulario.",
+                time: "Hace 30 min",
                 likes: 14
-            },
-            {
-                author: "Carlos M.",
-                role: "Profesor de Historia",
-                region: "Coquimbo",
-                platform: "Mateo",
-                text: "MateoNet funcionando impecable por acá en La Serena. Cero problemas para subir notas hoy.",
-                time: "Hace 1 hora",
-                likes: 5
             }
         ];
 
-        // Variables de estado global
-        let currentChart = null;
-        let selectedPlatformForModal = null;
+        // Variables de Estado
         let activeCategoryFilter = 'all';
+        let selectedPlatform = null;
+        let detailChartInstance = null;
 
-        // Inicialización al cargar la página
         window.onload = function() {
             renderTicker();
             renderPlatformsGrid();
-            renderComments();
-            populateCommentPlatformSelect();
+            renderGlobalComments();
+            populateSelects();
             setupFilterListeners();
             setupSearch();
-
-            // Intervalo simulado para simular actualización en tiempo real
-            setInterval(() => {
-                updateRandomData();
-            }, 10000);
         };
 
-        // Renderizar Ticker Alertas
+        // Renderizar marquesina
         function renderTicker() {
-            const container = document.getElementById('ticker-content');
-            container.innerHTML = alertTickerItems.join('&nbsp;&nbsp;&nbsp;&bull;&nbsp;&nbsp;&nbsp;');
+            document.getElementById('ticker-content').innerHTML = alertTickerItems.join('&nbsp;&nbsp;&nbsp;&bull;&nbsp;&nbsp;&nbsp;');
         }
 
-        // Configurar Filtros
-        function setupFilterListeners() {
-            const buttons = document.querySelectorAll('.filter-btn');
-            buttons.forEach(btn => {
-                btn.addEventListener('click', () => {
-                    buttons.forEach(b => {
-                        b.classList.remove('bg-brand-accent', 'text-white');
-                        b.classList.add('bg-brand-card', 'text-gray-300');
-                    });
-                    btn.classList.remove('bg-brand-card', 'text-gray-300');
-                    btn.classList.add('bg-brand-accent', 'text-white');
-
-                    activeCategoryFilter = btn.getAttribute('data-cat');
-                    renderPlatformsGrid();
-                });
-            });
-        }
-
-        // Configurar Búsqueda
-        function setupSearch() {
-            const searchInput = document.getElementById('search-input');
-            searchInput.addEventListener('input', () => {
-                renderPlatformsGrid();
-            });
-        }
-
-        // Renderizar Grid de Tarjetas
-        function renderPlatformsGrid() {
-            const grid = document.getElementById('platforms-grid');
-            const searchQuery = document.getElementById('search-input').value.toLowerCase();
+        // Llenar Selects de Formularios
+        function populateSelects() {
+            const commentSelect = document.getElementById('comment-platform-select');
+            const modalSelect = document.getElementById('modal-select-platform');
             
-            grid.innerHTML = '';
+            commentSelect.innerHTML = '';
+            modalSelect.innerHTML = '';
 
-            const filtered = platformsData.filter(p => {
-                const matchesCat = (activeCategoryFilter === 'all') || (p.category === activeCategoryFilter);
-                const matchesSearch = p.name.toLowerCase().includes(searchQuery) || p.categoryLabel.toLowerCase().includes(searchQuery);
-                return matchesCat && matchesSearch;
-            });
-
-            if (filtered.length === 0) {
-                grid.innerHTML = `
-                    <div class="col-span-full text-center py-12 bg-brand-card rounded-2xl border border-brand-border">
-                        <i class="fa-solid fa-magnifying-glass text-4xl text-gray-600 mb-3"></i>
-                        <p class="text-gray-400 font-semibold text-sm">No se encontraron plataformas educativas que coincidan con la búsqueda.</p>
-                    </div>
-                `;
-                return;
-            }
-
-            filtered.forEach(platform => {
-                // Configurar badge según estado
-                let badgeClass = '';
-                let borderGlow = '';
-                let iconStatus = '';
-
-                if (platform.status === 'danger') {
-                    badgeClass = 'bg-red-500/20 text-red-400 border-red-500/40';
-                    borderGlow = 'border-red-500/40 pulse-glow-danger';
-                    iconStatus = '<i class="fa-solid fa-triangle-exclamation text-red-400"></i>';
-                } else if (platform.status === 'warning') {
-                    badgeClass = 'bg-amber-500/20 text-amber-400 border-amber-500/40';
-                    borderGlow = 'border-amber-500/40 pulse-glow-warning';
-                    iconStatus = '<i class="fa-solid fa-circle-exclamation text-amber-400"></i>';
-                } else {
-                    badgeClass = 'bg-emerald-500/20 text-emerald-400 border-emerald-500/40';
-                    borderGlow = 'border-brand-border hover:border-brand-accent/50';
-                    iconStatus = '<i class="fa-solid fa-circle-check text-emerald-400"></i>';
-                }
-
-                const card = document.createElement('div');
-                card.className = `bg-brand-card rounded-2xl border ${borderGlow} p-5 shadow-xl hover:shadow-2xl transition duration-300 flex flex-col justify-between cursor-pointer group`;
-                card.onclick = () => openPlatformModal(platform.id);
-
-                card.innerHTML = `
-                    <div class="space-y-4">
-                        <!-- Top Header Card -->
-                        <div class="flex items-start justify-between">
-                            <div class="flex items-center space-x-3">
-                                <div class="w-12 h-12 rounded-xl bg-gradient-to-tr ${platform.color} flex items-center justify-center text-white text-xl shadow-md group-hover:scale-105 transition transform">
-                                    <i class="${platform.iconClass}"></i>
-                                </div>
-                                <div>
-                                    <h3 class="font-extrabold text-white text-lg group-hover:text-brand-accent transition">${platform.name}</h3>
-                                    <span class="text-[11px] text-gray-400 block">${platform.categoryLabel}</span>
-                                </div>
-                            </div>
-                            <span class="px-2.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider border ${badgeClass} flex items-center space-x-1">
-                                ${iconStatus}
-                                <span>${platform.statusText}</span>
-                            </span>
-                        </div>
-
-                        <!-- Sparkline/Gráfico pequeño SVG simulado -->
-                        <div class="space-y-1">
-                            <div class="flex justify-between items-center text-[10px] text-gray-400">
-                                <span>Actividad 24h</span>
-                                <span>Último reporte: ${platform.lastReportTime}</span>
-                            </div>
-                            <div class="h-12 w-full bg-brand-dark/60 rounded-lg p-1.5 border border-brand-border/50 flex items-end space-x-1">
-                                ${generateSparklineHTML(platform.hourlyData, platform.status)}
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Card Footer -->
-                    <div class="pt-4 mt-4 border-t border-brand-border/60 flex items-center justify-between text-xs text-gray-400">
-                        <div class="flex items-center space-x-1">
-                            <i class="fa-regular fa-bell"></i>
-                            <span>${platform.totalReportsToday} reportes hoy</span>
-                        </div>
-                        <span class="text-brand-accent group-hover:underline font-semibold flex items-center space-x-1">
-                            <span>Detalles</span>
-                            <i class="fa-solid fa-chevron-right text-[10px]"></i>
-                        </span>
-                    </div>
-                `;
-
-                grid.appendChild(card);
+            platformsData.forEach(p => {
+                commentSelect.innerHTML += `<option value="${p.name}">${p.name}</option>`;
+                modalSelect.innerHTML += `<option value="${p.id}">${p.name}</option>`;
             });
         }
 
-        // Generar barras SVG o HTML simples para el mini-gráfico (sparkline)
-        function generateSparklineHTML(data, status) {
-            const max = Math.max(...data, 10);
-            let barColor = 'bg-emerald-500/60';
-            if (status === 'danger') barColor = 'bg-red-500/80';
-            if (status === 'warning') barColor = 'bg-amber-500/80';
-
-            return data.map((val) => {
-                const heightPercent = Math.max(10, Math.min(100, (val / max) * 100));
-                return `<div class="w-full ${barColor} rounded-t-sm transition-all duration-300" style="height: ${heightPercent}%;" title="${val} reportes"></div>`;
-            }).join('');
+        // Vista 1: Selector Principal
+        function showPlatformGrid() {
+            document.getElementById('view-grid').classList.remove('hidden');
+            document.getElementById('view-detail').classList.add('hidden');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
-        // Abrir Modal de Plataforma
-        function openPlatformModal(platformId) {
+        // Vista 2: Detalle de Plataforma
+        function showPlatformDetail(platformId) {
             const platform = platformsData.find(p => p.id === platformId);
             if (!platform) return;
 
-            selectedPlatformForModal = platform;
+            selectedPlatform = platform;
 
-            // Elementos del Modal
-            document.getElementById('modal-platform-name').innerText = platform.name;
-            document.getElementById('modal-platform-category').innerText = platform.categoryLabel;
-            document.getElementById('modal-official-link').href = platform.url;
-            document.getElementById('modal-server-status').innerText = platform.serverStatus;
-            document.getElementById('modal-affected-modules').innerText = platform.affectedModules;
-            document.getElementById('modal-recent-reports').innerText = `${platform.totalReportsToday} reportes`;
+            document.getElementById('view-grid').classList.add('hidden');
+            document.getElementById('view-detail').classList.remove('hidden');
+
+            document.getElementById('detail-title').innerText = platform.name;
+            document.getElementById('detail-category').innerText = platform.categoryLabel;
+            
+            // Enlace Oficial (Asegurando https://web.syscol.com/ para Syscol)
+            document.getElementById('detail-official-link').href = platform.url;
+            document.getElementById('detail-url-text').innerText = platform.url;
+
+            document.getElementById('detail-reports-today').innerText = `${platform.totalReportsToday} reportes hoy`;
+            document.getElementById('detail-server-status').innerText = platform.serverStatus;
+            document.getElementById('detail-affected-modules').innerText = platform.affectedModules;
 
             // Icono
-            const iconDiv = document.getElementById('modal-platform-icon');
-            iconDiv.className = `w-12 h-12 rounded-xl bg-gradient-to-tr ${platform.color} flex items-center justify-center text-xl text-white font-bold shadow-md`;
+            const iconDiv = document.getElementById('detail-icon');
+            iconDiv.className = `w-16 h-16 rounded-2xl bg-gradient-to-tr ${platform.color} flex items-center justify-center text-3xl text-white shadow-xl flex-shrink-0`;
             iconDiv.innerHTML = `<i class="${platform.iconClass}"></i>`;
 
             // Badge Estado
-            const badge = document.getElementById('modal-platform-badge');
+            const badge = document.getElementById('detail-status-badge');
             if (platform.status === 'danger') {
-                badge.className = 'px-3 py-1 rounded-full text-xs font-bold uppercase bg-red-500/20 text-red-400 border border-red-500/40';
-                badge.innerText = 'Caída Parcial';
+                badge.className = 'px-3 py-1 rounded-full text-xs font-black uppercase bg-red-500/20 text-red-400 border border-red-500/40 pulse-danger';
+                badge.innerText = platform.statusText;
             } else if (platform.status === 'warning') {
-                badge.className = 'px-3 py-1 rounded-full text-xs font-bold uppercase bg-amber-500/20 text-amber-400 border border-amber-500/40';
-                badge.innerText = 'Problemas Detectados';
+                badge.className = 'px-3 py-1 rounded-full text-xs font-black uppercase bg-amber-500/20 text-amber-400 border border-amber-500/40 pulse-warning';
+                badge.innerText = platform.statusText;
             } else {
-                badge.className = 'px-3 py-1 rounded-full text-xs font-bold uppercase bg-emerald-500/20 text-emerald-400 border border-emerald-500/40';
-                badge.innerText = 'Operativo';
+                badge.className = 'px-3 py-1 rounded-full text-xs font-black uppercase bg-emerald-500/20 text-emerald-400 border border-emerald-500/40';
+                badge.innerText = platform.statusText;
             }
 
+            // Barra de Calidad en Vista Detalle
+            const qualityContainer = document.getElementById('detail-quality-container');
+            qualityContainer.innerHTML = `
+                <div class="flex justify-between items-center text-xs font-bold">
+                    <span class="${platform.qualityTextColor}">${platform.qualityLabel}</span>
+                    <span class="text-white text-sm font-black">${platform.qualityScore} / 100 pts</span>
+                </div>
+                <div class="w-full bg-brand-dark h-3 rounded-full overflow-hidden border border-brand-border">
+                    <div class="${platform.qualityColor} h-full rounded-full transition-all duration-500" style="width: ${platform.qualityScore}%"></div>
+                </div>
+            `;
+
             // Desglose de Problemas
-            const issuesContainer = document.getElementById('issues-breakdown-container');
+            const issuesContainer = document.getElementById('detail-issues-list');
             issuesContainer.innerHTML = '';
-            platform.issues.forEach(issue => {
+            platform.issues.forEach(iss => {
                 issuesContainer.innerHTML += `
                     <div>
-                        <div class="flex justify-between text-xs mb-1">
-                            <span class="text-gray-300 font-medium">${issue.name}</span>
-                            <span class="text-gray-400 font-bold">${issue.percent}%</span>
+                        <div class="flex justify-between text-xs font-bold mb-1">
+                            <span class="text-gray-300">${iss.name}</span>
+                            <span class="text-brand-accent">${iss.percent}%</span>
                         </div>
-                        <div class="w-full bg-brand-border h-2 rounded-full overflow-hidden">
-                            <div class="bg-brand-accent h-full rounded-full" style="width: ${issue.percent}%"></div>
+                        <div class="w-full bg-brand-dark h-2.5 rounded-full overflow-hidden border border-brand-border/40">
+                            <div class="bg-brand-accent h-full rounded-full" style="width: ${iss.percent}%"></div>
                         </div>
                     </div>
                 `;
             });
 
-            // Opciones de reporte rápido para la plataforma
-            const issuesOptions = document.getElementById('report-issues-options');
-            issuesOptions.innerHTML = '';
-            const defaultOptions = [
-                "Error de inicio de sesión / RUT",
-                "Falla al firmar clase / guardar notas",
-                "Carga extremadamente lenta",
-                "App móvil desincronizada",
-                "Error 500 / Servidor Caído"
-            ];
-            defaultOptions.forEach(opt => {
-                issuesOptions.innerHTML += `
-                    <label class="flex items-center space-x-2 bg-brand-border/40 p-2 rounded-lg cursor-pointer hover:bg-brand-border/70 text-xs text-gray-200">
-                        <input type="radio" name="selected-issue" value="${opt}" class="text-brand-accent focus:ring-0">
-                        <span>${opt}</span>
-                    </label>
-                `;
-            });
+            // Comentarios filtrados
+            renderDetailComments(platform.name);
 
-            // Cargar Comentarios específicos de esta plataforma
-            renderModalPlatformComments(platform.name);
+            // Gráfico Chart.js
+            renderChart(platform);
 
-            // Mostrar Modal
-            const modal = document.getElementById('platform-modal');
-            const modalContainer = document.getElementById('modal-container');
-            modal.classList.remove('opacity-0', 'pointer-events-none');
-            modalContainer.classList.remove('scale-95');
-
-            // Renderizar Gráfico de Chart.js
-            renderModalChart(platform);
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
-        // Renderizar Chart.js en el modal
-        function renderModalChart(platform) {
-            const ctx = document.getElementById('modalChart').getContext('2d');
+        // Renderizar Gráfica
+        function renderChart(platform) {
+            const ctx = document.getElementById('detailChart').getContext('2d');
             
-            if (currentChart) {
-                currentChart.destroy();
+            if (detailChartInstance) {
+                detailChartInstance.destroy();
             }
 
             const labels = [];
@@ -956,44 +848,35 @@
                 fillColor = 'rgba(245, 158, 11, 0.2)';
             }
 
-            currentChart = new Chart(ctx, {
+            detailChartInstance = new Chart(ctx, {
                 type: 'line',
                 data: {
                     labels: labels,
                     datasets: [{
-                        label: 'Reportes por hora',
+                        label: 'Fallas reportadas',
                         data: platform.hourlyData,
                         borderColor: strokeColor,
                         backgroundColor: fillColor,
-                        borderWidth: 2,
+                        borderWidth: 3,
                         fill: true,
-                        tension: 0.3,
+                        tension: 0.35,
                         pointBackgroundColor: strokeColor,
-                        pointRadius: 3
+                        pointRadius: 4
                     }]
                 },
                 options: {
                     responsive: true,
                     maintainAspectRatio: false,
                     plugins: {
-                        legend: { display: false },
-                        tooltip: {
-                            mode: 'index',
-                            intersect: false,
-                            backgroundColor: '#151C28',
-                            titleColor: '#FFF',
-                            bodyColor: '#9CA3AF',
-                            borderColor: '#232D3F',
-                            borderWidth: 1
-                        }
+                        legend: { display: false }
                     },
                     scales: {
                         x: {
-                            grid: { color: '#232D3F', drawBorder: false },
+                            grid: { color: '#202B3C' },
                             ticks: { color: '#9CA3AF', font: { size: 10 } }
                         },
                         y: {
-                            grid: { color: '#232D3F', drawBorder: false },
+                            grid: { color: '#202B3C' },
                             ticks: { color: '#9CA3AF', font: { size: 10 } },
                             beginAtZero: true
                         }
@@ -1002,78 +885,178 @@
             });
         }
 
-        // Cerrar Modal
-        function closeModal() {
-            const modal = document.getElementById('platform-modal');
-            const modalContainer = document.getElementById('modal-container');
-            modal.classList.add('opacity-0', 'pointer-events-none');
-            modalContainer.classList.add('scale-95');
-            closeSubmitReportForm();
-        }
+        // Renderizar Grilla Principal de Plataformas con BARRA DE CALIDAD
+        function renderPlatformsGrid() {
+            const grid = document.getElementById('platforms-grid');
+            const searchQuery = document.getElementById('search-input').value.toLowerCase();
+            grid.innerHTML = '';
 
-        // Abrir/Cerrar sección de reporte en Modal
-        function openSubmitReportForm() {
-            document.getElementById('quick-report-box').classList.remove('hidden');
-        }
+            const filtered = platformsData.filter(p => {
+                const matchesCat = (activeCategoryFilter === 'all') || (p.category === activeCategoryFilter);
+                const matchesSearch = p.name.toLowerCase().includes(searchQuery) || p.categoryLabel.toLowerCase().includes(searchQuery);
+                return matchesCat && matchesSearch;
+            });
 
-        function closeSubmitReportForm() {
-            document.getElementById('quick-report-box').classList.add('hidden');
-        }
-
-        // Enviar Reporte de Fallo
-        function submitIssueReport() {
-            if (!selectedPlatformForModal) return;
-
-            const selectedOption = document.querySelector('input[name="selected-issue"]:checked');
-            const issueName = selectedOption ? selectedOption.value : "Falla general de acceso";
-
-            // Incrementar contador simulado
-            selectedPlatformForModal.totalReportsToday += 1;
-            selectedPlatformForModal.lastReportTime = 'Hace un instante';
-            selectedPlatformForModal.hourlyData[selectedPlatformForModal.hourlyData.length - 1] += 1;
-
-            // Actualizar status si recibe muchos reportes
-            if (selectedPlatformForModal.totalReportsToday > 100 && selectedPlatformForModal.status === 'success') {
-                selectedPlatformForModal.status = 'warning';
-                selectedPlatformForModal.statusText = 'Problemas Detectados';
+            if (filtered.length === 0) {
+                grid.innerHTML = `
+                    <div class="col-span-full text-center py-12 bg-brand-card rounded-2xl border border-brand-border">
+                        <i class="fa-solid fa-magnifying-glass text-3xl text-gray-500 mb-2"></i>
+                        <p class="text-gray-400 font-bold text-sm">No se encontraron plataformas educativas con ese término de búsqueda.</p>
+                    </div>
+                `;
+                return;
             }
 
-            alertMessage(`¡Gracias! Tu reporte sobre "${issueName}" en ${selectedPlatformForModal.name} ha sido registrado correctamente.`);
+            filtered.forEach(p => {
+                let badgeClass = 'bg-emerald-500/20 text-emerald-400 border-emerald-500/30';
+                let borderGlow = 'border-brand-border hover:border-brand-accent/50';
+                let iconStatus = '<i class="fa-solid fa-circle-check text-emerald-400"></i>';
 
-            closeSubmitReportForm();
-            openPlatformModal(selectedPlatformForModal.id); // Re-render modal
-            renderPlatformsGrid(); // Re-render grid
+                if (p.status === 'danger') {
+                    badgeClass = 'bg-red-500/20 text-red-400 border-red-500/40';
+                    borderGlow = 'border-red-500/40 pulse-danger';
+                    iconStatus = '<i class="fa-solid fa-triangle-exclamation text-red-400"></i>';
+                } else if (p.status === 'warning') {
+                    badgeClass = 'bg-amber-500/20 text-amber-400 border-amber-500/40';
+                    borderGlow = 'border-amber-500/40 pulse-warning';
+                    iconStatus = '<i class="fa-solid fa-circle-exclamation text-amber-400"></i>';
+                }
+
+                const card = document.createElement('div');
+                card.className = `bg-brand-card rounded-2xl border ${borderGlow} p-6 shadow-xl hover:shadow-2xl transition duration-300 flex flex-col justify-between group relative overflow-hidden`;
+
+                card.innerHTML = `
+                    <div class="space-y-4">
+                        <!-- Cabecera de la Tarjeta -->
+                        <div class="flex items-start justify-between">
+                            <div class="flex items-center space-x-3 cursor-pointer" onclick="showPlatformDetail('${p.id}')">
+                                <div class="w-12 h-12 rounded-2xl bg-gradient-to-tr ${p.color} flex items-center justify-center text-white text-xl shadow-md group-hover:scale-105 transition transform">
+                                    <i class="${p.iconClass}"></i>
+                                </div>
+                                <div>
+                                    <h3 class="font-black text-white text-lg group-hover:text-brand-accent transition flex items-center space-x-1.5">
+                                        <span>${p.name}</span>
+                                    </h3>
+                                    <span class="text-[11px] text-gray-400 block font-medium">${p.categoryLabel}</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Estado de Disponibilidad -->
+                        <div class="flex items-center justify-between text-xs pt-1 cursor-pointer" onclick="showPlatformDetail('${p.id}')">
+                            <span class="text-gray-400 font-semibold">Estado actual:</span>
+                            <span class="px-2.5 py-1 rounded-full text-[10px] font-black uppercase tracking-wider border ${badgeClass} inline-flex items-center space-x-1">
+                                ${iconStatus}
+                                <span>${p.statusText}</span>
+                            </span>
+                        </div>
+
+                        <!-- BARRA DE CALIDAD Y ESTABILIDAD WEB -->
+                        <div class="bg-brand-dark/90 p-3 rounded-xl border border-brand-border/60 space-y-1.5 cursor-pointer" onclick="showPlatformDetail('${p.id}')">
+                            <div class="flex justify-between items-center text-[11px] font-bold">
+                                <span class="text-gray-300 flex items-center space-x-1">
+                                    <i class="fa-solid fa-gauge text-[10px] text-gray-400"></i>
+                                    <span>Calidad / Estabilidad:</span>
+                                </span>
+                                <span class="${p.qualityTextColor} font-extrabold">${p.qualityScore}/100 pts</span>
+                            </div>
+                            
+                            <!-- Barra Visual -->
+                            <div class="w-full bg-gray-800 h-2.5 rounded-full overflow-hidden border border-brand-border/40">
+                                <div class="${p.qualityColor} h-full rounded-full" style="width: ${p.qualityScore}%"></div>
+                            </div>
+                            
+                            <p class="text-[10px] text-gray-400 font-medium line-clamp-1">
+                                ${p.qualityLabel}
+                            </p>
+                        </div>
+
+                        <!-- Sparkline/Minigráfico 24h -->
+                        <div class="space-y-1 pt-1 cursor-pointer" onclick="showPlatformDetail('${p.id}')">
+                            <div class="flex justify-between text-[10px] text-gray-500 font-semibold">
+                                <span>Reportes 24h</span>
+                                <span>${p.totalReportsToday} reportes hoy</span>
+                            </div>
+                            <div class="h-9 w-full bg-brand-dark/80 rounded-lg p-1 border border-brand-border/50 flex items-end space-x-1">
+                                ${generateSparklineHTML(p.hourlyData, p.status)}
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Botones Rápidos de Acción -->
+                    <div class="pt-4 mt-4 border-t border-brand-border/60 flex items-center justify-between gap-2">
+                        <button onclick="openReportModalForId('${p.id}')" class="bg-red-600/20 hover:bg-red-600/40 text-red-400 border border-red-500/30 px-3 py-1.5 rounded-xl text-xs font-bold transition flex items-center space-x-1.5">
+                            <i class="fa-solid fa-bullhorn text-[11px]"></i>
+                            <span>Dejar Reporte</span>
+                        </button>
+
+                        <button onclick="showPlatformDetail('${p.id}')" class="text-brand-accent hover:underline text-xs font-bold flex items-center space-x-1">
+                            <span>Ver Análisis</span>
+                            <i class="fa-solid fa-chevron-right text-[10px]"></i>
+                        </button>
+                    </div>
+                `;
+
+                grid.appendChild(card);
+            });
         }
 
-        // Abrir Modal de Reporte Rápido desde Navbar
-        function triggerQuickReportModal() {
-            // Abrir modal con Syscol por defecto o el primero con caída
-            const target = platformsData.find(p => p.status === 'danger') || platformsData[0];
-            openPlatformModal(target.id);
-            openSubmitReportForm();
+        // Generar Sparkline HTML
+        function generateSparklineHTML(data, status) {
+            const max = Math.max(...data, 10);
+            let barColor = 'bg-emerald-500/70';
+            if (status === 'danger') barColor = 'bg-red-500/80';
+            if (status === 'warning') barColor = 'bg-amber-500/80';
+
+            return data.map(val => {
+                const heightPercent = Math.max(10, Math.min(100, (val / max) * 100));
+                return `<div class="w-full ${barColor} rounded-t-sm" style="height: ${heightPercent}%;"></div>`;
+            }).join('');
         }
 
-        // Renderizar Muro de Comentarios Global
-        function renderComments() {
-            const container = document.getElementById('comments-container');
+        // Listeners Filtros Categoría
+        function setupFilterListeners() {
+            const buttons = document.querySelectorAll('.filter-btn');
+            buttons.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    buttons.forEach(b => {
+                        b.classList.remove('bg-brand-accent', 'text-white');
+                        b.classList.add('bg-brand-card', 'text-gray-300');
+                    });
+                    btn.classList.remove('bg-brand-card', 'text-gray-300');
+                    btn.classList.add('bg-brand-accent', 'text-white');
+
+                    activeCategoryFilter = btn.getAttribute('data-cat');
+                    renderPlatformsGrid();
+                });
+            });
+        }
+
+        // Listener Búsqueda
+        function setupSearch() {
+            document.getElementById('search-input').addEventListener('input', renderPlatformsGrid);
+        }
+
+        // Renderizar Comentarios Globales
+        function renderGlobalComments() {
+            const container = document.getElementById('global-comments-container');
             container.innerHTML = '';
-
-            document.getElementById('comments-count').innerText = `${commentsData.length} comentarios`;
+            document.getElementById('global-comments-count').innerText = `${commentsData.length} comentarios`;
 
             commentsData.forEach((c, index) => {
                 container.innerHTML += `
-                    <div class="bg-brand-dark/80 p-3.5 rounded-xl border border-brand-border/60 space-y-1.5 hover:border-brand-border transition">
+                    <div class="bg-brand-dark p-3.5 rounded-xl border border-brand-border/60 space-y-1.5">
                         <div class="flex items-center justify-between text-xs">
                             <div class="flex items-center space-x-2">
                                 <span class="font-bold text-white">${c.author}</span>
                                 <span class="text-gray-500">&bull; ${c.role} (${c.region})</span>
                             </div>
-                            <span class="text-[10px] bg-brand-border text-gray-300 px-2 py-0.5 rounded-full">${c.platform}</span>
+                            <span class="text-[10px] bg-brand-border text-brand-accent px-2 py-0.5 rounded-full font-bold">${c.platform}</span>
                         </div>
                         <p class="text-xs text-gray-300 leading-relaxed">${c.text}</p>
                         <div class="flex items-center justify-between text-[10px] text-gray-500 pt-1">
                             <span>${c.time}</span>
-                            <button onclick="likeComment(${index})" class="text-gray-400 hover:text-red-400 flex items-center space-x-1 transition">
+                            <button onclick="likeComment(${index})" class="text-gray-400 hover:text-red-400 font-bold flex items-center space-x-1">
                                 <i class="fa-regular fa-heart"></i>
                                 <span>${c.likes} útiles</span>
                             </button>
@@ -1083,22 +1066,22 @@
             });
         }
 
-        // Renderizar comentarios filtrados para el modal
-        function renderModalPlatformComments(platformName) {
-            const container = document.getElementById('modal-platform-comments');
-            const filtered = commentsData.filter(c => c.platform.toLowerCase() === platformName.toLowerCase());
+        // Renderizar Comentarios para Vista Detalle
+        function renderDetailComments(platformName) {
+            const container = document.getElementById('detail-comments-container');
+            const filtered = commentsData.filter(c => c.platform.toLowerCase().includes(platformName.toLowerCase()));
 
             if (filtered.length === 0) {
-                container.innerHTML = `<p class="text-xs text-gray-500 italic">No hay comentarios recientes específicos sobre ${platformName}.</p>`;
+                container.innerHTML = `<p class="text-xs text-gray-500 italic">No hay comentarios registrados todavía para ${platformName}.</p>`;
                 return;
             }
 
             container.innerHTML = '';
             filtered.forEach(c => {
                 container.innerHTML += `
-                    <div class="bg-brand-border/30 p-2.5 rounded-lg text-xs space-y-1">
+                    <div class="bg-brand-dark p-3 rounded-xl border border-brand-border/60 text-xs space-y-1">
                         <div class="flex justify-between text-gray-400 text-[10px]">
-                            <span class="font-semibold text-gray-200">${c.author} (${c.region})</span>
+                            <span class="font-bold text-gray-200">${c.author} (${c.region})</span>
                             <span>${c.time}</span>
                         </div>
                         <p class="text-gray-300">${c.text}</p>
@@ -1107,25 +1090,9 @@
             });
         }
 
-        // Dar Me Gusta a comentario
-        function likeComment(index) {
-            commentsData[index].likes += 1;
-            renderComments();
-        }
-
-        // Llenar selector de plataformas en formulario de comentarios
-        function populateCommentPlatformSelect() {
-            const select = document.getElementById('comment-platform-select');
-            select.innerHTML = '';
-            platformsData.forEach(p => {
-                select.innerHTML += `<option value="${p.name}">${p.name}</option>`;
-            });
-        }
-
-        // Manejar envío de formulario de comentario
-        document.getElementById('comment-form').addEventListener('submit', function(e) {
+        // Publicar Comentario
+        document.getElementById('global-comment-form').addEventListener('submit', function(e) {
             e.preventDefault();
-
             const author = document.getElementById('comment-author').value;
             const platform = document.getElementById('comment-platform-select').value;
             const region = document.getElementById('comment-region').value;
@@ -1133,42 +1100,94 @@
 
             commentsData.unshift({
                 author: author,
-                role: "Docente / Usuario",
+                role: "Docente / Apoderado",
                 region: region,
                 platform: platform,
                 text: text,
-                time: "Hace 1 min",
+                time: "Hace un instante",
                 likes: 1
             });
 
-            renderComments();
+            renderGlobalComments();
             this.reset();
-            alertMessage("¡Comentario publicado en el muro de reportes!");
+            showNotification("¡Tu reporte ha sido publicado correctamente!");
         });
 
-        // Mensajes tipo Toast
-        function alertMessage(msg) {
+        // Dar Like
+        function likeComment(index) {
+            commentsData[index].likes += 1;
+            renderGlobalComments();
+        }
+
+        // Abrir Modal de Reportes
+        function openGlobalReportModal() {
+            const modal = document.getElementById('report-modal');
+            modal.classList.remove('opacity-0', 'pointer-events-none');
+        }
+
+        function openReportModalForId(platformId) {
+            document.getElementById('modal-select-platform').value = platformId;
+            openGlobalReportModal();
+        }
+
+        function openReportModalForSelected() {
+            if (selectedPlatform) {
+                document.getElementById('modal-select-platform').value = selectedPlatform.id;
+            }
+            openGlobalReportModal();
+        }
+
+        function closeReportModal() {
+            const modal = document.getElementById('report-modal');
+            modal.classList.add('opacity-0', 'pointer-events-none');
+        }
+
+        // Confirmar envío de reporte
+        function submitReportModal() {
+            const platformId = document.getElementById('modal-select-platform').value;
+            const target = platformsData.find(p => p.id === platformId);
+            
+            if (target) {
+                target.totalReportsToday += 1;
+                target.hourlyData[target.hourlyData.length - 1] += 1;
+
+                // Reducir ligeramente el score de calidad por nuevos reportes en tiempo real
+                if (target.qualityScore > 10) {
+                    target.qualityScore -= 2;
+                }
+
+                if (target.qualityScore < 40) {
+                    target.status = 'danger';
+                    target.statusText = 'Caída / Fallas Frecuentes';
+                    target.qualityColor = 'bg-red-500';
+                    target.qualityTextColor = 'text-red-400';
+                    target.qualityLabel = 'Mala Estabilidad (Se cae seguido / Inestable)';
+                } else if (target.qualityScore < 75) {
+                    target.status = 'warning';
+                    target.statusText = 'Lentitud Detectada';
+                    target.qualityColor = 'bg-amber-500';
+                    target.qualityTextColor = 'text-amber-400';
+                    target.qualityLabel = 'Estabilidad Moderada (Reportes de lentitud)';
+                }
+
+                renderPlatformsGrid();
+                if (selectedPlatform && selectedPlatform.id === target.id) {
+                    showPlatformDetail(target.id);
+                }
+            }
+
+            closeReportModal();
+            showNotification(`¡Reporte registrado exitosamente para ${target ? target.name : 'la plataforma'}!`);
+        }
+
+        // Toast de Notificación
+        function showNotification(msg) {
             const toast = document.createElement('div');
-            toast.className = 'fixed bottom-5 right-5 bg-brand-accent text-white font-medium text-xs px-4 py-3 rounded-xl shadow-2xl z-50 flex items-center space-x-2 border border-blue-400 animate-bounce';
+            toast.className = 'fixed bottom-5 right-5 bg-brand-accent text-white font-black text-xs px-5 py-3.5 rounded-2xl shadow-2xl z-50 flex items-center space-x-2 border border-blue-400 animate-bounce';
             toast.innerHTML = `<i class="fa-solid fa-circle-check text-base"></i><span>${msg}</span>`;
             document.body.appendChild(toast);
 
-            setTimeout(() => {
-                toast.remove();
-            }, 3500);
-        }
-
-        // Simulación de tráfico en tiempo real
-        function updateRandomData() {
-            // Incrementar ligeramente reportes de Syscol o Lirmi aleatoriamente
-            const targetIndex = Math.floor(Math.random() * 2); // 0 o 1 (Syscol o Lirmi)
-            platformsData[targetIndex].totalReportsToday += Math.floor(Math.random() * 3) + 1;
-            
-            // Actualizar stat total
-            const total = platformsData.reduce((acc, curr) => acc + curr.totalReportsToday, 0);
-            document.getElementById('stat-total-reports').innerText = total.toLocaleString();
-
-            renderPlatformsGrid();
+            setTimeout(() => toast.remove(), 3500);
         }
     </script>
 </body>
