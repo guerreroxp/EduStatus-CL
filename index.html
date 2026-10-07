@@ -86,10 +86,10 @@
     <header class="border-b border-brand-border bg-brand-card/90 backdrop-blur-md sticky top-0 z-40">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
             
-            <!-- Logo & Branding ECOO EMPRESAS -->
+            <!-- Logo & Branding ECOO EMPRESAS con la imagen 1.png -->
             <div class="flex items-center space-x-3 cursor-pointer" onclick="showPlatformGrid()">
-                <div class="bg-gradient-to-tr from-emerald-500 via-teal-600 to-blue-600 p-3 rounded-2xl shadow-lg flex items-center justify-center text-white">
-                    <i class="fa-solid fa-graduation-cap text-2xl"></i>
+                <div class="bg-brand-dark p-1.5 rounded-2xl border border-brand-border shadow-lg flex items-center justify-center overflow-hidden w-12 h-12 flex-shrink-0 group hover:border-emerald-500 transition">
+                    <img src="1.png" alt="ECOO EMPRESAS Logo" class="w-full h-full object-contain group-hover:scale-105 transition" onerror="this.onerror=null; this.src='https://placehold.co/100x100/10B981/ffffff?text=E!';">
                 </div>
                 <div>
                     <div class="flex items-center space-x-2">
@@ -155,19 +155,28 @@
         <!-- ========================================================= -->
         <div id="view-grid" class="space-y-8">
             
-            <!-- Hero Header de Selección Inicial -->
+            <!-- Hero Header de Selección Inicial con Logo Prominente -->
             <div class="bg-gradient-to-r from-brand-card via-brand-card to-gray-900 border border-brand-border rounded-3xl p-6 sm:p-10 shadow-2xl relative overflow-hidden">
-                <div class="max-w-3xl space-y-3 relative z-10">
-                    <span class="bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider inline-flex items-center space-x-2">
-                        <i class="fa-solid fa-shield-halved"></i>
-                        <span>ECOO EMPRESAS &bull; Monitoreo de Plataformas Educativas Chile</span>
-                    </span>
-                    <h1 class="text-2xl sm:text-4xl font-black text-white leading-tight">
-                        Selecciona la plataforma educativa que deseas revisar o reportar
-                    </h1>
-                    <p class="text-gray-400 text-sm sm:text-base">
-                        Monitorea en tiempo real la estabilidad, logos oficiales, velocidad y fallas reportadas por docentes y apoderados en Chile.
-                    </p>
+                <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-6 relative z-10">
+                    <div class="max-w-3xl space-y-3">
+                        <span class="bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider inline-flex items-center space-x-2">
+                            <i class="fa-solid fa-shield-halved"></i>
+                            <span>ECOO EMPRESAS &bull; Monitoreo de Plataformas Educativas Chile</span>
+                        </span>
+                        <h1 class="text-2xl sm:text-4xl font-black text-white leading-tight">
+                            Selecciona la plataforma educativa que deseas revisar o reportar
+                        </h1>
+                        <p class="text-gray-400 text-sm sm:text-base">
+                            Monitorea en tiempo real la estabilidad, logos oficiales, velocidad y fallas reportadas por docentes y apoderados en Chile.
+                        </p>
+                    </div>
+
+                    <!-- Insignia destacada de ECOO EMPRESAS -->
+                    <div class="hidden md:flex flex-col items-center bg-brand-dark/80 p-4 rounded-2xl border border-brand-border shadow-xl flex-shrink-0 text-center space-y-2">
+                        <img src="1.png" alt="ECOO EMPRESAS Logo" class="w-16 h-16 object-contain" onerror="this.onerror=null; this.src='https://placehold.co/100x100/10B981/ffffff?text=E!';">
+                        <span class="text-xs font-extrabold text-white">ECOO EMPRESAS</span>
+                        <span class="text-[10px] text-emerald-400 font-semibold bg-emerald-500/10 px-2 py-0.5 rounded-full border border-emerald-500/30">Plataforma Oficial</span>
+                    </div>
                 </div>
             </div>
 
@@ -453,10 +462,10 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6 text-center">
             
             <div class="flex flex-col sm:flex-row items-center justify-between gap-4 border-b border-brand-border/60 pb-6">
-                <!-- Logo Footer -->
+                <!-- Logo Footer con imagen 1.png -->
                 <div class="flex items-center space-x-3">
-                    <div class="bg-gradient-to-tr from-emerald-500 to-blue-600 p-2.5 rounded-xl text-white">
-                        <i class="fa-solid fa-graduation-cap text-xl"></i>
+                    <div class="bg-brand-dark p-1 rounded-xl border border-brand-border flex items-center justify-center overflow-hidden w-10 h-10 flex-shrink-0">
+                        <img src="1.png" alt="ECOO EMPRESAS Logo" class="w-full h-full object-contain" onerror="this.onerror=null; this.src='https://placehold.co/100x100/10B981/ffffff?text=E!';">
                     </div>
                     <div class="text-left">
                         <div class="font-extrabold text-lg text-white">EduStatus CL</div>
@@ -489,7 +498,6 @@
 
     <script>
         // Datos de Plataformas Educativas Chilenas con Dominio para Favicon/Logo Oficial
-        // Domain se usa para descargar automáticamente el logo oficial de Google Favicons API
         const platformsData = [
             {
                 id: 'syscol',
@@ -752,7 +760,7 @@
             return `https://www.google.com/s2/favicons?domain=${domain}&sz=128`;
         }
 
-        // Handler cuando falla la imagen del logo (fallback a avatar con iniciales)
+        // Handler cuando falla la imagen del logo
         function handleLogoError(imgElement, platformName) {
             const parent = imgElement.parentElement;
             const initials = platformName.substring(0, 2).toUpperCase();
@@ -922,7 +930,7 @@
             });
         }
 
-        // Renderizar Grilla Principal de Plataformas con LOGOS OFICIALES Y BARRA DE CALIDAD
+        // Renderizar Grilla Principal
         function renderPlatformsGrid() {
             const grid = document.getElementById('platforms-grid');
             const searchQuery = document.getElementById('search-input').value.toLowerCase();
@@ -1193,7 +1201,6 @@
                 target.totalReportsToday += 1;
                 target.hourlyData[target.hourlyData.length - 1] += 1;
 
-                // Reducir ligeramente el score de calidad por nuevos reportes
                 if (target.qualityScore > 10) {
                     target.qualityScore -= 2;
                 }
