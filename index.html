@@ -167,7 +167,7 @@
                             Selecciona la plataforma educativa que deseas revisar o reportar
                         </h1>
                         <p class="text-gray-400 text-sm sm:text-base">
-                            Monitorea en tiempo real estabilidad, firmas, análisis de redes sociales (Instagram/Facebook) y estado comunitario de las 18 plataformas clave en Chile.
+                            Monitorea en tiempo real estabilidad, firmas, análisis de redes sociales (Instagram/Facebook) y estado comunitario de 18+ plataformas en Chile.
                         </p>
                     </div>
 
@@ -213,13 +213,13 @@
                         Todas
                     </button>
                     <button data-cat="libro" class="filter-btn bg-brand-card hover:bg-gray-800 text-gray-300 px-4 py-2.5 rounded-xl text-xs font-bold transition border border-brand-border">
-                        Gestión / LMS (12)
+                        Libro Digital & Gestión
                     </button>
                     <button data-cat="mineduc" class="filter-btn bg-brand-card hover:bg-gray-800 text-gray-300 px-4 py-2.5 rounded-xl text-xs font-bold transition border border-brand-border">
-                        Gubernamentales (3)
+                        Sistemas Mineduc / Estado
                     </button>
                     <button data-cat="global" class="filter-btn bg-brand-card hover:bg-gray-800 text-gray-300 px-4 py-2.5 rounded-xl text-xs font-bold transition border border-brand-border">
-                        Aulas Virtuales (3)
+                        Aulas Virtuales & Apps
                     </button>
                 </div>
             </div>
@@ -505,9 +505,9 @@
                     <div>
                         <label class="block text-xs font-bold text-gray-300 mb-1">Categoría:</label>
                         <select id="new-p-category" class="w-full bg-brand-dark border border-brand-border focus:border-emerald-500 rounded-xl px-4 py-2.5 text-xs text-white outline-none">
-                            <option value="libro">Gestión / LMS</option>
-                            <option value="mineduc">Gubernamental / Oficial</option>
-                            <option value="global">Aula Virtual / Global</option>
+                            <option value="libro">Libro Digital & Gestión</option>
+                            <option value="mineduc">Sistema Mineduc / Estado</option>
+                            <option value="global">Aula Virtual & Apps</option>
                         </select>
                     </div>
 
@@ -604,7 +604,7 @@
                         <i class="fa-brands fa-instagram text-base"></i>
                         <span>@ecooempresas</span>
                     </a>
-                    <a href="https://www.youtube.com/ecooempresas" target="_blank" rel="noopener noreferrer" class="bg-brand-dark hover:bg-red-600/20 text-gray-300 hover:text-red-400 border border-brand-border hover:border-pink-500/50 px-4 py-2 rounded-xl text-xs font-bold flex items-center space-x-2 transition">
+                    <a href="https://www.youtube.com/guerreroxp" target="_blank" rel="noopener noreferrer" class="bg-brand-dark hover:bg-red-600/20 text-gray-300 hover:text-red-400 border border-brand-border hover:border-pink-500/50 px-4 py-2 rounded-xl text-xs font-bold flex items-center space-x-2 transition">
                         <i class="fa-brands fa-youtube text-base"></i>
                         <span>YouTube ECOO EMPRESAS</span>
                     </a>
@@ -612,7 +612,7 @@
             </div>
 
             <p class="text-xs text-gray-500 max-w-2xl mx-auto">
-                EduStatus CL es un servicio público independiente desarrollado por ECOO EMPRESAS para monitorear las 18 principales plataformas educativas en Chile: Syscol, Lirmi, Mateo, Webclass, SIGE Mineduc, Napsis, KIMCHE, Edufácil, SchoolNet, SM Educamos, FullCollege, Appoderado, JUNAEB, DEMRE, Agencia de Calidad de la Educación, Google Classroom, Canvas LMS y ClassDojo.
+                EduStatus CL es un servicio público independiente desarrollado por ECOO EMPRESAS para monitorear las 18 principales plataformas educativas en Chile. Las marcas Syscol, Lirmi, Mateo, Webclass, SIGE, Napsis, ClassDojo, Google Classroom, Canvas, Kimche, Edufácil, SchoolNet, SM Educamos, FullCollege, Appoderado, JUNAEB, DEMRE y Agencia de Educación pertenecen a sus respectivos dueños.
             </p>
 
             <p class="text-[11px] text-gray-600">
@@ -622,20 +622,15 @@
     </footer>
 
     <script>
-        // SVG directo para SIGE Mineduc y Napsis para garantizar renders sin errores externos
-        const MINEDUC_SVG_LOGO = `data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 60"><rect width="200" height="60" fill="%230F172A"/><rect x="15" y="15" width="12" height="30" fill="%23EF4444"/><rect x="30" y="15" width="12" height="30" fill="%233B82F6"/><text x="52" y="32" fill="%23FFFFFF" font-family="Arial" font-weight="900" font-size="16">SIGE</text><text x="52" y="45" fill="%2394A3B8" font-family="Arial" font-weight="bold" font-size="10">MINEDUC CHILE</text></svg>`;
-        const NAPSIS_SVG_LOGO = `data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 60"><rect width="200" height="60" fill="%230A0E17"/><circle cx="30" cy="30" r="15" fill="%2310B981"/><path d="M25 30 L30 22 L35 30 L30 38 Z" fill="%23FFFFFF"/><text x="55" y="38" fill="%23FFFFFF" font-family="Arial" font-weight="900" font-size="20">NAPSIS</text></svg>`;
-
-        // Las Exactas 18 Plataformas Activas Organizadas por las 3 Categorías
+        // Data Completa de las 18 Plataformas Educativas Chilenas
         const initialPlatformsData = [
-            // --- CATEGORÍA 1: GESTIÓN / LMS (12) ---
             {
                 id: 'syscol',
                 name: 'Syscol',
                 domain: 'web.syscol.com',
                 exactLogo: '',
                 category: 'libro',
-                categoryLabel: 'Gestión / LMS',
+                categoryLabel: 'Libro Digital & Gestión Escolar',
                 status: 'danger',
                 statusText: 'Interrupciones Severas',
                 url: 'https://web.syscol.com/',
@@ -646,7 +641,7 @@
                     posPercent: 20,
                     negPercent: 80,
                     mentions: '1,420 menciones este mes',
-                    trend: 'Aumento del 85% en comentarios negativos por problemas al guardar firmas.',
+                    trend: 'Aumento del 85% en comentarios negativos en Facebook por problemas al firmar.',
                     topChannel: 'Facebook oficial Syscol',
                     topChannelIcon: 'fa-brands fa-facebook text-blue-500',
                     posts: [
@@ -675,7 +670,7 @@
                 domain: 'lirmi.com',
                 exactLogo: '',
                 category: 'libro',
-                categoryLabel: 'Gestión / LMS',
+                categoryLabel: 'LMS & Evaluaciones Escolares',
                 status: 'warning',
                 statusText: 'Lentitud Detectada',
                 url: 'https://lirmi.com/',
@@ -686,11 +681,11 @@
                     posPercent: 62,
                     negPercent: 38,
                     mentions: '980 publicaciones y comentarios',
-                    trend: 'Menciones estables en @lirmi_com con consultas sobre la app apoderados.',
+                    trend: 'Menciones estables en @lirmi_com con consultas sobre actualizaciones de la app apoderados.',
                     topChannel: 'Instagram @lirmi_com',
                     topChannelIcon: 'fa-brands fa-instagram text-pink-500',
                     posts: [
-                        { user: '@utp_liceo', platform: 'Instagram', text: 'Buena herramienta para armar evaluaciones, aunque en las mañanas se pone algo lenta.', time: 'Hace 1 día', likes: 19 },
+                        { user: '@utp_liceo', platform: 'Instagram', text: 'Buena herramienta para armar evaluaciones, aunque en las mañanas se pone un poco lenta.', time: 'Hace 1 día', likes: 19 },
                         { user: '@profe_rodrigo', platform: 'Instagram', text: '¿Alguien más con demora al guardar notas en Lirmi hoy?', time: 'Hace 5 horas', likes: 12 }
                     ]
                 },
@@ -715,7 +710,7 @@
                 domain: 'mateonet.cl',
                 exactLogo: '',
                 category: 'libro',
-                categoryLabel: 'Gestión / LMS',
+                categoryLabel: 'Gestión Institucional',
                 status: 'success',
                 statusText: 'Operativo',
                 url: 'https://mateonet.cl/',
@@ -726,7 +721,7 @@
                     posPercent: 88,
                     negPercent: 12,
                     mentions: '520 menciones activas',
-                    trend: 'Excelente recepción valorando la estabilidad del libro de clases.',
+                    trend: 'Excelente recepción en @mateonetchile valorando la estabilidad del libro de clases.',
                     topChannel: 'Instagram @mateonetchile',
                     topChannelIcon: 'fa-brands fa-instagram text-pink-500',
                     posts: [
@@ -753,7 +748,7 @@
                 domain: 'webclass.cl',
                 exactLogo: '',
                 category: 'libro',
-                categoryLabel: 'Gestión / LMS',
+                categoryLabel: 'Plataforma Curricular & Gestión',
                 status: 'success',
                 statusText: 'Operativo',
                 url: 'https://webclass.cl/',
@@ -763,7 +758,7 @@
                 sentiment: {
                     posPercent: 82,
                     negPercent: 18,
-                    mentions: '310 interacciones',
+                    mentions: '310 interacciones semanales',
                     trend: 'Buen nivel de respuesta para planificación curricular.',
                     topChannel: 'Portal Webclass',
                     topChannelIcon: 'fa-solid fa-chalkboard-user text-blue-400',
@@ -786,12 +781,51 @@
                 hourlyData: [1, 0, 0, 0, 1, 3, 4, 6, 10, 8, 6, 5, 4, 3, 2, 2]
             },
             {
+                id: 'sige',
+                name: 'SIGE (Mineduc)',
+                domain: 'sige.mineduc.cl',
+                exactLogo: 'https://staticv2.mineduc.cl/img/logo-med.png',
+                category: 'mineduc',
+                categoryLabel: 'Sistema Información General Mineduc',
+                status: 'warning',
+                statusText: 'Saturación en Cierre de Mes',
+                url: 'https://sige.mineduc.cl/',
+                socials: [
+                    { name: 'X / Twitter Mineduc', url: 'https://x.com/Mineduc', icon: 'fa-brands fa-x-twitter text-gray-300' }
+                ],
+                sentiment: {
+                    posPercent: 30,
+                    negPercent: 70,
+                    mentions: '2,100 menciones de docentes',
+                    trend: 'Comentarios constantes por sobrecarga en fechas límite de subvenciones.',
+                    topChannel: 'Twitter @Mineduc',
+                    topChannelIcon: 'fa-brands fa-x-twitter text-gray-300',
+                    posts: [
+                        { user: '@sostenedor_rm', platform: 'Twitter', text: 'El SIGE colapsado justo en el cierre de la fecha de carga de subvención.', time: 'Hace 3 horas', likes: 52 }
+                    ]
+                },
+                qualityScore: 35,
+                qualityLabel: 'Mala Estabilidad (Caídas en cierres)',
+                qualityColor: 'bg-red-500',
+                qualityTextColor: 'text-red-400',
+                totalReportsToday: 210,
+                lastReportTime: 'Hace 6 min',
+                serverStatus: 'Saturación de consultas de subvención',
+                affectedModules: 'Módulo de Asistencia y Matrícula',
+                issues: [
+                    { name: 'Error 504 / Tiempo agotado', percent: 55 },
+                    { name: 'Clave Única no conecta', percent: 30 },
+                    { name: 'Cierre de sesión repentino', percent: 15 }
+                ],
+                hourlyData: [2, 0, 0, 0, 2, 5, 10, 32, 70, 85, 52, 40, 35, 20, 15, 12]
+            },
+            {
                 id: 'napsis',
                 name: 'Napsis',
                 domain: 'napsis.cl',
-                exactLogo: NAPSIS_SVG_LOGO,
+                exactLogo: 'https://www.napsis.cl/img/logo-napsis.svg',
                 category: 'libro',
-                categoryLabel: 'Gestión / LMS',
+                categoryLabel: 'Plataforma de Gestión Escolar',
                 status: 'success',
                 statusText: 'Operativo',
                 url: 'https://www.napsis.cl/',
@@ -824,12 +858,126 @@
                 hourlyData: [0, 0, 0, 0, 0, 1, 2, 3, 3, 2, 2, 1, 1, 1, 0, 1]
             },
             {
+                id: 'classdojo',
+                name: 'ClassDojo',
+                domain: 'classdojo.com',
+                exactLogo: '',
+                category: 'global',
+                categoryLabel: 'Comunicación y Aula Virtual',
+                status: 'success',
+                statusText: 'Operativo',
+                url: 'https://www.classdojo.com/',
+                socials: [
+                    { name: 'Instagram', url: 'https://www.instagram.com/classdojo/', icon: 'fa-brands fa-instagram text-pink-500' }
+                ],
+                sentiment: {
+                    posPercent: 94,
+                    negPercent: 6,
+                    mentions: '3,100 interacciones',
+                    trend: 'Muy popular entre apoderados con comentarios positivos.',
+                    topChannel: 'Instagram @classdojo',
+                    topChannelIcon: 'fa-brands fa-instagram text-pink-500',
+                    posts: [
+                        { user: '@mama_apoderada', platform: 'Instagram', text: 'Amo la app para estar al día con las tareas de mi hijo.', time: 'Hace 1 día', likes: 64 }
+                    ]
+                },
+                qualityScore: 94,
+                qualityLabel: 'Excelente Estabilidad Global',
+                qualityColor: 'bg-emerald-500',
+                qualityTextColor: 'text-emerald-400',
+                totalReportsToday: 5,
+                lastReportTime: 'Hace 2 horas',
+                serverStatus: 'Servidores Globales OK',
+                affectedModules: 'Sin afección',
+                issues: [
+                    { name: 'Notificaciones push demoradas', percent: 70 },
+                    { name: 'Traducción de mensajes', percent: 30 }
+                ],
+                hourlyData: [0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 1, 0, 0, 0, 1]
+            },
+            {
+                id: 'classroom',
+                name: 'Google Classroom',
+                domain: 'classroom.google.com',
+                exactLogo: '',
+                category: 'global',
+                categoryLabel: 'Aula Virtual Global',
+                status: 'success',
+                statusText: 'Operativo',
+                url: 'https://classroom.google.com/',
+                socials: [
+                    { name: 'Google Workspace', url: 'https://workspace.google.com/', icon: 'fa-brands fa-google text-emerald-400' }
+                ],
+                sentiment: {
+                    posPercent: 96,
+                    negPercent: 4,
+                    mentions: '12,000 interacciones',
+                    trend: 'Disponibilidad alta respaldada por infraestructura de Google.',
+                    topChannel: 'Google Workspace',
+                    topChannelIcon: 'fa-brands fa-google text-emerald-400',
+                    posts: [
+                        { user: '@profe_tecnologia', platform: 'Google', text: 'Classroom respondiendo perfecto para tareas masivas.', time: 'Hace 5 horas', likes: 88 }
+                    ]
+                },
+                qualityScore: 96,
+                qualityLabel: 'Excelente Rendimiento Global',
+                qualityColor: 'bg-emerald-500',
+                qualityTextColor: 'text-emerald-400',
+                totalReportsToday: 18,
+                lastReportTime: 'Hace 12 min',
+                serverStatus: 'Infraestructura Google OK',
+                affectedModules: 'Sin afección',
+                issues: [
+                    { name: 'Adjuntar archivos pesados', percent: 50 },
+                    { name: 'Notificaciones por mail', percent: 50 }
+                ],
+                hourlyData: [1, 1, 0, 0, 1, 2, 3, 4, 6, 5, 4, 3, 3, 2, 2, 1]
+            },
+            {
+                id: 'canvas',
+                name: 'Canvas',
+                domain: 'instructure.com',
+                exactLogo: '',
+                category: 'global',
+                categoryLabel: 'Plataforma Universitaria & Escolar',
+                status: 'success',
+                statusText: 'Operativo',
+                url: 'https://www.instructure.com/canvas',
+                socials: [
+                    { name: 'Instagram', url: 'https://www.instagram.com/instructure/', icon: 'fa-brands fa-instagram text-pink-500' }
+                ],
+                sentiment: {
+                    posPercent: 91,
+                    negPercent: 9,
+                    mentions: '1,800 menciones universitarias',
+                    trend: 'Menciones positivas sobre la app móvil y sistema de calificaciones.',
+                    topChannel: 'Instagram @instructure',
+                    topChannelIcon: 'fa-brands fa-instagram text-pink-500',
+                    posts: [
+                        { user: '@estudiante_uc', platform: 'Instagram', text: 'Canvas impecable para rendir evaluaciones online.', time: 'Hace 1 día', likes: 31 }
+                    ]
+                },
+                qualityScore: 91,
+                qualityLabel: 'Excelente Estabilidad Global',
+                qualityColor: 'bg-emerald-500',
+                qualityTextColor: 'text-emerald-400',
+                totalReportsToday: 9,
+                lastReportTime: 'Hace 1 hora',
+                serverStatus: 'Servidores Normales',
+                affectedModules: 'Sin afección',
+                issues: [
+                    { name: 'Carga de video multimedia', percent: 60 },
+                    { name: 'Aviso de tareas', percent: 40 }
+                ],
+                hourlyData: [0, 0, 0, 1, 0, 1, 1, 2, 2, 1, 1, 0, 0, 0, 0, 0]
+            },
+            {
                 id: 'kimche',
                 name: 'KIMCHE',
                 domain: 'kimche.co',
                 exactLogo: '',
                 category: 'libro',
-                categoryLabel: 'Gestión / LMS',
+                categoryLabel: 'Big Data & Software Escolar',
                 status: 'success',
                 statusText: 'Operativo',
                 url: 'https://kimche.co/',
@@ -867,7 +1015,7 @@
                 domain: 'edufacil.cl',
                 exactLogo: '',
                 category: 'libro',
-                categoryLabel: 'Gestión / LMS',
+                categoryLabel: 'Gestión Escolar Integral',
                 status: 'success',
                 statusText: 'Operativo',
                 url: 'https://edufacil.cl/',
@@ -901,11 +1049,11 @@
             },
             {
                 id: 'schoolnet',
-                name: 'SchoolNet (Colegium)',
+                name: 'SchoolNet Colegium',
                 domain: 'colegium.com',
                 exactLogo: '',
                 category: 'libro',
-                categoryLabel: 'Gestión / LMS',
+                categoryLabel: 'Plataforma Académica Colegium',
                 status: 'warning',
                 statusText: 'Carga Lenta en App',
                 url: 'https://schoolnet.colegium.com/webapp/es_CL/login',
@@ -943,8 +1091,8 @@
                 name: 'SM Educamos',
                 domain: 'educamos.com',
                 exactLogo: '',
-                category: 'libro',
-                categoryLabel: 'Gestión / LMS',
+                category: 'global',
+                categoryLabel: 'Ecosistema Educativo Grupo SM',
                 status: 'success',
                 statusText: 'Operativo',
                 url: 'https://educamos.com/es-cl/',
@@ -982,7 +1130,7 @@
                 domain: 'fullcollege.cl',
                 exactLogo: '',
                 category: 'libro',
-                categoryLabel: 'Gestión / LMS',
+                categoryLabel: 'Gestión Académica & Escolar',
                 status: 'success',
                 statusText: 'Operativo',
                 url: 'https://fullcollege.cl/',
@@ -1019,8 +1167,8 @@
                 name: 'Appoderado',
                 domain: 'appoderado.cl',
                 exactLogo: '',
-                category: 'libro',
-                categoryLabel: 'Gestión / LMS',
+                category: 'global',
+                categoryLabel: 'Comunicación Escuela-Familia',
                 status: 'success',
                 statusText: 'Operativo',
                 url: 'https://appoderado.cl/',
@@ -1031,7 +1179,7 @@
                     posPercent: 89,
                     negPercent: 11,
                     mentions: '820 valoraciones',
-                    trend: 'Comentarios favorables por notificaciones inmediatas.',
+                    trend: 'Comentarios favorables por notificaciones inmediatas de anotaciones y citaciones.',
                     topChannel: 'Instagram @appoderado',
                     topChannelIcon: 'fa-brands fa-instagram text-pink-500',
                     posts: [
@@ -1052,54 +1200,13 @@
                 ],
                 hourlyData: [0, 0, 0, 0, 0, 1, 1, 2, 1, 1, 1, 0, 0, 1, 0, 0]
             },
-
-            // --- CATEGORÍA 2: GUBERNAMENTALES / OFICIALES (3) ---
-            {
-                id: 'sige',
-                name: 'SIGE Mineduc',
-                domain: 'sige.mineduc.cl',
-                exactLogo: MINEDUC_SVG_LOGO,
-                category: 'mineduc',
-                categoryLabel: 'Gubernamental / Oficial',
-                status: 'warning',
-                statusText: 'Saturación Cierre de Mes',
-                url: 'https://sige.mineduc.cl/',
-                socials: [
-                    { name: 'X / Twitter Mineduc', url: 'https://x.com/Mineduc', icon: 'fa-brands fa-x-twitter text-gray-300' }
-                ],
-                sentiment: {
-                    posPercent: 30,
-                    negPercent: 70,
-                    mentions: '2,100 menciones de docentes',
-                    trend: 'Comentarios por sobrecarga en fechas límite de subvenciones.',
-                    topChannel: 'Twitter @Mineduc',
-                    topChannelIcon: 'fa-brands fa-x-twitter text-gray-300',
-                    posts: [
-                        { user: '@sostenedor_rm', platform: 'Twitter', text: 'El SIGE colapsado justo en el cierre de la fecha de carga de subvención.', time: 'Hace 3 horas', likes: 52 }
-                    ]
-                },
-                qualityScore: 35,
-                qualityLabel: 'Mala Estabilidad (Caídas en cierres)',
-                qualityColor: 'bg-red-500',
-                qualityTextColor: 'text-red-400',
-                totalReportsToday: 210,
-                lastReportTime: 'Hace 6 min',
-                serverStatus: 'Saturación de consultas de subvención',
-                affectedModules: 'Módulo de Asistencia y Matrícula',
-                issues: [
-                    { name: 'Error 504 / Tiempo agotado', percent: 55 },
-                    { name: 'Clave Única no conecta', percent: 30 },
-                    { name: 'Cierre de sesión repentino', percent: 15 }
-                ],
-                hourlyData: [2, 0, 0, 0, 2, 5, 10, 32, 70, 85, 52, 40, 35, 20, 15, 12]
-            },
             {
                 id: 'junaeb',
                 name: 'JUNAEB',
                 domain: 'junaeb.cl',
                 exactLogo: '',
                 category: 'mineduc',
-                categoryLabel: 'Gubernamental / Oficial',
+                categoryLabel: 'Junta Nacional de Auxilio Escolar y Becas',
                 status: 'warning',
                 statusText: 'Alta Demanda Becas',
                 url: 'https://www.junaeb.cl/',
@@ -1110,7 +1217,7 @@
                     posPercent: 55,
                     negPercent: 45,
                     mentions: '4,500 consultas',
-                    trend: 'Picos de comentarios sobre estado de la TNE y becas.',
+                    trend: 'Picos de comentarios sobre estado de la TNE y postulaciones a becas.',
                     topChannel: 'Instagram @junaeb_cl',
                     topChannelIcon: 'fa-brands fa-instagram text-pink-500',
                     posts: [
@@ -1138,7 +1245,7 @@
                 domain: 'demre.cl',
                 exactLogo: '',
                 category: 'mineduc',
-                categoryLabel: 'Gubernamental / Oficial',
+                categoryLabel: 'Departamento de Evaluación y Medición (PAES)',
                 status: 'success',
                 statusText: 'Operativo',
                 url: 'https://demre.cl/',
@@ -1149,7 +1256,7 @@
                     posPercent: 86,
                     negPercent: 14,
                     mentions: '3,800 menciones sobre PAES',
-                    trend: 'Página respondiendo velozmente para temarios y modelos.',
+                    trend: 'Página respondiendo velozmente para temarios y modelos de prueba.',
                     topChannel: 'Instagram @demre_uchile',
                     topChannelIcon: 'fa-brands fa-instagram text-pink-500',
                     posts: [
@@ -1172,11 +1279,11 @@
             },
             {
                 id: 'agenciaeducacion',
-                name: 'Agencia de Calidad de la Educación',
+                name: 'Agencia de Educación',
                 domain: 'agenciaeducacion.cl',
                 exactLogo: '',
                 category: 'mineduc',
-                categoryLabel: 'Gubernamental / Oficial',
+                categoryLabel: 'Agencia de Calidad de la Educación (SIMCE)',
                 status: 'success',
                 statusText: 'Operativo',
                 url: 'https://www.agenciaeducacion.cl/',
@@ -1187,7 +1294,7 @@
                     posPercent: 83,
                     negPercent: 17,
                     mentions: '510 menciones de directivos',
-                    trend: 'Consultas sobre informes de resultados SIMCE y DIA.',
+                    trend: 'Consultas sobre informes de resultados SIMCE y categorización de desempeño.',
                     topChannel: 'Twitter @AgenciaEdu_cl',
                     topChannelIcon: 'fa-brands fa-x-twitter text-gray-300',
                     posts: [
@@ -1199,4 +1306,782 @@
                 qualityColor: 'bg-emerald-500',
                 qualityTextColor: 'text-emerald-400',
                 totalReportsToday: 7,
-                lastReportTime: 'Hace
+                lastReportTime: 'Hace 2 horas',
+                serverStatus: 'Plataforma DIA y SIMCE OK',
+                affectedModules: 'Sin afección',
+                issues: [
+                    { name: 'Descarga de planillas de resultados', percent: 65 },
+                    { name: 'Clave de establecimiento', percent: 35 }
+                ],
+                hourlyData: [0, 0, 0, 0, 0, 1, 1, 2, 1, 1, 0, 0, 1, 0, 0, 0]
+            }
+        ];
+
+        // Ticker de Alertas
+        const alertTickerItems = [
+            "⚠️ **Syscol (web.syscol.com)**: Profesores reportan fallas al guardar firmas de clase. Revisa comentarios.",
+            "📲 **Mineduc / SIGE / JUNAEB**: Monitoreo de picos por cierre de subvenciones y postulaciones.",
+            "📊 **Barra de Calidad**: Consulta la estabilidad de las 18 plataformas escolares de Chile antes de digitar notas.",
+            "🚀 **ECOO EMPRESAS**: Guardado persistente habilitado para sugerencias y reportes inmediatos."
+        ];
+
+        // Comentarios Iniciales
+        const initialComments = [
+            {
+                author: "Prof. María Elena",
+                role: "Docente Educación Básica",
+                region: "Región Metropolitana",
+                platform: "Syscol",
+                text: "En Syscol lleva más de 2 horas sin dejar firmar el libro de clases. Sale constantemente error 504.",
+                time: "Hace 8 min",
+                likes: 24
+            },
+            {
+                author: "Ignacio Soto",
+                role: "Coordinador UTP",
+                region: "Valparaíso",
+                platform: "Lirmi",
+                text: "Lirmi con lentitud en el módulo de evaluaciones durante la mañana, pero sí permite trabajar.",
+                time: "Hace 18 min",
+                likes: 12
+            },
+            {
+                author: "Claudia R.",
+                role: "Administradora Escolar",
+                region: "Bío Bío",
+                platform: "SIGE (Mineduc)",
+                text: "Imposible validar las asistencias en el SIGE hoy por sobrecarga de cierre de mes.",
+                time: "Hace 30 min",
+                likes: 16
+            }
+        ];
+
+        // Estado Global
+        let platformsData = [];
+        let commentsData = [];
+        let activeCategoryFilter = 'all';
+        let selectedPlatform = null;
+        let detailChartInstance = null;
+
+        function getSmartLogoHTML(platform, containerSizeClass = "w-10 h-10") {
+            const cleanDomain = platform.domain.replace('https://', '').replace('http://', '').split('/')[0];
+            const uniqueId = 'logo_' + Math.random().toString(36).substr(2, 9);
+
+            // Level 0: Check if platform has exact explicit logo provided
+            if (platform.exactLogo && platform.exactLogo.trim() !== '') {
+                return `
+                    <div class="${containerSizeClass} rounded-2xl bg-brand-dark p-1 border border-brand-border flex items-center justify-center shadow-inner overflow-hidden relative group/logo">
+                        <img id="${uniqueId}" 
+                             src="${platform.exactLogo}" 
+                             alt="${platform.name}" 
+                             class="w-full h-full object-contain transition transform group-hover/logo:scale-105"
+                             onerror="tryPrimaryClearbit(this, '${cleanDomain}', '${platform.name}')">
+                    </div>
+                `;
+            }
+
+            // Level 1: Primary high-res Clearbit
+            const primaryUrl = `https://logo.clearbit.com/${cleanDomain}`;
+            const secondaryUrl = `https://www.google.com/s2/favicons?domain=${cleanDomain}&sz=128`;
+
+            return `
+                <div class="${containerSizeClass} rounded-2xl bg-brand-dark p-1 border border-brand-border flex items-center justify-center shadow-inner overflow-hidden relative group/logo">
+                    <img id="${uniqueId}" 
+                         src="${primaryUrl}" 
+                         alt="${platform.name}" 
+                         class="w-full h-full object-contain transition transform group-hover/logo:scale-105"
+                         onerror="trySecondaryGoogle(this, '${secondaryUrl}', '${platform.name}')">
+                </div>
+            `;
+        }
+
+        function tryPrimaryClearbit(imgElement, cleanDomain, platformName) {
+            const primaryUrl = `https://logo.clearbit.com/${cleanDomain}`;
+            const secondaryUrl = `https://www.google.com/s2/favicons?domain=${cleanDomain}&sz=128`;
+            imgElement.src = primaryUrl;
+            imgElement.onerror = function() {
+                trySecondaryGoogle(this, secondaryUrl, platformName);
+            };
+        }
+
+        function trySecondaryGoogle(imgElement, fallbackUrl, platformName) {
+            if (!imgElement.dataset.triedSecondary) {
+                imgElement.dataset.triedSecondary = "true";
+                imgElement.src = fallbackUrl;
+                imgElement.onerror = function() {
+                    renderInitialsAvatar(this.parentElement, platformName);
+                };
+            } else {
+                renderInitialsAvatar(imgElement.parentElement, platformName);
+            }
+        }
+
+        function renderInitialsAvatar(parentContainer, platformName) {
+            const initials = platformName.substring(0, 2).toUpperCase();
+            parentContainer.innerHTML = `
+                <div class="w-full h-full rounded-xl bg-gradient-to-tr from-brand-accent via-blue-600 to-emerald-500 flex items-center justify-center text-white font-black text-xs sm:text-sm tracking-wider shadow-md">
+                    ${initials}
+                </div>
+            `;
+        }
+
+        function loadStoredData() {
+            const storedComments = localStorage.getItem('edustatus_comments');
+            if (storedComments) {
+                try { commentsData = JSON.parse(storedComments); } catch(e) { commentsData = initialComments; }
+            } else {
+                commentsData = initialComments;
+                localStorage.setItem('edustatus_comments', JSON.stringify(commentsData));
+            }
+
+            const storedPlatforms = localStorage.getItem('edustatus_platforms');
+            if (storedPlatforms) {
+                try { platformsData = JSON.parse(storedPlatforms); } catch(e) { platformsData = initialPlatformsData; }
+            } else {
+                platformsData = initialPlatformsData;
+                localStorage.setItem('edustatus_platforms', JSON.stringify(platformsData));
+            }
+        }
+
+        function saveCommentsToStorage() {
+            localStorage.setItem('edustatus_comments', JSON.stringify(commentsData));
+        }
+
+        function savePlatformsToStorage() {
+            localStorage.setItem('edustatus_platforms', JSON.stringify(platformsData));
+        }
+
+        // Initialize Application
+        window.onload = function() {
+            loadStoredData();
+            renderTicker();
+            renderPlatformsGrid();
+            renderGlobalComments();
+            populateSelects();
+            setupFilterListeners();
+            setupSearch();
+            setupNewPlatformForm();
+        };
+
+        function renderTicker() {
+            document.getElementById('ticker-content').innerHTML = alertTickerItems.join('&nbsp;&nbsp;&nbsp;&bull;&nbsp;&nbsp;&nbsp;');
+        }
+
+        function populateSelects() {
+            const commentSelect = document.getElementById('comment-platform-select');
+            const modalSelect = document.getElementById('modal-select-platform');
+            
+            commentSelect.innerHTML = '';
+            modalSelect.innerHTML = '';
+
+            platformsData.forEach(p => {
+                commentSelect.innerHTML += `<option value="${p.name}">${p.name}</option>`;
+                modalSelect.innerHTML += `<option value="${p.id}">${p.name}</option>`;
+            });
+        }
+
+        function showPlatformGrid() {
+            document.getElementById('view-grid').classList.remove('hidden');
+            document.getElementById('view-detail').classList.add('hidden');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function scrollToNewPlatformSection() {
+            showPlatformGrid();
+            const section = document.getElementById('add-platform-section');
+            section.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function showPlatformDetail(platformId) {
+            const platform = platformsData.find(p => p.id === platformId);
+            if (!platform) return;
+
+            selectedPlatform = platform;
+
+            document.getElementById('view-grid').classList.add('hidden');
+            document.getElementById('view-detail').classList.remove('hidden');
+
+            document.getElementById('detail-title').innerText = platform.name;
+            document.getElementById('detail-category').innerText = platform.categoryLabel;
+            
+            document.getElementById('detail-official-link').href = platform.url;
+            document.getElementById('detail-url-text').innerText = platform.url;
+
+            // Redes Sociales de la Plataforma
+            const socialContainer = document.getElementById('detail-social-links');
+            const handlesContainer = document.getElementById('social-handles-pills');
+            socialContainer.innerHTML = '';
+            handlesContainer.innerHTML = '';
+
+            if (platform.socials && platform.socials.length > 0) {
+                platform.socials.forEach(soc => {
+                    const pillHTML = `
+                        <a href="${soc.url}" target="_blank" rel="noopener noreferrer" class="bg-brand-dark hover:bg-brand-border text-gray-300 px-3 py-1.5 rounded-xl border border-brand-border text-xs font-bold flex items-center space-x-1.5 transition">
+                            <i class="${soc.icon}"></i>
+                            <span>${soc.name}</span>
+                        </a>
+                    `;
+                    socialContainer.innerHTML += pillHTML;
+                    handlesContainer.innerHTML += pillHTML;
+                });
+            } else {
+                handlesContainer.innerHTML = `<span class="text-xs text-gray-400 italic">Monitoreo en Redes Generales</span>`;
+            }
+
+            document.getElementById('detail-reports-today').innerText = `${platform.totalReportsToday} reportes hoy`;
+            document.getElementById('detail-server-status').innerText = platform.serverStatus;
+            document.getElementById('detail-affected-modules').innerText = platform.affectedModules;
+
+            // Logo Inteligente
+            const iconContainer = document.getElementById('detail-icon');
+            iconContainer.innerHTML = getSmartLogoHTML(platform, "w-14 h-14");
+
+            // Badge Estado
+            const badge = document.getElementById('detail-status-badge');
+            if (platform.status === 'danger') {
+                badge.className = 'px-3 py-1 rounded-full text-xs font-black uppercase bg-red-500/20 text-red-400 border border-red-500/40 pulse-danger';
+                badge.innerText = platform.statusText;
+            } else if (platform.status === 'warning') {
+                badge.className = 'px-3 py-1 rounded-full text-xs font-black uppercase bg-amber-500/20 text-amber-400 border border-amber-500/40 pulse-warning';
+                badge.innerText = platform.statusText;
+            } else {
+                badge.className = 'px-3 py-1 rounded-full text-xs font-black uppercase bg-emerald-500/20 text-emerald-400 border border-emerald-500/40';
+                badge.innerText = platform.statusText;
+            }
+
+            // Panel de Sentimiento Social
+            renderSocialSentimentPanel(platform);
+
+            // Barra de Calidad
+            const qualityContainer = document.getElementById('detail-quality-container');
+            qualityContainer.innerHTML = `
+                <div class="flex justify-between items-center text-xs font-bold">
+                    <span class="${platform.qualityTextColor}">${platform.qualityLabel}</span>
+                    <span class="text-white text-sm font-black">${platform.qualityScore} / 100 pts</span>
+                </div>
+                <div class="w-full bg-brand-dark h-3 rounded-full overflow-hidden border border-brand-border">
+                    <div class="${platform.qualityColor} h-full rounded-full transition-all duration-500" style="width: ${platform.qualityScore}%"></div>
+                </div>
+            `;
+
+            // Desglose de Problemas
+            const issuesContainer = document.getElementById('detail-issues-list');
+            issuesContainer.innerHTML = '';
+            platform.issues.forEach(iss => {
+                issuesContainer.innerHTML += `
+                    <div>
+                        <div class="flex justify-between text-xs font-bold mb-1">
+                            <span class="text-gray-300">${iss.name}</span>
+                            <span class="text-brand-accent">${iss.percent}%</span>
+                        </div>
+                        <div class="w-full bg-brand-dark h-2.5 rounded-full overflow-hidden border border-brand-border/40">
+                            <div class="bg-brand-accent h-full rounded-full" style="width: ${iss.percent}%"></div>
+                        </div>
+                    </div>
+                `;
+            });
+
+            renderDetailComments(platform.name);
+            renderChart(platform);
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function renderSocialSentimentPanel(platform) {
+            const sent = platform.sentiment || {
+                posPercent: 70,
+                negPercent: 30,
+                mentions: '350 interacciones comunitarias',
+                trend: 'Discusión normal de usuarios en redes.',
+                topChannel: 'Instagram / Facebook',
+                topChannelIcon: 'fa-brands fa-instagram text-pink-500',
+                posts: [
+                    { user: '@comunidad_educativa', platform: 'Instagram', text: 'Reportes generales estables en redes sociales.', time: 'Hace unas horas', likes: 8 }
+                ]
+            };
+
+            document.getElementById('sentiment-score-num').innerText = `${sent.posPercent}%`;
+            document.getElementById('sentiment-bar-pos').style.width = `${sent.posPercent}%`;
+            document.getElementById('sentiment-bar-neg').style.width = `${sent.negPercent}%`;
+            
+            document.getElementById('sentiment-label-pos').innerText = `${sent.posPercent}% Positivo / Conforme`;
+            document.getElementById('sentiment-label-neg').innerText = `${sent.negPercent}% Reclamos / Caídas`;
+
+            document.getElementById('sentiment-mentions-count').innerText = sent.mentions;
+            document.getElementById('sentiment-trend-desc').innerText = sent.trend;
+
+            document.getElementById('sentiment-top-channel').innerHTML = `
+                <i class="${sent.topChannelIcon}"></i>
+                <span>${sent.topChannel}</span>
+            `;
+
+            const postsContainer = document.getElementById('social-posts-container');
+            postsContainer.innerHTML = '';
+
+            if (sent.posts && sent.posts.length > 0) {
+                sent.posts.forEach(pst => {
+                    let socialBadge = '<i class="fa-brands fa-instagram text-pink-400"></i>';
+                    if (pst.platform.toLowerCase().includes('facebook')) socialBadge = '<i class="fa-brands fa-facebook text-blue-500"></i>';
+                    if (pst.platform.toLowerCase().includes('twitter')) socialBadge = '<i class="fa-brands fa-x-twitter text-gray-300"></i>';
+
+                    postsContainer.innerHTML += `
+                        <div class="bg-brand-dark p-3.5 rounded-xl border border-brand-border/60 text-xs space-y-2">
+                            <div class="flex items-center justify-between text-[11px]">
+                                <div class="flex items-center space-x-1.5 font-bold text-gray-200">
+                                    ${socialBadge}
+                                    <span>${pst.user}</span>
+                                </div>
+                                <span class="text-gray-500 text-[10px]">${pst.time}</span>
+                            </div>
+                            <p class="text-gray-300 text-xs italic">"${pst.text}"</p>
+                            <div class="flex items-center justify-end text-[10px] text-pink-400 font-bold space-x-1">
+                                <i class="fa-regular fa-heart"></i>
+                                <span>${pst.likes} reaccionaron</span>
+                            </div>
+                        </div>
+                    `;
+                });
+            } else {
+                postsContainer.innerHTML = `<p class="text-xs text-gray-500 italic">Sin publicaciones destacadas recientemente en redes.</p>`;
+            }
+        }
+
+        function renderChart(platform) {
+            const ctx = document.getElementById('detailChart').getContext('2d');
+            if (detailChartInstance) detailChartInstance.destroy();
+
+            const labels = [];
+            for (let i = 15; i >= 0; i--) {
+                const hour = new Date(Date.now() - i * 3600 * 1000).getHours();
+                labels.push(`${hour}:00`);
+            }
+
+            let strokeColor = '#10B981';
+            let fillColor = 'rgba(16, 185, 129, 0.15)';
+            if (platform.status === 'danger') {
+                strokeColor = '#EF4444';
+                fillColor = 'rgba(239, 68, 68, 0.2)';
+            } else if (platform.status === 'warning') {
+                strokeColor = '#F59E0B';
+                fillColor = 'rgba(245, 158, 11, 0.2)';
+            }
+
+            detailChartInstance = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: 'Fallas reportadas',
+                        data: platform.hourlyData,
+                        borderColor: strokeColor,
+                        backgroundColor: fillColor,
+                        borderWidth: 3,
+                        fill: true,
+                        tension: 0.35,
+                        pointBackgroundColor: strokeColor,
+                        pointRadius: 4
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: { legend: { display: false } },
+                    scales: {
+                        x: { grid: { color: '#202B3C' }, ticks: { color: '#9CA3AF', font: { size: 10 } } },
+                        y: { grid: { color: '#202B3C' }, ticks: { color: '#9CA3AF', font: { size: 10 } }, beginAtZero: true }
+                    }
+                }
+            });
+        }
+
+        function renderPlatformsGrid() {
+            const grid = document.getElementById('platforms-grid');
+            const searchQuery = document.getElementById('search-input').value.toLowerCase();
+            grid.innerHTML = '';
+
+            const filtered = platformsData.filter(p => {
+                const matchesCat = (activeCategoryFilter === 'all') || (p.category === activeCategoryFilter);
+                const matchesSearch = p.name.toLowerCase().includes(searchQuery) || p.categoryLabel.toLowerCase().includes(searchQuery);
+                return matchesCat && matchesSearch;
+            });
+
+            if (filtered.length === 0) {
+                grid.innerHTML = `
+                    <div class="col-span-full text-center py-12 bg-brand-card rounded-2xl border border-brand-border">
+                        <i class="fa-solid fa-magnifying-glass text-3xl text-gray-500 mb-2"></i>
+                        <p class="text-gray-400 font-bold text-sm">No se encontraron plataformas educativas con ese término.</p>
+                    </div>
+                `;
+                return;
+            }
+
+            filtered.forEach(p => {
+                let badgeClass = 'bg-emerald-500/20 text-emerald-400 border-emerald-500/30';
+                let borderGlow = 'border-brand-border hover:border-brand-accent/50';
+                let iconStatus = '<i class="fa-solid fa-circle-check text-emerald-400"></i>';
+
+                if (p.status === 'danger') {
+                    badgeClass = 'bg-red-500/20 text-red-400 border-red-500/40';
+                    borderGlow = 'border-red-500/40 pulse-danger';
+                    iconStatus = '<i class="fa-solid fa-triangle-exclamation text-red-400"></i>';
+                } else if (p.status === 'warning') {
+                    badgeClass = 'bg-amber-500/20 text-amber-400 border-amber-500/40';
+                    borderGlow = 'border-amber-500/40 pulse-warning';
+                    iconStatus = '<i class="fa-solid fa-circle-exclamation text-amber-400"></i>';
+                }
+
+                let socialBadgesHTML = '';
+                if (p.socials && p.socials.length > 0) {
+                    p.socials.forEach(soc => {
+                        socialBadgesHTML += `
+                            <a href="${soc.url}" target="_blank" rel="noopener noreferrer" title="${soc.name}" class="hover:opacity-80 transition">
+                                <i class="${soc.icon} text-sm"></i>
+                            </a>
+                        `;
+                    });
+                }
+
+                const card = document.createElement('div');
+                card.className = `bg-brand-card rounded-2xl border ${borderGlow} p-6 shadow-xl hover:shadow-2xl transition duration-300 flex flex-col justify-between group relative overflow-hidden`;
+
+                card.innerHTML = `
+                    <div class="space-y-4">
+                        <div class="flex items-start justify-between">
+                            <div class="flex items-center space-x-3 cursor-pointer" onclick="showPlatformDetail('${p.id}')">
+                                ${getSmartLogoHTML(p, "w-12 h-12")}
+                                <div>
+                                    <h3 class="font-black text-white text-lg group-hover:text-brand-accent transition flex items-center space-x-1.5">
+                                        <span>${p.name}</span>
+                                    </h3>
+                                    <span class="text-[11px] text-gray-400 block font-medium">${p.categoryLabel}</span>
+                                </div>
+                            </div>
+
+                            <div class="flex items-center space-x-2 bg-brand-dark px-2.5 py-1 rounded-xl border border-brand-border">
+                                ${socialBadgesHTML || '<i class="fa-solid fa-globe text-xs text-gray-400"></i>'}
+                            </div>
+                        </div>
+
+                        <div class="flex items-center justify-between text-xs pt-1 cursor-pointer" onclick="showPlatformDetail('${p.id}')">
+                            <span class="text-gray-400 font-semibold">Estado actual:</span>
+                            <span class="px-2.5 py-1 rounded-full text-[10px] font-black uppercase tracking-wider border ${badgeClass} inline-flex items-center space-x-1">
+                                ${iconStatus}
+                                <span>${p.statusText}</span>
+                            </span>
+                        </div>
+
+                        <div class="bg-brand-dark/90 p-3 rounded-xl border border-brand-border/60 space-y-1.5 cursor-pointer" onclick="showPlatformDetail('${p.id}')">
+                            <div class="flex justify-between items-center text-[11px] font-bold">
+                                <span class="text-gray-300 flex items-center space-x-1">
+                                    <i class="fa-solid fa-gauge text-[10px] text-gray-400"></i>
+                                    <span>Calidad / Estabilidad:</span>
+                                </span>
+                                <span class="${p.qualityTextColor} font-extrabold">${p.qualityScore}/100 pts</span>
+                            </div>
+                            
+                            <div class="w-full bg-gray-800 h-2.5 rounded-full overflow-hidden border border-brand-border/40">
+                                <div class="${p.qualityColor} h-full rounded-full" style="width: ${p.qualityScore}%"></div>
+                            </div>
+                            
+                            <p class="text-[10px] text-gray-400 font-medium line-clamp-1">
+                                ${p.qualityLabel}
+                            </p>
+                        </div>
+
+                        <div class="space-y-1 pt-1 cursor-pointer" onclick="showPlatformDetail('${p.id}')">
+                            <div class="flex justify-between text-[10px] text-gray-500 font-semibold">
+                                <span>Reportes 24h</span>
+                                <span>${p.totalReportsToday} reportes hoy</span>
+                            </div>
+                            <div class="h-9 w-full bg-brand-dark/80 rounded-lg p-1 border border-brand-border/50 flex items-end space-x-1">
+                                ${generateSparklineHTML(p.hourlyData, p.status)}
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="pt-4 mt-4 border-t border-brand-border/60 flex items-center justify-between gap-2">
+                        <button onclick="openReportModalForId('${p.id}')" class="bg-red-600/20 hover:bg-red-600/40 text-red-400 border border-red-500/30 px-3 py-1.5 rounded-xl text-xs font-bold transition flex items-center space-x-1.5">
+                            <i class="fa-solid fa-bullhorn text-[11px]"></i>
+                            <span>Dejar Reporte</span>
+                        </button>
+
+                        <button onclick="showPlatformDetail('${p.id}')" class="text-brand-accent hover:underline text-xs font-bold flex items-center space-x-1">
+                            <span>Ver Análisis</span>
+                            <i class="fa-solid fa-chevron-right text-[10px]"></i>
+                        </button>
+                    </div>
+                `;
+
+                grid.appendChild(card);
+            });
+        }
+
+        function generateSparklineHTML(data, status) {
+            const max = Math.max(...data, 10);
+            let barColor = 'bg-emerald-500/70';
+            if (status === 'danger') barColor = 'bg-red-500/80';
+            if (status === 'warning') barColor = 'bg-amber-500/80';
+
+            return data.map(val => {
+                const heightPercent = Math.max(10, Math.min(100, (val / max) * 100));
+                return `<div class="w-full ${barColor} rounded-t-sm" style="height: ${heightPercent}%;"></div>`;
+            }).join('');
+        }
+
+        function setupFilterListeners() {
+            const buttons = document.querySelectorAll('.filter-btn');
+            buttons.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    buttons.forEach(b => {
+                        b.classList.remove('bg-brand-accent', 'text-white');
+                        b.classList.add('bg-brand-card', 'text-gray-300');
+                    });
+                    btn.classList.remove('bg-brand-card', 'text-gray-300');
+                    btn.classList.add('bg-brand-accent', 'text-white');
+
+                    activeCategoryFilter = btn.getAttribute('data-cat');
+                    renderPlatformsGrid();
+                });
+            });
+        }
+
+        function setupSearch() {
+            document.getElementById('search-input').addEventListener('input', renderPlatformsGrid);
+        }
+
+        function renderGlobalComments() {
+            const container = document.getElementById('global-comments-container');
+            container.innerHTML = '';
+            document.getElementById('global-comments-count').innerText = `${commentsData.length} comentarios registrados`;
+
+            commentsData.forEach((c, index) => {
+                container.innerHTML += `
+                    <div class="bg-brand-dark p-3.5 rounded-xl border border-brand-border/60 space-y-1.5">
+                        <div class="flex items-center justify-between text-xs">
+                            <div class="flex items-center space-x-2">
+                                <span class="font-bold text-white">${c.author}</span>
+                                <span class="text-gray-500">&bull; ${c.role} (${c.region})</span>
+                            </div>
+                            <span class="text-[10px] bg-brand-border text-brand-accent px-2 py-0.5 rounded-full font-bold">${c.platform}</span>
+                        </div>
+                        <p class="text-xs text-gray-300 leading-relaxed">${c.text}</p>
+                        <div class="flex items-center justify-between text-[10px] text-gray-500 pt-1">
+                            <span class="flex items-center space-x-1 text-emerald-400 font-semibold">
+                                <i class="fa-solid fa-floppy-disk text-[9px]"></i>
+                                <span>${c.time}</span>
+                            </span>
+                            <button onclick="likeComment(${index})" class="text-gray-400 hover:text-red-400 font-bold flex items-center space-x-1">
+                                <i class="fa-regular fa-heart"></i>
+                                <span>${c.likes} útiles</span>
+                            </button>
+                        </div>
+                    </div>
+                `;
+            });
+        }
+
+        function renderDetailComments(platformName) {
+            const container = document.getElementById('detail-comments-container');
+            const filtered = commentsData.filter(c => c.platform.toLowerCase().includes(platformName.toLowerCase()));
+
+            if (filtered.length === 0) {
+                container.innerHTML = `<p class="text-xs text-gray-500 italic">No hay comentarios registrados todavía para ${platformName}.</p>`;
+                return;
+            }
+
+            container.innerHTML = '';
+            filtered.forEach(c => {
+                container.innerHTML += `
+                    <div class="bg-brand-dark p-3 rounded-xl border border-brand-border/60 text-xs space-y-1">
+                        <div class="flex justify-between text-gray-400 text-[10px]">
+                            <span class="font-bold text-gray-200">${c.author} (${c.region})</span>
+                            <span>${c.time}</span>
+                        </div>
+                        <p class="text-gray-300">${c.text}</p>
+                    </div>
+                `;
+            });
+        }
+
+        document.getElementById('global-comment-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const author = document.getElementById('comment-author').value;
+            const platform = document.getElementById('comment-platform-select').value;
+            const region = document.getElementById('comment-region').value;
+            const text = document.getElementById('comment-text').value;
+
+            const newComment = {
+                author: author,
+                role: "Docente / Apoderado",
+                region: region,
+                platform: platform,
+                text: text,
+                time: "Hace un instante",
+                likes: 1
+            };
+
+            commentsData.unshift(newComment);
+            saveCommentsToStorage();
+            renderGlobalComments();
+            this.reset();
+            showNotification("¡Tu comentario ha sido guardado permanentemente!");
+        });
+
+        function likeComment(index) {
+            commentsData[index].likes += 1;
+            saveCommentsToStorage();
+            renderGlobalComments();
+        }
+
+        function setupNewPlatformForm() {
+            document.getElementById('new-platform-form').addEventListener('submit', function(e) {
+                e.preventDefault();
+                const name = document.getElementById('new-p-name').value;
+                const rawUrl = document.getElementById('new-p-url').value;
+                const category = document.getElementById('new-p-category').value;
+                const socialUrl = document.getElementById('new-p-social').value;
+
+                let domain = 'ejemplo.com';
+                try {
+                    domain = new URL(rawUrl).hostname;
+                } catch(err) {
+                    domain = rawUrl.replace('https://', '').replace('http://', '').split('/')[0];
+                }
+
+                const newId = 'p_' + Date.now();
+                const categoryLabels = {
+                    'libro': 'Libro Digital & Gestión Escolar',
+                    'mineduc': 'Sistema Mineduc / Estado',
+                    'global': 'Aula Virtual & Apps'
+                };
+
+                const socialsArr = [];
+                if (socialUrl) {
+                    let socIcon = 'fa-brands fa-instagram text-pink-500';
+                    if (socialUrl.includes('facebook')) socIcon = 'fa-brands fa-facebook text-blue-500';
+                    socialsArr.push({ name: 'Oficial', url: socialUrl, icon: socIcon });
+                } else {
+                    socialsArr.push({ name: 'Soporte Web', url: rawUrl, icon: 'fa-solid fa-globe text-emerald-400' });
+                }
+
+                const newPlatformObj = {
+                    id: newId,
+                    name: name,
+                    domain: domain,
+                    exactLogo: '',
+                    category: category,
+                    categoryLabel: categoryLabels[category] || 'Plataforma Educativa',
+                    status: 'success',
+                    statusText: 'Recién Agregada',
+                    url: rawUrl,
+                    socials: socialsArr,
+                    sentiment: {
+                        posPercent: 85,
+                        negPercent: 15,
+                        mentions: 'Sugerida recientemente',
+                        trend: 'Registro reciente de la comunidad.',
+                        topChannel: 'Instagram / Redes Oficiales',
+                        topChannelIcon: 'fa-brands fa-instagram text-pink-500',
+                        posts: [
+                            { user: '@comunidad_escolar', platform: 'Instagram', text: `Plataforma ${name} sugerida por usuarios.`, time: 'Hace un instante', likes: 5 }
+                        ]
+                    },
+                    qualityScore: 90,
+                    qualityLabel: 'Sugerida por la comunidad (Excelente)',
+                    qualityColor: 'bg-emerald-500',
+                    qualityTextColor: 'text-emerald-400',
+                    totalReportsToday: 1,
+                    lastReportTime: 'Hace un instante',
+                    serverStatus: 'Monitoreo Inicial',
+                    affectedModules: 'Ninguno',
+                    issues: [
+                        { name: 'Sugerida recientemente', percent: 100 }
+                    ],
+                    hourlyData: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1]
+                };
+
+                platformsData.unshift(newPlatformObj);
+                savePlatformsToStorage();
+                populateSelects();
+                renderPlatformsGrid();
+                this.reset();
+
+                showNotification(`¡Plataforma "${name}" agregada exitosamente a EduStatus CL!`);
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+        }
+
+        function openGlobalReportModal() {
+            const modal = document.getElementById('report-modal');
+            modal.classList.remove('opacity-0', 'pointer-events-none');
+        }
+
+        function openReportModalForId(platformId) {
+            document.getElementById('modal-select-platform').value = platformId;
+            openGlobalReportModal();
+        }
+
+        function openReportModalForSelected() {
+            if (selectedPlatform) {
+                document.getElementById('modal-select-platform').value = selectedPlatform.id;
+            }
+            openGlobalReportModal();
+        }
+
+        function closeReportModal() {
+            const modal = document.getElementById('report-modal');
+            modal.classList.add('opacity-0', 'pointer-events-none');
+        }
+
+        function submitReportModal() {
+            const platformId = document.getElementById('modal-select-platform').value;
+            const target = platformsData.find(p => p.id === platformId);
+            
+            if (target) {
+                target.totalReportsToday += 1;
+                target.hourlyData[target.hourlyData.length - 1] += 1;
+
+                if (target.qualityScore > 10) {
+                    target.qualityScore -= 2;
+                }
+
+                if (target.sentiment && target.sentiment.posPercent > 5) {
+                    target.sentiment.posPercent -= 2;
+                    target.sentiment.negPercent += 2;
+                }
+
+                if (target.qualityScore < 40) {
+                    target.status = 'danger';
+                    target.statusText = 'Caída / Fallas Frecuentes';
+                    target.qualityColor = 'bg-red-500';
+                    target.qualityTextColor = 'text-red-400';
+                    target.qualityLabel = 'Mala Estabilidad (Se cae seguido / Inestable)';
+                } else if (target.qualityScore < 75) {
+                    target.status = 'warning';
+                    target.statusText = 'Lentitud Detectada';
+                    target.qualityColor = 'bg-amber-500';
+                    target.qualityTextColor = 'text-amber-400';
+                    target.qualityLabel = 'Estabilidad Moderada (Reportes de lentitud)';
+                }
+
+                savePlatformsToStorage();
+                renderPlatformsGrid();
+                if (selectedPlatform && selectedPlatform.id === target.id) {
+                    showPlatformDetail(target.id);
+                }
+            }
+
+            closeReportModal();
+            showNotification(`¡Reporte registrado y guardado para ${target ? target.name : 'la plataforma'}!`);
+        }
+
+        function showNotification(msg) {
+            const toast = document.createElement('div');
+            toast.className = 'fixed bottom-5 right-5 bg-brand-accent text-white font-black text-xs px-5 py-3.5 rounded-2xl shadow-2xl z-50 flex items-center space-x-2 border border-blue-400 animate-bounce';
+            toast.innerHTML = `<i class="fa-solid fa-circle-check text-base"></i><span>${msg}</span>`;
+            document.body.appendChild(toast);
+
+            setTimeout(() => toast.remove(), 3500);
+        }
+    </script>
+</body>
+</html>
