@@ -105,7 +105,6 @@
 
             <!-- Redes Sociales y Acciones -->
             <div class="flex items-center space-x-3 sm:space-x-4">
-                <!-- Redes ECOO EMPRESAS -->
                 <div class="hidden sm:flex items-center space-x-2 border-r border-brand-border pr-4 my-1">
                     <a href="https://www.instagram.com/ecooempresas/" target="_blank" rel="noopener noreferrer" class="bg-brand-dark hover:bg-pink-600/20 text-gray-300 hover:text-pink-400 border border-brand-border hover:border-pink-500/50 p-2 rounded-xl text-xs font-semibold flex items-center space-x-1.5 transition">
                         <i class="fa-brands fa-instagram text-sm"></i>
@@ -117,19 +116,16 @@
                     </a>
                 </div>
 
-                <!-- Botón Agregar Plataforma -->
                 <button onclick="scrollToNewPlatformSection()" class="bg-emerald-600/20 hover:bg-emerald-600/30 text-emerald-400 border border-emerald-500/40 px-3 py-2 rounded-xl text-xs font-bold transition flex items-center space-x-1.5">
                     <i class="fa-solid fa-plus-circle text-sm"></i>
                     <span class="hidden md:inline">Sugerir Plataforma</span>
                 </button>
 
-                <!-- Botón Inicio Selector -->
                 <button onclick="showPlatformGrid()" class="bg-brand-dark hover:bg-brand-border text-gray-200 px-3 py-2 rounded-xl text-xs font-bold transition flex items-center space-x-2 border border-brand-border">
                     <i class="fa-solid fa-table-cells text-sm"></i>
                     <span class="hidden sm:inline">Elegir Plataforma</span>
                 </button>
 
-                <!-- Botón Reportar General -->
                 <button onclick="openGlobalReportModal()" class="bg-gradient-to-r from-red-600 to-orange-600 hover:from-red-500 hover:to-orange-500 text-white font-black text-xs sm:text-sm px-4 py-2.5 rounded-xl shadow-lg hover:shadow-red-900/30 transition flex items-center space-x-2">
                     <i class="fa-solid fa-triangle-exclamation"></i>
                     <span>Reportar Fallo</span>
@@ -171,7 +167,7 @@
                             Selecciona la plataforma educativa que deseas revisar o reportar
                         </h1>
                         <p class="text-gray-400 text-sm sm:text-base">
-                            Monitorea en tiempo real estabilidad, firmas, análisis de redes sociales (Instagram/Facebook) y estado comunitario.
+                            Monitorea en tiempo real estabilidad, firmas, análisis de redes sociales (Instagram/Facebook) y estado comunitario de 18+ plataformas en Chile.
                         </p>
                     </div>
 
@@ -209,7 +205,7 @@
             <div class="flex flex-col md:flex-row gap-4 items-center justify-between">
                 <div class="relative w-full md:w-96">
                     <i class="fa-solid fa-magnifying-glass absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 text-sm"></i>
-                    <input type="text" id="search-input" placeholder="Buscar Syscol, Lirmi, MateoNet, ClassDojo, SIGE..." class="w-full bg-brand-card border border-brand-border focus:border-brand-accent rounded-2xl pl-11 pr-4 py-3 text-sm text-white placeholder-gray-500 outline-none transition shadow-inner">
+                    <input type="text" id="search-input" placeholder="Buscar Syscol, Lirmi, SIGE, DEMRE, Kimche..." class="w-full bg-brand-card border border-brand-border focus:border-brand-accent rounded-2xl pl-11 pr-4 py-3 text-sm text-white placeholder-gray-500 outline-none transition shadow-inner">
                 </div>
 
                 <div class="flex flex-wrap items-center gap-2 w-full md:w-auto" id="category-filters">
@@ -220,10 +216,10 @@
                         Libro Digital & Gestión
                     </button>
                     <button data-cat="mineduc" class="filter-btn bg-brand-card hover:bg-gray-800 text-gray-300 px-4 py-2.5 rounded-xl text-xs font-bold transition border border-brand-border">
-                        Sistemas Mineduc
+                        Sistemas Mineduc / Estado
                     </button>
                     <button data-cat="global" class="filter-btn bg-brand-card hover:bg-gray-800 text-gray-300 px-4 py-2.5 rounded-xl text-xs font-bold transition border border-brand-border">
-                        Aulas Virtuales
+                        Aulas Virtuales & Apps
                     </button>
                 </div>
             </div>
@@ -510,8 +506,8 @@
                         <label class="block text-xs font-bold text-gray-300 mb-1">Categoría:</label>
                         <select id="new-p-category" class="w-full bg-brand-dark border border-brand-border focus:border-emerald-500 rounded-xl px-4 py-2.5 text-xs text-white outline-none">
                             <option value="libro">Libro Digital & Gestión</option>
-                            <option value="mineduc">Sistema Mineduc</option>
-                            <option value="global">Aula Virtual</option>
+                            <option value="mineduc">Sistema Mineduc / Estado</option>
+                            <option value="global">Aula Virtual & Apps</option>
                         </select>
                     </div>
 
@@ -616,7 +612,7 @@
             </div>
 
             <p class="text-xs text-gray-500 max-w-2xl mx-auto">
-                EduStatus CL es un servicio público independiente desarrollado por ECOO EMPRESAS para monitorear plataformas educativas en Chile. Las marcas Syscol, Lirmi, Mateo, Webclass, SIGE Mineduc, Napsis, ClassDojo, Canvas y Google pertenecen a sus respectivos dueños.
+                EduStatus CL es un servicio público independiente desarrollado por ECOO EMPRESAS para monitorear las 18 principales plataformas educativas en Chile. Las marcas Syscol, Lirmi, Mateo, Webclass, SIGE, Napsis, ClassDojo, Google Classroom, Canvas, Kimche, Edufácil, SchoolNet, SM Educamos, FullCollege, Appoderado, JUNAEB, DEMRE y Agencia de Educación pertenecen a sus respectivos dueños.
             </p>
 
             <p class="text-[11px] text-gray-600">
@@ -626,12 +622,13 @@
     </footer>
 
     <script>
-        // Datos de Plataformas Educativas Chilenas con Redes Oficiales e Integración de Sentimiento
+        // Data Completa de las 18 Plataformas Educativas Chilenas
         const initialPlatformsData = [
             {
                 id: 'syscol',
                 name: 'Syscol',
                 domain: 'web.syscol.com',
+                exactLogo: '',
                 category: 'libro',
                 categoryLabel: 'Libro Digital & Gestión Escolar',
                 status: 'danger',
@@ -671,11 +668,12 @@
                 id: 'lirmi',
                 name: 'Lirmi',
                 domain: 'lirmi.com',
+                exactLogo: '',
                 category: 'libro',
                 categoryLabel: 'LMS & Evaluaciones Escolares',
                 status: 'warning',
                 statusText: 'Lentitud Detectada',
-                url: 'https://www.lirmi.com',
+                url: 'https://lirmi.com/',
                 socials: [
                     { name: 'Instagram', url: 'https://www.instagram.com/lirmi_com/?hl=es', icon: 'fa-brands fa-instagram text-pink-500' }
                 ],
@@ -708,16 +706,16 @@
             },
             {
                 id: 'mateo',
-                name: 'MateoNet',
+                name: 'Mateo',
                 domain: 'mateonet.cl',
+                exactLogo: '',
                 category: 'libro',
                 categoryLabel: 'Gestión Institucional',
                 status: 'success',
                 statusText: 'Operativo',
-                url: 'https://www.mateonet.cl',
+                url: 'https://mateonet.cl/',
                 socials: [
-                    { name: 'Instagram', url: 'https://www.instagram.com/mateonetchile/', icon: 'fa-brands fa-instagram text-pink-500' },
-                    { name: 'Facebook', url: 'https://www.facebook.com/mateonetchile/', icon: 'fa-brands fa-facebook text-blue-500' }
+                    { name: 'Instagram', url: 'https://www.instagram.com/mateonetchile/', icon: 'fa-brands fa-instagram text-pink-500' }
                 ],
                 sentiment: {
                     posPercent: 88,
@@ -727,8 +725,7 @@
                     topChannel: 'Instagram @mateonetchile',
                     topChannelIcon: 'fa-brands fa-instagram text-pink-500',
                     posts: [
-                        { user: '@colegio_andino', platform: 'Instagram', text: 'Súper estable MateoNet esta semana, se agradece el soporte técnico en Instagram.', time: 'Hace 2 días', likes: 34 },
-                        { user: '@profe_carla', platform: 'Facebook', text: 'Sin problemas para ingresar informes de personalidad.', time: 'Hace 1 día', likes: 15 }
+                        { user: '@colegio_andino', platform: 'Instagram', text: 'Súper estable MateoNet esta semana, se agradece el soporte técnico.', time: 'Hace 2 días', likes: 34 }
                     ]
                 },
                 qualityScore: 88,
@@ -748,24 +745,25 @@
             {
                 id: 'webclass',
                 name: 'Webclass',
-                domain: 'webclass.com',
+                domain: 'webclass.cl',
+                exactLogo: '',
                 category: 'libro',
-                categoryLabel: 'Plataforma Curricular',
+                categoryLabel: 'Plataforma Curricular & Gestión',
                 status: 'success',
                 statusText: 'Operativo',
-                url: 'https://www.webclass.com',
+                url: 'https://webclass.cl/',
                 socials: [
-                    { name: 'LinkedIn', url: 'https://www.linkedin.com/company/webclass/', icon: 'fa-brands fa-linkedin text-blue-400' }
+                    { name: 'Web', url: 'https://webclass.cl/', icon: 'fa-solid fa-globe text-emerald-400' }
                 ],
                 sentiment: {
-                    posPercent: 81,
-                    negPercent: 19,
+                    posPercent: 82,
+                    negPercent: 18,
                     mentions: '310 interacciones semanales',
-                    trend: 'Buen nivel de respuesta en redes para consultas sobre planificación curricular.',
-                    topChannel: 'LinkedIn / Redes Sociales',
-                    topChannelIcon: 'fa-brands fa-linkedin text-blue-400',
+                    trend: 'Buen nivel de respuesta para planificación curricular.',
+                    topChannel: 'Portal Webclass',
+                    topChannelIcon: 'fa-solid fa-chalkboard-user text-blue-400',
                     posts: [
-                        { user: '@docente_chile', platform: 'Instagram', text: 'Webclass funciona bastante fluido para cargar la cobertura curricular.', time: 'Hace 3 días', likes: 21 }
+                        { user: '@docente_chile', platform: 'Web', text: 'Webclass funciona fluido para cargar cobertura curricular.', time: 'Hace 3 días', likes: 21 }
                     ]
                 },
                 qualityScore: 82,
@@ -784,29 +782,30 @@
             },
             {
                 id: 'sige',
-                name: 'SIGE / Mineduc',
+                name: 'SIGE (Mineduc)',
                 domain: 'sige.mineduc.cl',
+                exactLogo: 'https://staticv2.mineduc.cl/img/logo-med.png',
                 category: 'mineduc',
-                categoryLabel: 'Sistema de Información General Mineduc',
+                categoryLabel: 'Sistema Información General Mineduc',
                 status: 'warning',
                 statusText: 'Saturación en Cierre de Mes',
-                url: 'https://sige.mineduc.cl',
+                url: 'https://sige.mineduc.cl/',
                 socials: [
-                    { name: 'Twitter / X Mineduc', url: 'https://x.com/Mineduc', icon: 'fa-brands fa-x-twitter text-gray-300' }
+                    { name: 'X / Twitter Mineduc', url: 'https://x.com/Mineduc', icon: 'fa-brands fa-x-twitter text-gray-300' }
                 ],
                 sentiment: {
                     posPercent: 30,
                     negPercent: 70,
                     mentions: '2,100 menciones de docentes',
-                    trend: 'Comentarios constantes por sobrecarga en fechas límite de asistencia de subvenciones.',
-                    topChannel: 'Twitter / X @Mineduc',
+                    trend: 'Comentarios constantes por sobrecarga en fechas límite de subvenciones.',
+                    topChannel: 'Twitter @Mineduc',
                     topChannelIcon: 'fa-brands fa-x-twitter text-gray-300',
                     posts: [
-                        { user: '@sostenedor_rm', platform: 'Twitter', text: 'El SIGE colapsado justo en la fecha límite de carga de subvención escolar.', time: 'Hace 3 horas', likes: 52 }
+                        { user: '@sostenedor_rm', platform: 'Twitter', text: 'El SIGE colapsado justo en el cierre de la fecha de carga de subvención.', time: 'Hace 3 horas', likes: 52 }
                     ]
                 },
                 qualityScore: 35,
-                qualityLabel: 'Mala Estabilidad (Caídas frecuentes en cierres)',
+                qualityLabel: 'Mala Estabilidad (Caídas en cierres)',
                 qualityColor: 'bg-red-500',
                 qualityTextColor: 'text-red-400',
                 totalReportsToday: 210,
@@ -814,9 +813,9 @@
                 serverStatus: 'Saturación de consultas de subvención',
                 affectedModules: 'Módulo de Asistencia y Matrícula',
                 issues: [
-                    { name: 'Error 504 / Tiempo de espera agotado', percent: 55 },
+                    { name: 'Error 504 / Tiempo agotado', percent: 55 },
                     { name: 'Clave Única no conecta', percent: 30 },
-                    { name: 'Cierre automático de sesión', percent: 15 }
+                    { name: 'Cierre de sesión repentino', percent: 15 }
                 ],
                 hourlyData: [2, 0, 0, 0, 2, 5, 10, 32, 70, 85, 52, 40, 35, 20, 15, 12]
             },
@@ -824,23 +823,24 @@
                 id: 'napsis',
                 name: 'Napsis',
                 domain: 'napsis.cl',
+                exactLogo: 'https://www.napsis.cl/img/logo-napsis.svg',
                 category: 'libro',
                 categoryLabel: 'Plataforma de Gestión Escolar',
                 status: 'success',
                 statusText: 'Operativo',
-                url: 'https://www.napsis.cl',
+                url: 'https://www.napsis.cl/',
                 socials: [
                     { name: 'Facebook', url: 'https://www.facebook.com/napsischile/', icon: 'fa-brands fa-facebook text-blue-500' }
                 ],
                 sentiment: {
-                    posPercent: 75,
-                    negPercent: 25,
-                    mentions: '240 publicaciones en Facebook',
+                    posPercent: 78,
+                    negPercent: 22,
+                    mentions: '240 publicaciones',
                     trend: 'Buen desempeño general reportado por colegios de regiones.',
                     topChannel: 'Facebook Napsis',
                     topChannelIcon: 'fa-brands fa-facebook text-blue-500',
                     posts: [
-                        { user: '@colegio_sur', platform: 'Facebook', text: 'Todo ordenado en Napsis esta semana.', time: 'Hace 2 días', likes: 11 }
+                        { user: '@colegio_sur', platform: 'Facebook', text: 'Todo ordenado en Napsis esta semana para el ingreso de notas.', time: 'Hace 2 días', likes: 11 }
                     ]
                 },
                 qualityScore: 78,
@@ -861,23 +861,24 @@
                 id: 'classdojo',
                 name: 'ClassDojo',
                 domain: 'classdojo.com',
+                exactLogo: '',
                 category: 'global',
                 categoryLabel: 'Comunicación y Aula Virtual',
                 status: 'success',
                 statusText: 'Operativo',
-                url: 'https://www.classdojo.com',
+                url: 'https://www.classdojo.com/',
                 socials: [
                     { name: 'Instagram', url: 'https://www.instagram.com/classdojo/', icon: 'fa-brands fa-instagram text-pink-500' }
                 ],
                 sentiment: {
-                    posPercent: 92,
-                    negPercent: 8,
-                    mentions: '3,100 interacciones globales',
-                    trend: 'Muy popular entre apoderados con comentarios sumamente positivos sobre la app.',
+                    posPercent: 94,
+                    negPercent: 6,
+                    mentions: '3,100 interacciones',
+                    trend: 'Muy popular entre apoderados con comentarios positivos.',
                     topChannel: 'Instagram @classdojo',
                     topChannelIcon: 'fa-brands fa-instagram text-pink-500',
                     posts: [
-                        { user: '@mama_apoderada', platform: 'Instagram', text: 'Amo las fotos y puntos de ClassDojo para estar al día con mi hijo.', time: 'Hace 1 día', likes: 64 }
+                        { user: '@mama_apoderada', platform: 'Instagram', text: 'Amo la app para estar al día con las tareas de mi hijo.', time: 'Hace 1 día', likes: 64 }
                     ]
                 },
                 qualityScore: 94,
@@ -886,11 +887,11 @@
                 qualityTextColor: 'text-emerald-400',
                 totalReportsToday: 5,
                 lastReportTime: 'Hace 2 horas',
-                serverStatus: 'Sin fallas en servidores globales',
+                serverStatus: 'Servidores Globales OK',
                 affectedModules: 'Sin afección',
                 issues: [
                     { name: 'Notificaciones push demoradas', percent: 70 },
-                    { name: 'Traducción automática de mensajes', percent: 30 }
+                    { name: 'Traducción de mensajes', percent: 30 }
                 ],
                 hourlyData: [0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 1, 0, 0, 0, 1]
             },
@@ -898,26 +899,27 @@
                 id: 'classroom',
                 name: 'Google Classroom',
                 domain: 'classroom.google.com',
+                exactLogo: '',
                 category: 'global',
                 categoryLabel: 'Aula Virtual Global',
                 status: 'success',
                 statusText: 'Operativo',
-                url: 'https://classroom.google.com',
+                url: 'https://classroom.google.com/',
                 socials: [
-                    { name: 'Twitter Google Workspace', url: 'https://x.com/GoogleWorkspace', icon: 'fa-brands fa-x-twitter text-gray-300' }
+                    { name: 'Google Workspace', url: 'https://workspace.google.com/', icon: 'fa-brands fa-google text-emerald-400' }
                 ],
                 sentiment: {
-                    posPercent: 95,
-                    negPercent: 5,
-                    mentions: '12,000 interacciones internacionales',
-                    trend: 'Disponibilidad alta permanente respaldada por servidores de Google.',
-                    topChannel: 'Google Workspace Social',
+                    posPercent: 96,
+                    negPercent: 4,
+                    mentions: '12,000 interacciones',
+                    trend: 'Disponibilidad alta respaldada por infraestructura de Google.',
+                    topChannel: 'Google Workspace',
                     topChannelIcon: 'fa-brands fa-google text-emerald-400',
                     posts: [
-                        { user: '@profe_tecnologia', platform: 'Twitter', text: 'Classroom respondiendo perfecto para tareas masivas.', time: 'Hace 5 horas', likes: 88 }
+                        { user: '@profe_tecnologia', platform: 'Google', text: 'Classroom respondiendo perfecto para tareas masivas.', time: 'Hace 5 horas', likes: 88 }
                     ]
                 },
-                qualityScore: 95,
+                qualityScore: 96,
                 qualityLabel: 'Excelente Rendimiento Global',
                 qualityColor: 'bg-emerald-500',
                 qualityTextColor: 'text-emerald-400',
@@ -927,14 +929,15 @@
                 affectedModules: 'Sin afección',
                 issues: [
                     { name: 'Adjuntar archivos pesados', percent: 50 },
-                    { name: 'Notificaciones de correo', percent: 50 }
+                    { name: 'Notificaciones por mail', percent: 50 }
                 ],
                 hourlyData: [1, 1, 0, 0, 1, 2, 3, 4, 6, 5, 4, 3, 3, 2, 2, 1]
             },
             {
                 id: 'canvas',
-                name: 'Canvas LMS',
+                name: 'Canvas',
                 domain: 'instructure.com',
+                exactLogo: '',
                 category: 'global',
                 categoryLabel: 'Plataforma Universitaria & Escolar',
                 status: 'success',
@@ -944,14 +947,14 @@
                     { name: 'Instagram', url: 'https://www.instagram.com/instructure/', icon: 'fa-brands fa-instagram text-pink-500' }
                 ],
                 sentiment: {
-                    posPercent: 90,
-                    negPercent: 10,
+                    posPercent: 91,
+                    negPercent: 9,
                     mentions: '1,800 menciones universitarias',
-                    trend: 'Menciones positivas sobre la app móvil y sistema de velocidad de calificación.',
+                    trend: 'Menciones positivas sobre la app móvil y sistema de calificaciones.',
                     topChannel: 'Instagram @instructure',
                     topChannelIcon: 'fa-brands fa-instagram text-pink-500',
                     posts: [
-                        { user: '@estudiante_uc', platform: 'Instagram', text: 'Canvas funcionando impecable para rendir evaluaciones online.', time: 'Hace 1 día', likes: 31 }
+                        { user: '@estudiante_uc', platform: 'Instagram', text: 'Canvas impecable para rendir evaluaciones online.', time: 'Hace 1 día', likes: 31 }
                     ]
                 },
                 qualityScore: 91,
@@ -963,29 +966,373 @@
                 serverStatus: 'Servidores Normales',
                 affectedModules: 'Sin afección',
                 issues: [
-                    { name: 'Carga de archivos multimedia', percent: 60 },
+                    { name: 'Carga de video multimedia', percent: 60 },
                     { name: 'Aviso de tareas', percent: 40 }
                 ],
                 hourlyData: [0, 0, 0, 1, 0, 1, 1, 2, 2, 1, 1, 0, 0, 0, 0, 0]
+            },
+            {
+                id: 'kimche',
+                name: 'KIMCHE',
+                domain: 'kimche.co',
+                exactLogo: '',
+                category: 'libro',
+                categoryLabel: 'Big Data & Software Escolar',
+                status: 'success',
+                statusText: 'Operativo',
+                url: 'https://kimche.co/',
+                socials: [
+                    { name: 'Instagram', url: 'https://www.instagram.com/kimche.co/', icon: 'fa-brands fa-instagram text-pink-500' }
+                ],
+                sentiment: {
+                    posPercent: 87,
+                    negPercent: 13,
+                    mentions: '410 interacciones',
+                    trend: 'Comunidad destaca la analítica de asistencia y alertas preventivas.',
+                    topChannel: 'Instagram @kimche.co',
+                    topChannelIcon: 'fa-brands fa-instagram text-pink-500',
+                    posts: [
+                        { user: '@orientador_liceo', platform: 'Instagram', text: 'Muy buen sistema para detectar estudiantes con riesgo de deserción.', time: 'Hace 2 días', likes: 29 }
+                    ]
+                },
+                qualityScore: 87,
+                qualityLabel: 'Excelente Estabilidad & Analítica',
+                qualityColor: 'bg-emerald-500',
+                qualityTextColor: 'text-emerald-400',
+                totalReportsToday: 14,
+                lastReportTime: 'Hace 30 min',
+                serverStatus: 'Servicio Estable',
+                affectedModules: 'Sin afección',
+                issues: [
+                    { name: 'Demora en reporte impreso', percent: 70 },
+                    { name: 'Sincronización de correos', percent: 30 }
+                ],
+                hourlyData: [0, 0, 0, 0, 1, 2, 2, 3, 2, 1, 1, 1, 0, 1, 0, 0]
+            },
+            {
+                id: 'edufacil',
+                name: 'Edufácil',
+                domain: 'edufacil.cl',
+                exactLogo: '',
+                category: 'libro',
+                categoryLabel: 'Gestión Escolar Integral',
+                status: 'success',
+                statusText: 'Operativo',
+                url: 'https://edufacil.cl/',
+                socials: [
+                    { name: 'Web', url: 'https://edufacil.cl/', icon: 'fa-solid fa-globe text-emerald-400' }
+                ],
+                sentiment: {
+                    posPercent: 80,
+                    negPercent: 20,
+                    mentions: '290 menciones',
+                    trend: 'Buena recepción en colegios particulares y subvencionados.',
+                    topChannel: 'Portal Edufácil',
+                    topChannelIcon: 'fa-solid fa-school text-blue-400',
+                    posts: [
+                        { user: '@inspectoria_general', platform: 'Web', text: 'Edufácil operativo para el registro de atrasos.', time: 'Hace 1 día', likes: 14 }
+                    ]
+                },
+                qualityScore: 80,
+                qualityLabel: 'Muy Buena Estabilidad',
+                qualityColor: 'bg-emerald-500',
+                qualityTextColor: 'text-emerald-400',
+                totalReportsToday: 21,
+                lastReportTime: 'Hace 15 min',
+                serverStatus: 'Normal',
+                affectedModules: 'Sin afección',
+                issues: [
+                    { name: 'Lentitud en certificados', percent: 60 },
+                    { name: 'Acceso apoderados', percent: 40 }
+                ],
+                hourlyData: [0, 0, 0, 0, 1, 1, 3, 5, 4, 3, 2, 1, 1, 0, 0, 0]
+            },
+            {
+                id: 'schoolnet',
+                name: 'SchoolNet Colegium',
+                domain: 'colegium.com',
+                exactLogo: '',
+                category: 'libro',
+                categoryLabel: 'Plataforma Académica Colegium',
+                status: 'warning',
+                statusText: 'Carga Lenta en App',
+                url: 'https://schoolnet.colegium.com/webapp/es_CL/login',
+                socials: [
+                    { name: 'Instagram', url: 'https://www.instagram.com/colegium_es/', icon: 'fa-brands fa-instagram text-pink-500' }
+                ],
+                sentiment: {
+                    posPercent: 65,
+                    negPercent: 35,
+                    mentions: '650 menciones',
+                    trend: 'Apoderados comentan demora al consultar notas desde la app móvil.',
+                    topChannel: 'Instagram @colegium_es',
+                    topChannelIcon: 'fa-brands fa-instagram text-pink-500',
+                    posts: [
+                        { user: '@papade3_cl', platform: 'Instagram', text: 'SchoolNet tarda bastante en cargar la libreta de notas los viernes.', time: 'Hace 4 horas', likes: 22 }
+                    ]
+                },
+                qualityScore: 65,
+                qualityLabel: 'Estabilidad Regular (Demora en app)',
+                qualityColor: 'bg-amber-500',
+                qualityTextColor: 'text-amber-400',
+                totalReportsToday: 140,
+                lastReportTime: 'Hace 10 min',
+                serverStatus: 'Carga elevada en webapp SchoolNet',
+                affectedModules: 'App Móvil & Notas Apoderados',
+                issues: [
+                    { name: 'Pantalla en blanco en login', percent: 50 },
+                    { name: 'Demora al ver calificaciones', percent: 35 },
+                    { name: 'Sesión expirada', percent: 15 }
+                ],
+                hourlyData: [1, 0, 0, 0, 1, 4, 8, 25, 40, 30, 18, 12, 10, 5, 2, 1]
+            },
+            {
+                id: 'educamos',
+                name: 'SM Educamos',
+                domain: 'educamos.com',
+                exactLogo: '',
+                category: 'global',
+                categoryLabel: 'Ecosistema Educativo Grupo SM',
+                status: 'success',
+                statusText: 'Operativo',
+                url: 'https://educamos.com/es-cl/',
+                socials: [
+                    { name: 'Web SM Chile', url: 'https://educamos.com/es-cl/', icon: 'fa-solid fa-book-open text-emerald-400' }
+                ],
+                sentiment: {
+                    posPercent: 84,
+                    negPercent: 16,
+                    mentions: '380 menciones',
+                    trend: 'Plataforma estable para licencias digitales de textos SM.',
+                    topChannel: 'Red SM Chile',
+                    topChannelIcon: 'fa-solid fa-book-open text-emerald-400',
+                    posts: [
+                        { user: '@profe_lenguaje', platform: 'Web', text: 'Sin inconvenientes para asignar actividades en la guía digital.', time: 'Hace 1 día', likes: 17 }
+                    ]
+                },
+                qualityScore: 84,
+                qualityLabel: 'Muy Buena Estabilidad',
+                qualityColor: 'bg-emerald-500',
+                qualityTextColor: 'text-emerald-400',
+                totalReportsToday: 16,
+                lastReportTime: 'Hace 40 min',
+                serverStatus: 'Funcionamiento Normal',
+                affectedModules: 'Sin afección',
+                issues: [
+                    { name: 'Validación de códigos de texto', percent: 70 },
+                    { name: 'Acceso profesores', percent: 30 }
+                ],
+                hourlyData: [0, 0, 0, 0, 0, 1, 2, 3, 4, 3, 1, 1, 0, 1, 0, 0]
+            },
+            {
+                id: 'fullcollege',
+                name: 'FullCollege',
+                domain: 'fullcollege.cl',
+                exactLogo: '',
+                category: 'libro',
+                categoryLabel: 'Gestión Académica & Escolar',
+                status: 'success',
+                statusText: 'Operativo',
+                url: 'https://fullcollege.cl/',
+                socials: [
+                    { name: 'Web Oficial', url: 'https://fullcollege.cl/', icon: 'fa-solid fa-globe text-emerald-400' }
+                ],
+                sentiment: {
+                    posPercent: 79,
+                    negPercent: 21,
+                    mentions: '190 interacciones',
+                    trend: 'Operatividad fluida en colegios de la zona central.',
+                    topChannel: 'Portal FullCollege',
+                    topChannelIcon: 'fa-solid fa-graduation-cap text-blue-400',
+                    posts: [
+                        { user: '@directora_colegio', platform: 'Web', text: 'Carga rápida de informes de notas finales.', time: 'Hace 2 días', likes: 9 }
+                    ]
+                },
+                qualityScore: 79,
+                qualityLabel: 'Buena Estabilidad',
+                qualityColor: 'bg-emerald-500',
+                qualityTextColor: 'text-emerald-400',
+                totalReportsToday: 11,
+                lastReportTime: 'Hace 1 hora',
+                serverStatus: 'Servidores OK',
+                affectedModules: 'Sin afección',
+                issues: [
+                    { name: 'Impresión de concentrados', percent: 65 },
+                    { name: 'Actualización de datos', percent: 35 }
+                ],
+                hourlyData: [0, 0, 0, 0, 0, 0, 1, 2, 2, 2, 1, 1, 1, 0, 0, 1]
+            },
+            {
+                id: 'appoderado',
+                name: 'Appoderado',
+                domain: 'appoderado.cl',
+                exactLogo: '',
+                category: 'global',
+                categoryLabel: 'Comunicación Escuela-Familia',
+                status: 'success',
+                statusText: 'Operativo',
+                url: 'https://appoderado.cl/',
+                socials: [
+                    { name: 'Instagram', url: 'https://www.instagram.com/appoderado/', icon: 'fa-brands fa-instagram text-pink-500' }
+                ],
+                sentiment: {
+                    posPercent: 89,
+                    negPercent: 11,
+                    mentions: '820 valoraciones',
+                    trend: 'Comentarios favorables por notificaciones inmediatas de anotaciones y citaciones.',
+                    topChannel: 'Instagram @appoderado',
+                    topChannelIcon: 'fa-brands fa-instagram text-pink-500',
+                    posts: [
+                        { user: '@apoderado_valpo', platform: 'Instagram', text: 'Me llegan altiro los avisos del colegio a mi celular.', time: 'Hace 1 día', likes: 40 }
+                    ]
+                },
+                qualityScore: 89,
+                qualityLabel: 'Excelente Rendimiento en App',
+                qualityColor: 'bg-emerald-500',
+                qualityTextColor: 'text-emerald-400',
+                totalReportsToday: 8,
+                lastReportTime: 'Hace 25 min',
+                serverStatus: 'Notificaciones Push OK',
+                affectedModules: 'Sin afección',
+                issues: [
+                    { name: 'Sonido de alertas', percent: 60 },
+                    { name: 'Cambio de contraseña', percent: 40 }
+                ],
+                hourlyData: [0, 0, 0, 0, 0, 1, 1, 2, 1, 1, 1, 0, 0, 1, 0, 0]
+            },
+            {
+                id: 'junaeb',
+                name: 'JUNAEB',
+                domain: 'junaeb.cl',
+                exactLogo: '',
+                category: 'mineduc',
+                categoryLabel: 'Junta Nacional de Auxilio Escolar y Becas',
+                status: 'warning',
+                statusText: 'Alta Demanda Becas',
+                url: 'https://www.junaeb.cl/',
+                socials: [
+                    { name: 'Instagram', url: 'https://www.instagram.com/junaeb_cl/', icon: 'fa-brands fa-instagram text-pink-500' }
+                ],
+                sentiment: {
+                    posPercent: 55,
+                    negPercent: 45,
+                    mentions: '4,500 consultas',
+                    trend: 'Picos de comentarios sobre estado de la TNE y postulaciones a becas.',
+                    topChannel: 'Instagram @junaeb_cl',
+                    topChannelIcon: 'fa-brands fa-instagram text-pink-500',
+                    posts: [
+                        { user: '@estudiante_tp', platform: 'Instagram', text: 'Consultando estado de renovación de beca, página con bastante fila virtual.', time: 'Hace 2 horas', likes: 73 }
+                    ]
+                },
+                qualityScore: 55,
+                qualityLabel: 'Estabilidad Moderada (Fila virtual alta)',
+                qualityColor: 'bg-amber-500',
+                qualityTextColor: 'text-amber-400',
+                totalReportsToday: 290,
+                lastReportTime: 'Hace 3 min',
+                serverStatus: 'Fila virtual activa en portal becas',
+                affectedModules: 'Portal Postulaciones y Consulta TNE',
+                issues: [
+                    { name: 'Lentitud en sistema de Becas', percent: 60 },
+                    { name: 'Consulta de estado TNE colapsada', percent: 30 },
+                    { name: 'Inconveniente al adjuntar certificados', percent: 10 }
+                ],
+                hourlyData: [2, 1, 0, 0, 2, 8, 20, 50, 80, 60, 40, 30, 20, 10, 5, 2]
+            },
+            {
+                id: 'demre',
+                name: 'DEMRE',
+                domain: 'demre.cl',
+                exactLogo: '',
+                category: 'mineduc',
+                categoryLabel: 'Departamento de Evaluación y Medición (PAES)',
+                status: 'success',
+                statusText: 'Operativo',
+                url: 'https://demre.cl/',
+                socials: [
+                    { name: 'Instagram', url: 'https://www.instagram.com/demre_uchile/', icon: 'fa-brands fa-instagram text-pink-500' }
+                ],
+                sentiment: {
+                    posPercent: 86,
+                    negPercent: 14,
+                    mentions: '3,800 menciones sobre PAES',
+                    trend: 'Página respondiendo velozmente para temarios y modelos de prueba.',
+                    topChannel: 'Instagram @demre_uchile',
+                    topChannelIcon: 'fa-brands fa-instagram text-pink-500',
+                    posts: [
+                        { user: '@preu_estudiante', platform: 'Instagram', text: 'Todo fluido para descargar los modelos de PAES en PDF.', time: 'Hace 1 día', likes: 51 }
+                    ]
+                },
+                qualityScore: 86,
+                qualityLabel: 'Excelente Estabilidad Institucional',
+                qualityColor: 'bg-emerald-500',
+                qualityTextColor: 'text-emerald-400',
+                totalReportsToday: 19,
+                lastReportTime: 'Hace 35 min',
+                serverStatus: 'Servidores U. de Chile OK',
+                affectedModules: 'Sin afección',
+                issues: [
+                    { name: 'Recuperación de clave PAES', percent: 70 },
+                    { name: 'Descarga de folletos', percent: 30 }
+                ],
+                hourlyData: [0, 0, 0, 0, 1, 1, 3, 4, 3, 2, 2, 1, 1, 1, 0, 0]
+            },
+            {
+                id: 'agenciaeducacion',
+                name: 'Agencia de Educación',
+                domain: 'agenciaeducacion.cl',
+                exactLogo: '',
+                category: 'mineduc',
+                categoryLabel: 'Agencia de Calidad de la Educación (SIMCE)',
+                status: 'success',
+                statusText: 'Operativo',
+                url: 'https://www.agenciaeducacion.cl/',
+                socials: [
+                    { name: 'X / Twitter Agencia', url: 'https://x.com/AgenciaEdu_cl', icon: 'fa-brands fa-x-twitter text-gray-300' }
+                ],
+                sentiment: {
+                    posPercent: 83,
+                    negPercent: 17,
+                    mentions: '510 menciones de directivos',
+                    trend: 'Consultas sobre informes de resultados SIMCE y categorización de desempeño.',
+                    topChannel: 'Twitter @AgenciaEdu_cl',
+                    topChannelIcon: 'fa-brands fa-x-twitter text-gray-300',
+                    posts: [
+                        { user: '@director_liceo', platform: 'Twitter', text: 'Acceso normal al portal de evaluación diagnóstica Dia.', time: 'Hace 2 días', likes: 18 }
+                    ]
+                },
+                qualityScore: 83,
+                qualityLabel: 'Muy Confiable y Estable',
+                qualityColor: 'bg-emerald-500',
+                qualityTextColor: 'text-emerald-400',
+                totalReportsToday: 7,
+                lastReportTime: 'Hace 2 horas',
+                serverStatus: 'Plataforma DIA y SIMCE OK',
+                affectedModules: 'Sin afección',
+                issues: [
+                    { name: 'Descarga de planillas de resultados', percent: 65 },
+                    { name: 'Clave de establecimiento', percent: 35 }
+                ],
+                hourlyData: [0, 0, 0, 0, 0, 1, 1, 2, 1, 1, 0, 0, 1, 0, 0, 0]
             }
         ];
 
         // Ticker de Alertas
         const alertTickerItems = [
-            "⚠️ **Syscol (web.syscol.com)**: Profesores reportan severas caídas al guardar firmas. Ver reclamos en Facebook.",
-            "📲 **Lirmi / MateoNet**: Revisa métricas de sentimiento en Instagram (@lirmi_com y @mateonetchile).",
-            "📊 **Barra de Calidad**: Consulta el nivel de estabilidad antes de ingresar notas en libros digitales.",
-            "🚀 **ECOO EMPRESAS**: Sistema de guardado en localStorage activado para comentarios y plataformas sugeridas."
+            "⚠️ **Syscol (web.syscol.com)**: Profesores reportan fallas al guardar firmas de clase. Revisa comentarios.",
+            "📲 **Mineduc / SIGE / JUNAEB**: Monitoreo de picos por cierre de subvenciones y postulaciones.",
+            "📊 **Barra de Calidad**: Consulta la estabilidad de las 18 plataformas escolares de Chile antes de digitar notas.",
+            "🚀 **ECOO EMPRESAS**: Guardado persistente habilitado para sugerencias y reportes inmediatos."
         ];
 
-        // Comentarios por defecto
+        // Comentarios Iniciales
         const initialComments = [
             {
                 author: "Prof. María Elena",
                 role: "Docente Educación Básica",
                 region: "Región Metropolitana",
                 platform: "Syscol",
-                text: "En Syscol (web.syscol.com) lleva más de 2 horas sin dejar firmar el libro de clases. Sale constantemente error 504.",
+                text: "En Syscol lleva más de 2 horas sin dejar firmar el libro de clases. Sale constantemente error 504.",
                 time: "Hace 8 min",
                 likes: 24
             },
@@ -994,7 +1341,7 @@
                 role: "Coordinador UTP",
                 region: "Valparaíso",
                 platform: "Lirmi",
-                text: "Lirmi con lentitud en el módulo de evaluaciones durante la mañana, pero permite trabajar.",
+                text: "Lirmi con lentitud en el módulo de evaluaciones durante la mañana, pero sí permite trabajar.",
                 time: "Hace 18 min",
                 likes: 12
             },
@@ -1002,58 +1349,80 @@
                 author: "Claudia R.",
                 role: "Administradora Escolar",
                 region: "Bío Bío",
-                platform: "SIGE / Mineduc",
-                text: "Imposible validar las asistencias en el SIGE hoy, la página no carga el formulario por cierre de mes.",
+                platform: "SIGE (Mineduc)",
+                text: "Imposible validar las asistencias en el SIGE hoy por sobrecarga de cierre de mes.",
                 time: "Hace 30 min",
                 likes: 16
             }
         ];
 
-        // Estado y Persistencia en localStorage
+        // Estado Global
         let platformsData = [];
         let commentsData = [];
         let activeCategoryFilter = 'all';
         let selectedPlatform = null;
         let detailChartInstance = null;
 
-        // SISTEMA INTELIGENTE MULTINIVEL DE LOGOS OFICIALES
-        function getSmartLogoHTML(platformName, domain, containerSizeClass = "w-10 h-10") {
-            const cleanDomain = domain.replace('https://', '').replace('http://', '').split('/')[0];
-            const initials = platformName.substring(0, 2).toUpperCase();
-            
-            // Level 1: Primary high-res favicons / direct clearbit
-            const primaryUrl = `https://logo.clearbit.com/${cleanDomain}`;
-            // Level 2: Secondary Google Favicon API
-            const fallbackUrl = `https://www.google.com/s2/favicons?domain=${cleanDomain}&sz=128`;
-
+        function getSmartLogoHTML(platform, containerSizeClass = "w-10 h-10") {
+            const cleanDomain = platform.domain.replace('https://', '').replace('http://', '').split('/')[0];
             const uniqueId = 'logo_' + Math.random().toString(36).substr(2, 9);
+
+            // Level 0: Check if platform has exact explicit logo provided
+            if (platform.exactLogo && platform.exactLogo.trim() !== '') {
+                return `
+                    <div class="${containerSizeClass} rounded-2xl bg-brand-dark p-1 border border-brand-border flex items-center justify-center shadow-inner overflow-hidden relative group/logo">
+                        <img id="${uniqueId}" 
+                             src="${platform.exactLogo}" 
+                             alt="${platform.name}" 
+                             class="w-full h-full object-contain transition transform group-hover/logo:scale-105"
+                             onerror="tryPrimaryClearbit(this, '${cleanDomain}', '${platform.name}')">
+                    </div>
+                `;
+            }
+
+            // Level 1: Primary high-res Clearbit
+            const primaryUrl = `https://logo.clearbit.com/${cleanDomain}`;
+            const secondaryUrl = `https://www.google.com/s2/favicons?domain=${cleanDomain}&sz=128`;
 
             return `
                 <div class="${containerSizeClass} rounded-2xl bg-brand-dark p-1 border border-brand-border flex items-center justify-center shadow-inner overflow-hidden relative group/logo">
                     <img id="${uniqueId}" 
                          src="${primaryUrl}" 
-                         alt="${platformName}" 
+                         alt="${platform.name}" 
                          class="w-full h-full object-contain transition transform group-hover/logo:scale-105"
-                         onerror="trySecondaryLogo(this, '${fallbackUrl}', '${platformName}')">
+                         onerror="trySecondaryGoogle(this, '${secondaryUrl}', '${platform.name}')">
                 </div>
             `;
         }
 
-        // Fallback Level 2 -> Level 3 (Avatar Vectorizado de Iniciales)
-        function trySecondaryLogo(imgElement, fallbackUrl, platformName) {
+        function tryPrimaryClearbit(imgElement, cleanDomain, platformName) {
+            const primaryUrl = `https://logo.clearbit.com/${cleanDomain}`;
+            const secondaryUrl = `https://www.google.com/s2/favicons?domain=${cleanDomain}&sz=128`;
+            imgElement.src = primaryUrl;
+            imgElement.onerror = function() {
+                trySecondaryGoogle(this, secondaryUrl, platformName);
+            };
+        }
+
+        function trySecondaryGoogle(imgElement, fallbackUrl, platformName) {
             if (!imgElement.dataset.triedSecondary) {
                 imgElement.dataset.triedSecondary = "true";
                 imgElement.src = fallbackUrl;
+                imgElement.onerror = function() {
+                    renderInitialsAvatar(this.parentElement, platformName);
+                };
             } else {
-                // Level 3: Avatar Vectorizado con Iniciales de Marca
-                const parent = imgElement.parentElement;
-                const initials = platformName.substring(0, 2).toUpperCase();
-                parent.innerHTML = `
-                    <div class="w-full h-full rounded-xl bg-gradient-to-tr from-brand-accent via-blue-600 to-emerald-500 flex items-center justify-center text-white font-black text-xs sm:text-sm tracking-wider shadow-md">
-                        ${initials}
-                    </div>
-                `;
+                renderInitialsAvatar(imgElement.parentElement, platformName);
             }
+        }
+
+        function renderInitialsAvatar(parentContainer, platformName) {
+            const initials = platformName.substring(0, 2).toUpperCase();
+            parentContainer.innerHTML = `
+                <div class="w-full h-full rounded-xl bg-gradient-to-tr from-brand-accent via-blue-600 to-emerald-500 flex items-center justify-center text-white font-black text-xs sm:text-sm tracking-wider shadow-md">
+                    ${initials}
+                </div>
+            `;
         }
 
         function loadStoredData() {
@@ -1082,6 +1451,7 @@
             localStorage.setItem('edustatus_platforms', JSON.stringify(platformsData));
         }
 
+        // Initialize Application
         window.onload = function() {
             loadStoredData();
             renderTicker();
@@ -1164,7 +1534,7 @@
 
             // Logo Inteligente
             const iconContainer = document.getElementById('detail-icon');
-            iconContainer.innerHTML = getSmartLogoHTML(platform.name, platform.domain, "w-14 h-14");
+            iconContainer.innerHTML = getSmartLogoHTML(platform, "w-14 h-14");
 
             // Badge Estado
             const badge = document.getElementById('detail-status-badge');
@@ -1179,7 +1549,7 @@
                 badge.innerText = platform.statusText;
             }
 
-            // RENDERING PANEL DE ANÁLISIS DE SENTIMIENTO SOCIAL
+            // Panel de Sentimiento Social
             renderSocialSentimentPanel(platform);
 
             // Barra de Calidad
@@ -1216,7 +1586,6 @@
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
-        // Render Panel de Sentimiento en Redes Sociales
         function renderSocialSentimentPanel(platform) {
             const sent = platform.sentiment || {
                 posPercent: 70,
@@ -1272,7 +1641,7 @@
                     `;
                 });
             } else {
-                postsContainer.innerHTML = `<p class="text-xs text-gray-500 italic">Sin publicaciones destacadas recientemente en Instagram o Facebook.</p>`;
+                postsContainer.innerHTML = `<p class="text-xs text-gray-500 italic">Sin publicaciones destacadas recientemente en redes.</p>`;
             }
         }
 
@@ -1360,7 +1729,6 @@
                     iconStatus = '<i class="fa-solid fa-circle-exclamation text-amber-400"></i>';
                 }
 
-                // Renderizar iconos de redes sociales
                 let socialBadgesHTML = '';
                 if (p.socials && p.socials.length > 0) {
                     p.socials.forEach(soc => {
@@ -1379,7 +1747,7 @@
                     <div class="space-y-4">
                         <div class="flex items-start justify-between">
                             <div class="flex items-center space-x-3 cursor-pointer" onclick="showPlatformDetail('${p.id}')">
-                                ${getSmartLogoHTML(p.name, p.domain, "w-12 h-12")}
+                                ${getSmartLogoHTML(p, "w-12 h-12")}
                                 <div>
                                     <h3 class="font-black text-white text-lg group-hover:text-brand-accent transition flex items-center space-x-1.5">
                                         <span>${p.name}</span>
@@ -1582,8 +1950,8 @@
                 const newId = 'p_' + Date.now();
                 const categoryLabels = {
                     'libro': 'Libro Digital & Gestión Escolar',
-                    'mineduc': 'Sistema Mineduc',
-                    'global': 'Aula Virtual'
+                    'mineduc': 'Sistema Mineduc / Estado',
+                    'global': 'Aula Virtual & Apps'
                 };
 
                 const socialsArr = [];
@@ -1599,6 +1967,7 @@
                     id: newId,
                     name: name,
                     domain: domain,
+                    exactLogo: '',
                     category: category,
                     categoryLabel: categoryLabels[category] || 'Plataforma Educativa',
                     status: 'success',
