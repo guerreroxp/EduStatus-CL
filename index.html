@@ -3,91 +3,187 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Monitoreo de Incidencias Web</title>
+  <title>Monitoreo de Estado e Incidencias Web</title>
   <style>
+    * {
+      box-sizing: border-box;
+    }
     body {
       font-family: Arial, sans-serif;
       margin: 20px;
       background-color: #f4f6f8;
+      color: #333;
     }
     h1 {
-      color: #333;
+      margin-bottom: 20px;
     }
     .form-container {
       background: #fff;
       padding: 15px;
       border-radius: 8px;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-      margin-bottom: 20px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.08);
+      margin-bottom: 25px;
       display: flex;
       gap: 10px;
     }
     input[type="text"] {
       flex: 1;
-      padding: 8px 12px;
+      padding: 10px;
       border: 1px solid #ccc;
       border-radius: 4px;
+      font-size: 0.95rem;
     }
     button {
-      padding: 8px 16px;
+      padding: 10px 16px;
       background-color: #007bff;
       color: white;
       border: none;
       border-radius: 4px;
       cursor: pointer;
+      font-weight: bold;
     }
     button:hover {
       background-color: #0056b3;
     }
     .grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-      gap: 15px;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 20px;
     }
     .card {
       background: white;
       border-radius: 8px;
       padding: 15px;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-      border-left: 5px solid #28a745;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.08);
+      border-top: 5px solid #28a745;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
     }
     .card.incidencia {
-      border-left-color: #dc3545;
+      border-top-color: #dc3545;
+    }
+    .card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 10px;
     }
     .card h3 {
-      margin: 0 0 10px 0;
-      font-size: 1.1rem;
+      margin: 0;
+      font-size: 1.05rem;
       word-break: break-all;
     }
-    .status {
+    .status-badge {
+      padding: 4px 8px;
+      border-radius: 12px;
+      font-size: 0.8rem;
       font-weight: bold;
-      color: #28a745;
+      background-color: #e6f4ea;
+      color: #1e7e34;
     }
-    .card.incidencia .status {
-      color: #dc3545;
+    .card.incidencia .status-badge {
+      background-color: #fce8e6;
+      color: #c5221f;
+    }
+    .btn-incidencia {
+      background-color: #dc3545;
+      margin-top: 10px;
+      width: 100%;
+    }
+    .btn-incidencia:hover {
+      background-color: #bd2130;
+    }
+    .btn-resolver {
+      background-color: #28a745;
+      margin-top: 10px;
+      width: 100%;
+    }
+    .btn-resolver:hover {
+      background-color: #218838;
+    }
+    /* Sección de Comentarios */
+    .comments-section {
+      margin-top: 15px;
+      border-top: 1px solid #eee;
+      padding-top: 10px;
+    }
+    .comments-title {
+      font-size: 0.85rem;
+      font-weight: bold;
+      color: #666;
+      margin-bottom: 5px;
+    }
+    .comments-list {
+      max-height: 90px;
+      overflow-y: auto;
+      margin-bottom: 8px;
+      padding-right: 5px;
+    }
+    .comment-item {
+      background-color: #f8f9fa;
+      padding: 6px 8px;
+      border-radius: 4px;
+      font-size: 0.82rem;
+      margin-bottom: 5px;
+      border-left: 2px solid #007bff;
+    }
+    .comment-input-group {
+      display: flex;
+      gap: 5px;
+    }
+    .comment-input-group input {
+      font-size: 0.85rem;
+      padding: 6px;
+    }
+    .comment-input-group button {
+      padding: 6px 10px;
+      font-size: 0.8rem;
+      background-color: #6c757d;
+    }
+    .comment-input-group button:hover {
+      background-color: #5a6268;
     }
   </style>
 </head>
 <body>
 
-  <h1>Monitoreo de Estado y Reporte de Incidencias</h1>
+  <h1>Panel de Monitoreo e Incidencias Web</h1>
 
   <!-- Formulario para agregar una nueva web -->
   <div class="form-container">
-    <input type="text" id="urlInput" placeholder="Ej: miweb.com o https://sitio.cl">
+    <input type="text" id="urlInput" placeholder="Escribe una URL para agregar (ej: miweb.cl)">
     <button onclick="agregarWeb()">Agregar Web</button>
   </div>
 
-  <!-- Contenedor donde se dibuja la grilla -->
+  <!-- Grilla principal -->
   <div id="gridWebs" class="grid"></div>
 
   <script>
-    // Estado inicial de las webs a monitorear
+    // Listado inicial con las 19 webs
     const listaWebs = [
-      { url: 'puntajenacional.cl', estado: 'Normal', tieneIncidencia: false }
+      { url: 'puntajenacional.cl', tieneIncidencia: false, comentarios: [] },
+      { url: 'demre.cl', tieneIncidencia: false, comentarios: [] },
+      { url: 'mineduc.cl', tieneIncidencia: false, comentarios: [] },
+      { url: 'subere.cl', tieneIncidencia: false, comentarios: [] },
+      { url: 'ingresa.cl', tieneIncidencia: false, comentarios: [] },
+      { url: 'beneficiosestudiantiles.cl', tieneIncidencia: false, comentarios: [] },
+      { url: 'chileatiende.gob.cl', tieneIncidencia: false, comentarios: [] },
+      { url: 'sence.cl', tieneIncidencia: false, comentarios: [] },
+      { url: 'registrocivil.cl', tieneIncidencia: false, comentarios: [] },
+      { url: 'sii.cl', tieneIncidencia: false, comentarios: [] },
+      { url: 'tne.cl', tieneIncidencia: false, comentarios: [] },
+      { url: 'mifuturo.cl', tieneIncidencia: false, comentarios: [] },
+      { url: 'agenciaeducacion.cl', tieneIncidencia: false, comentarios: [] },
+      { url: 'junji.gob.cl', tieneIncidencia: false, comentarios: [] },
+      { url: 'integra.cl', tieneIncidencia: false, comentarios: [] },
+      { url: 'junaeb.cl', tieneIncidencia: false, comentarios: [] },
+      { url: 'cultura.gob.cl', tieneIncidencia: false, comentarios: [] },
+      { url: 'conicyt.cl', tieneIncidencia: false, comentarios: [] },
+      { url: 'anid.cl', tieneIncidencia: false, comentarios: [] }
     ];
 
-    // Función para renderizar la grilla en el DOM
+    // Dibuja las tarjetas en la pantalla
     function renderizarGrilla() {
       const contenedor = document.getElementById('gridWebs');
       contenedor.innerHTML = '';
@@ -96,46 +192,77 @@
         const card = document.createElement('div');
         card.className = `card ${item.tieneIncidencia ? 'incidencia' : ''}`;
 
+        // Renderizado de lista de comentarios
+        const comentariosHtml = item.comentarios.length > 0
+          ? item.comentarios.map(c => `<div class="comment-item">${c}</div>`).join('')
+          : '<div style="font-size:0.8rem; color:#888;">Sin observaciones registrados.</div>';
+
         card.innerHTML = `
-          <h3>${item.url}</h3>
-          <p>Estado: <span class="status">${item.estado}</span></p>
-          <button onclick="reportarIncidencia(${index})">
-            ${item.tieneIncidencia ? 'Resolver Incidencia' : 'Reportar Incidencia'}
-          </button>
+          <div>
+            <div class="card-header">
+              <h3>${item.url}</h3>
+              <span class="status-badge">${item.tieneIncidencia ? 'Incidencia' : 'Operativo'}</span>
+            </div>
+            <button class="${item.tieneIncidencia ? 'btn-resolver' : 'btn-incidencia'}" onclick="alternarIncidencia(${index})">
+              ${item.tieneIncidencia ? 'Marcar Operativo' : 'Reportar Incidencia'}
+            </button>
+          </div>
+
+          <div class="comments-section">
+            <div class="comments-title">Comentarios e Incidencias:</div>
+            <div class="comments-list">
+              ${comentariosHtml}
+            </div>
+            <div class="comment-input-group">
+              <input type="text" id="comment-input-${index}" placeholder="Agregar nota...">
+              <button onclick="agregarComentario(${index})">Enviar</button>
+            </div>
+          </div>
         `;
 
         contenedor.appendChild(card);
       });
     }
 
-    // Función para que el usuario agregue una nueva web
+    // Permite al usuario incorporar un sitio nuevo
     function agregarWeb() {
       const input = document.getElementById('urlInput');
       const url = input.value.trim();
 
       if (url === '') {
-        alert('Por favor, ingresa una URL válida.');
+        alert('Por favor ingresa un nombre de dominio o URL válido.');
         return;
       }
 
       listaWebs.push({
         url: url,
-        estado: 'Normal',
-        tieneIncidencia: false
+        tieneIncidencia: false,
+        comentarios: []
       });
 
       input.value = '';
       renderizarGrilla();
     }
 
-    // Función para alternar estado de incidencia
-    function reportarIncidencia(index) {
+    // Cambia el estado de un sitio entre 'Operativo' e 'Incidencia'
+    function alternarIncidencia(index) {
       listaWebs[index].tieneIncidencia = !listaWebs[index].tieneIncidencia;
-      listaWebs[index].estado = listaWebs[index].tieneIncidencia ? 'Con Incidencia' : 'Normal';
       renderizarGrilla();
     }
 
-    // Carga inicial
+    // Agrega comentarios a un sitio en específico
+    function agregarComentario(index) {
+      const input = document.getElementById(`comment-input-${index}`);
+      const texto = input.value.trim();
+
+      if (texto !== '') {
+        const fecha = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+        listaWebs[index].comentarios.push(`[${fecha}] ${texto}`);
+        renderizarGrilla();
+      }
+    }
+
+    // Cargar grilla al inicializar
     document.addEventListener('DOMContentLoaded', renderizarGrilla);
   </script>
 
