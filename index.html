@@ -1,568 +1,143 @@
 <!DOCTYPE html>
-<html lang="es" class="dark">
+<html lang="es">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>EduStatus CL - Estado de Plataformas Educativas en Chile | Hecho por ECOO EMPRESAS</title>
-  
-  <!-- Tailwind CSS CDN -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  
-  <!-- FontAwesome Icons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-
-  <script>
-    tailwind.config = {
-      darkMode: 'class',
-      theme: {
-        extend: {
-          fontFamily: {
-            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
-          },
-          colors: {
-            brand: {
-              yellow: '#FFD700',
-              gray: '#333333',
-              red: '#E53E3E',
-              dark: '#121826',
-              card: '#1A2332',
-              border: '#2A364F'
-            }
-          }
-        }
-      }
-    }
-  </script>
-
+  <title>Monitoreo de Incidencias Web</title>
   <style>
     body {
-      background-color: #0B0F19;
-      color: #F3F4F6;
+      font-family: Arial, sans-serif;
+      margin: 20px;
+      background-color: #f4f6f8;
     }
-    .status-pulse-green {
-      box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.7);
-      animation: pulseGreen 2s infinite;
+    h1 {
+      color: #333;
     }
-    .status-pulse-red {
-      box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.7);
-      animation: pulseRed 2s infinite;
+    .form-container {
+      background: #fff;
+      padding: 15px;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      margin-bottom: 20px;
+      display: flex;
+      gap: 10px;
     }
-    @keyframes pulseGreen {
-      0% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.7); }
-      70% { box-shadow: 0 0 0 10px rgba(34, 197, 94, 0); }
-      100% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0); }
+    input[type="text"] {
+      flex: 1;
+      padding: 8px 12px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
     }
-    @keyframes pulseRed {
-      0% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.7); }
-      70% { box-shadow: 0 0 0 10px rgba(239, 68, 68, 0); }
-      100% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0); }
+    button {
+      padding: 8px 16px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
     }
-    .bg-grid-pattern {
-      background-image: radial-gradient(#1E293B 1px, transparent 1px);
-      background-size: 24px 24px;
+    button:hover {
+      background-color: #0056b3;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 15px;
+    }
+    .card {
+      background: white;
+      border-radius: 8px;
+      padding: 15px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      border-left: 5px solid #28a745;
+    }
+    .card.incidencia {
+      border-left-color: #dc3545;
+    }
+    .card h3 {
+      margin: 0 0 10px 0;
+      font-size: 1.1rem;
+      word-break: break-all;
+    }
+    .status {
+      font-weight: bold;
+      color: #28a745;
+    }
+    .card.incidencia .status {
+      color: #dc3545;
     }
   </style>
 </head>
-<body class="min-h-screen flex flex-col font-sans antialiased bg-grid-pattern">
+<body>
 
-  <!-- ENCABEZADO / NAVBAR -->
-  <header class="sticky top-0 z-50 bg-[#0B0F19]/90 backdrop-blur-md border-b border-slate-800">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
-      
-      <!-- Logo Principal ECOO EMPRESAS -->
-      <div class="flex items-center space-x-3 cursor-pointer" onclick="showView('grid')">
-        <div class="relative w-12 h-12 rounded-xl bg-slate-900 border border-yellow-500/30 p-1.5 flex items-center justify-center shadow-md shadow-yellow-500/10 overflow-hidden group">
-          <img src="1.png" alt="ECOO EMPRESAS" class="w-full h-full object-contain filter drop-shadow" onerror="this.onerror=null; this.parentElement.innerHTML='<i class=\"fa-solid fa-graduation-cap text-yellow-400 text-2xl\"></i>
-        </div>
-        <div>
-          <div class="flex items-center space-x-2">
-            <h1 class="text-xl font-extrabold tracking-tight text-white">EduStatus <span class="text-yellow-400">CL</span></h1>
-            <span id="platformCountBadge" class="px-2 py-0.5 text-[10px] font-bold bg-yellow-500/20 text-yellow-400 rounded-full border border-yellow-500/30">19 PLATAFORMAS</span>
-          </div>
-          <p class="text-xs text-gray-400 font-medium">Hecho por <span class="text-white font-semibold">ECOO EMPRESAS</span></p>
-        </div>
-      </div>
+  <h1>Monitoreo de Estado y Reporte de Incidencias</h1>
 
-      <!-- Acciones de Cabecera -->
-      <div class="flex items-center space-x-4">
-        <button onclick="resetAppCache()" class="hidden sm:inline-flex items-center space-x-2 px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-xs font-semibold text-gray-300 hover:text-white transition-all border border-slate-700" title="Restablecer datos">
-          <i class="fa-solid fa-rotate text-yellow-400"></i>
-          <span>Reiniciar Lista</span>
-        </button>
-        <a href="https://www.instagram.com/ecooempresas/" target="_blank" rel="noopener noreferrer" class="w-9 h-9 rounded-lg bg-pink-600/20 text-pink-400 hover:bg-pink-600 hover:text-white flex items-center justify-center transition-all border border-pink-500/30">
-          <i class="fa-brands fa-instagram text-base"></i>
-        </a>
-        <a href="https://www.youtube.com/ecooempresas" target="_blank" rel="noopener noreferrer" class="w-9 h-9 rounded-lg bg-red-600/20 text-red-400 hover:bg-red-600 hover:text-white flex items-center justify-center transition-all border border-red-500/30">
-          <i class="fa-brands fa-youtube text-base"></i>
-        </a>
-      </div>
+  <!-- Formulario para agregar una nueva web -->
+  <div class="form-container">
+    <input type="text" id="urlInput" placeholder="Ej: miweb.com o https://sitio.cl">
+    <button onclick="agregarWeb()">Agregar Web</button>
+  </div>
 
-    </div>
-  </header>
+  <!-- Contenedor donde se dibuja la grilla -->
+  <div id="gridWebs" class="grid"></div>
 
-  <!-- CONTENIDO PRINCIPAL -->
-  <main class="flex-1 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 w-full">
-
-    <!-- HERO DE BIENVENIDA -->
-    <div class="mb-10 text-center sm:text-left bg-gradient-to-r from-slate-900 via-slate-900/80 to-slate-800 p-6 sm:p-8 rounded-2xl border border-slate-800 relative overflow-hidden shadow-2xl">
-      <div class="relative z-10 max-w-3xl">
-        <span class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-slate-800 text-yellow-400 text-xs font-semibold mb-4 border border-slate-700">
-          <i class="fa-solid fa-signal text-[10px]"></i>
-          <span>Monitoreo Activo - Sistema Educativo en Chile</span>
-        </span>
-        <h2 class="text-2xl sm:text-4xl font-extrabold text-white leading-tight mb-3">
-          Estado y Estabilidad de Plataformas Educativas
-        </h2>
-        <p class="text-sm sm:text-base text-gray-400 mb-6">
-          Consulta disponibilidad, velocidad de respuesta, reportes comunitarios y perfiles oficiales del sistema escolar y preuniversitario chileno.
-        </p>
-
-        <!-- FILTROS Y BÚSQUEDA -->
-        <div class="flex flex-col sm:flex-row gap-3">
-          <div class="relative flex-1">
-            <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-1/2 -translate-y-1/2 text-gray-400 text-sm"></i>
-            <input type="text" id="searchInput" onkeyup="filterPlatforms()" placeholder="Buscar plataforma (Syscol, Puntaje Nacional, Lirmi, SIGE, Mateo...)" class="w-full pl-10 pr-4 py-2.5 rounded-xl bg-slate-950 border border-slate-800 text-sm text-white placeholder-gray-500 focus:outline-none focus:border-yellow-400 transition-all">
-          </div>
-          <div class="flex space-x-2 overflow-x-auto pb-1 sm:pb-0">
-            <button onclick="setCategoryFilter('all', this)" class="cat-btn active px-4 py-2.5 rounded-xl bg-yellow-400 text-slate-950 text-xs font-bold whitespace-nowrap transition-all shadow-md">Todas (19)</button>
-            <button onclick="setCategoryFilter('lms', this)" class="cat-btn px-4 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-gray-300 text-xs font-bold whitespace-nowrap transition-all border border-slate-700">LMS / Gestores</button>
-            <button onclick="setCategoryFilter('gob', this)" class="cat-btn px-4 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-gray-300 text-xs font-bold whitespace-nowrap transition-all border border-slate-700">Oficiales / PAES</button>
-            <button onclick="setCategoryFilter('virtual', this)" class="cat-btn px-4 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-gray-300 text-xs font-bold whitespace-nowrap transition-all border border-slate-700">Aulas / Preparación</button>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- VISTA DE GRILLA -->
-    <div id="gridView" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 g:grid-cols-4 gap-6">
-      <!-- Tarjetas renderizadas dinámicamente -->
-    </div>
-
-    <!-- VISTA DE DETALLE -->
-    <div id="detailView" class="hidden space-y-8">
-      <button onclick="showView('grid')" class="inline-flex items-center space-x-2 px-4 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-xs font-bold text-gray-200 transition-all border border-slate-700">
-        <i class="fa-solid fa-arrow-left"></i>
-        <span>Volver a la lista principal</span>
-      </button>
-
-      <div id="detailContent"></div>
-    </div>
-
-  </main>
-
-  <!-- PIE DE PÁGINA -->
-  <footer class="mt-16 bg-slate-950 border-t border-slate-800 py-10">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-6">
-      <div class="flex items-center space-x-3 text-center md:text-left">
-        <div class="w-10 h-10 rounded-xl bg-slate-900 border border-slate-800 p-1 flex items-center justify-center overflow-hidden">
-          <img src="1.png" alt="ECOO EMPRESAS" class="w-full h-full object-contain" onerror="this.onerror=null; this.parentElement.style.display='none';">
-        </div>
-        <div>
-          <p class="text-sm font-bold text-white">EduStatus CL &copy; 2026</p>
-          <p class="text-xs text-gray-500">Un proyecto desarrollado por <span class="text-gray-300 font-semibold">ECOO EMPRESAS</span> para la comunidad educativa.</p>
-        </div>
-      </div>
-      <div class="flex items-center space-x-6 text-xs text-gray-400">
-        <a href="https://www.instagram.com/ecooempresas/" target="_blank" class="hover:text-yellow-400 flex items-center space-x-1">
-          <i class="fa-brands fa-instagram text-pink-400"></i>
-          <span>@ecooempresas</span>
-        </a>
-        <a href="https://www.youtube.com/ecooempresas" target="_blank" class="hover:text-yellow-400 flex items-center space-x-1">
-          <i class="fa-brands fa-youtube text-red-500"></i>
-          <span>YouTube</span>
-        </a>
-      </div>
-    </div>
-  </footer>
-
-  <!-- SCRIPT CON LAS PLATAFORMAS (INCLUYE PUNTAJE NACIONAL) -->
   <script>
-    const masterPlatforms = [
-      {
-        id: 'puntajenacional',
-        name: 'Puntaje Nacional',
-        category: 'virtual',
-        url: 'https://www.puntajenacional.cl/',
-        domain: 'puntajenacional.cl',
-        icon: 'fa-graduation-cap',
-        qualityScore: 90,
-        qualityLabel: 'Alta Disponibilidad',
-        qualityDesc: 'Plataforma líder en preparación PAES y ensayos online con alta estabilidad.',
-        socialInsta: 'https://www.instagram.com/puntajenacional/',
-        socialFb: 'https://www.facebook.com/puntajenacional.cl/',
-        sentimentPos: 92,
-        sentimentNeg: 8,
-        status: 'operativo',
-        recentReports: 1
-      },
-      {
-        id: 'syscol',
-        name: 'Syscol',
-        category: 'lms',
-        url: 'https://web.syscol.com/',
-        domain: 'web.syscol.com',
-        icon: 'fa-book-bookmark',
-        qualityScore: 82,
-        qualityLabel: 'Estabilidad Aceptable',
-        qualityDesc: 'Plataforma estable la mayor parte del año. Presenta lentitud esporádica en cierres de promedio.',
-        socialInsta: 'https://www.instagram.com/syscol.cl/',
-        socialFb: 'https://www.facebook.com/syscolcom/',
-        sentimentPos: 78,
-        sentimentNeg: 22,
-        status: 'operativo',
-        recentReports: 2
-      },
-      {
-        id: 'lirmi',
-        name: 'Lirmi',
-        category: 'lms',
-        url: 'https://lirmi.com/',
-        domain: 'lirmi.com',
-        icon: 'fa-graduation-cap',
-        qualityScore: 92,
-        qualityLabel: 'Excelente Rendimiento',
-        qualityDesc: 'Alta disponibilidad y velocidad. Excelente soporte técnico en línea.',
-        socialInsta: 'https://www.instagram.com/lirmi_com/',
-        socialFb: 'https://www.facebook.com/lirmicom/',
-        sentimentPos: 91,
-        sentimentNeg: 9,
-        status: 'operativo',
-        recentReports: 1
-      },
-      {
-        id: 'mateo',
-        name: 'MateoNet',
-        category: 'lms',
-        url: 'https://mateonet.cl/',
-        domain: 'mateonet.cl',
-        icon: 'fa-chalkboard-user',
-        qualityScore: 68,
-        qualityLabel: 'Lentitud Frecuente',
-        qualityDesc: 'Funcional para gestión de asistencia, pero suele saturarse en horas de alta concurrencia.',
-        socialInsta: 'https://www.instagram.com/mateonetchile/',
-        socialFb: null,
-        sentimentPos: 65,
-        sentimentNeg: 35,
-        status: 'inestable',
-        recentReports: 14
-      },
-      {
-        id: 'webclass',
-        name: 'Webclass',
-        category: 'lms',
-        url: 'https://webclass.cl/',
-        domain: 'webclass.cl',
-        icon: 'fa-laptop-code',
-        qualityScore: 75,
-        qualityLabel: 'Rendimiento Regular',
-        qualityDesc: 'Buena cobertura pedagógica y planificación.',
-        socialInsta: 'https://www.instagram.com/webclass_chile/',
-        socialFb: 'https://www.facebook.com/webclasschile',
-        sentimentPos: 72,
-        sentimentNeg: 28,
-        status: 'operativo',
-        recentReports: 5
-      },
-      {
-        id: 'sige',
-        name: 'SIGE Mineduc',
-        category: 'gob',
-        url: 'https://sige.mineduc.cl/',
-        domain: 'sige.mineduc.cl',
-        icon: 'fa-building-columns',
-        qualityScore: 45,
-        qualityLabel: 'Frecuentes Caídas / Alta Saturación',
-        qualityDesc: 'Portal oficial de subvenciones. Experimenta severas caídas durante plazos críticos.',
-        socialInsta: 'https://www.instagram.com/mineducchile/',
-        socialFb: 'https://www.facebook.com/mineduc/',
-        sentimentPos: 38,
-        sentimentNeg: 62,
-        status: 'caido',
-        recentReports: 48
-      },
-      {
-        id: 'napsis',
-        name: 'Napsis',
-        category: 'lms',
-        url: 'https://www.napsis.cl/',
-        domain: 'napsis.cl',
-        icon: 'fa-school',
-        qualityScore: 80,
-        qualityLabel: 'Servicio Estable',
-        qualityDesc: 'Buena respuesta general del sistema de gestión directiva.',
-        socialInsta: 'https://www.instagram.com/napsischile/',
-        socialFb: null,
-        sentimentPos: 80,
-        sentimentNeg: 20,
-        status: 'operativo',
-        recentReports: 3
-      },
-      {
-        id: 'kimche',
-        name: 'KIMCHE',
-        category: 'lms',
-        url: 'https://kimche.co/',
-        domain: 'kimche.co',
-        icon: 'fa-chart-line',
-        qualityScore: 94,
-        qualityLabel: 'Excelente / Innovación',
-        qualityDesc: 'App móvil y plataforma web con alta velocidad de carga.',
-        socialInsta: 'https://www.instagram.com/kimche.co/',
-        socialFb: null,
-        sentimentPos: 95,
-        sentimentNeg: 5,
-        status: 'operativo',
-        recentReports: 0
-      },
-      {
-        id: 'edufacil',
-        name: 'Edufácil',
-        category: 'lms',
-        url: 'https://edufacil.cl/',
-        domain: 'edufacil.cl',
-        icon: 'fa-children',
-        qualityScore: 78,
-        qualityLabel: 'Estabilidad Moderada',
-        qualityDesc: 'Sistema ágil para control de asistencia y libro de clases digital.',
-        socialInsta: 'https://www.instagram.com/edufacil.cl/',
-        socialFb: null,
-        sentimentPos: 76,
-        sentimentNeg: 24,
-        status: 'operativo',
-        recentReports: 4
-      },
-      {
-        id: 'schoolnet',
-        name: 'SchoolNet (Colegium)',
-        category: 'lms',
-        url: 'https://schoolnet.colegium.com/',
-        domain: 'colegium.com',
-        icon: 'fa-users-rectangle',
-        qualityScore: 85,
-        qualityLabel: 'Muy Estable',
-        qualityDesc: 'Servicio robusto con amplio soporte para colegios.',
-        socialInsta: 'https://www.instagram.com/colegium_es/',
-        socialFb: null,
-        sentimentPos: 84,
-        sentimentNeg: 16,
-        status: 'operativo',
-        recentReports: 2
-      },
-      {
-        id: 'educamos',
-        name: 'SM Educamos Chile',
-        category: 'lms',
-        url: 'https://educamos.com/es-cl/',
-        domain: 'educamos.com',
-        icon: 'fa-book-open-reader',
-        qualityScore: 81,
-        qualityLabel: 'Estable con Soporte',
-        qualityDesc: 'Ecosistema de aprendizaje y gestión integral de grupo SM.',
-        socialInsta: 'https://www.instagram.com/grupo_sm_chile/',
-        socialFb: null,
-        sentimentPos: 82,
-        sentimentNeg: 18,
-        status: 'operativo',
-        recentReports: 3
-      },
-      {
-        id: 'fullcollege',
-        name: 'FullCollege',
-        category: 'lms',
-        url: 'https://fullcollege.cl/',
-        domain: 'fullcollege.cl',
-        icon: 'fa-clipboard-user',
-        qualityScore: 73,
-        qualityLabel: 'Aceptable',
-        qualityDesc: 'Software de administración de notas y matricula escolar.',
-        socialInsta: null,
-        socialFb: null,
-        sentimentPos: 70,
-        sentimentNeg: 30,
-        status: 'operativo',
-        recentReports: 5
-      },
-      {
-        id: 'appoderado',
-        name: 'Appoderado',
-        category: 'lms',
-        url: 'https://appoderado.cl/',
-        domain: 'appoderado.cl',
-        icon: 'fa-mobile-screen-button',
-        qualityScore: 88,
-        qualityLabel: 'Alta Conectividad Móvil',
-        qualityDesc: 'Libro de clases digital y comunicación apoderado-colegio.',
-        socialInsta: 'https://www.instagram.com/appoderado.cl/',
-        socialFb: null,
-        sentimentPos: 89,
-        sentimentNeg: 11,
-        status: 'operativo',
-        recentReports: 1
-      },
-      {
-        id: 'junaeb',
-        name: 'JUNAEB Portal',
-        category: 'gob',
-        url: 'https://www.junaeb.cl/',
-        domain: 'junaeb.cl',
-        icon: 'fa-utensils',
-        qualityScore: 58,
-        qualityLabel: 'Alta Demanda / Intermitente',
-        qualityDesc: 'Portal de becas y TNE. Registra alta congestión en postulaciones.',
-        socialInsta: 'https://www.instagram.com/junaeb_cl/',
-        socialFb: null,
-        sentimentPos: 52,
-        sentimentNeg: 48,
-        status: 'inestable',
-        recentReports: 28
-      },
-      {
-        id: 'demre',
-        name: 'DEMRE PAES',
-        category: 'gob',
-        url: 'https://demre.cl/',
-        domain: 'demre.cl',
-        icon: 'fa-award',
-        qualityScore: 86,
-        qualityLabel: 'Buen Rendimiento',
-        qualityDesc: 'Portal PAES de admisión universitaria. Mantiene alta estabilidad.',
-        socialInsta: 'https://www.instagram.com/demre_uchile/',
-        socialFb: null,
-        sentimentPos: 85,
-        sentimentNeg: 15,
-        status: 'operativo',
-        recentReports: 6
-      },
-      {
-        id: 'agenciaeducacion',
-        name: 'Agencia Educación',
-        category: 'gob',
-        url: 'https://www.agenciaeducacion.cl/',
-        domain: 'agenciaeducacion.cl',
-        icon: 'fa-landmark',
-        qualityScore: 90,
-        qualityLabel: 'Alta Disponibilidad',
-        qualityDesc: 'Información institucional y resultados SIMCE.',
-        socialInsta: 'https://www.instagram.com/agenciaeducacion/',
-        socialFb: null,
-        sentimentPos: 88,
-        sentimentNeg: 12,
-        status: 'operativo',
-        recentReports: 0
-      },
-      {
-        id: 'classroom',
-        name: 'Google Classroom',
-        category: 'virtual',
-        url: 'https://classroom.google.com/',
-        domain: 'google.com',
-        icon: 'fa-display',
-        qualityScore: 98,
-        qualityLabel: 'Infraestructura Global',
-        qualityDesc: 'Servicio mundial en la nube con máxima disponibilidad.',
-        socialInsta: 'https://www.instagram.com/googlefordedu/',
-        socialFb: null,
-        sentimentPos: 96,
-        sentimentNeg: 4,
-        status: 'operativo',
-        recentReports: 1
-      },
-      {
-        id: 'canvas',
-        name: 'Canvas LMS',
-        category: 'virtual',
-        url: 'https://www.instructure.com/canvas',
-        domain: 'instructure.com',
-        icon: 'fa-layer-group',
-        qualityScore: 96,
-        qualityLabel: 'Excelente Estabilidad',
-        qualityDesc: 'Plataforma de alta capacidad para educación secundaria y superior.',
-        socialInsta: 'https://www.instagram.com/canvaslms/',
-        socialFb: null,
-        sentimentPos: 94,
-        sentimentNeg: 6,
-        status: 'operativo',
-        recentReports: 1
-      },
-      {
-        id: 'classdojo',
-        name: 'ClassDojo',
-        category: 'virtual',
-        url: 'https://www.classdojo.com/',
-        domain: 'classdojo.com',
-        icon: 'fa-face-smile',
-        qualityScore: 95,
-        qualityLabel: 'Alta Disponibilidad',
-        qualityDesc: 'Plataforma para educación básica e interacción escolar.',
-        socialInsta: 'https://www.instagram.com/classdojo/',
-        socialFb: null,
-        sentimentPos: 95,
-        sentimentNeg: 5,
-        status: 'operativo',
-        recentReports: 0
-      }
+    // Estado inicial de las webs a monitorear
+    const listaWebs = [
+      { url: 'puntajenacional.cl', estado: 'Normal', tieneIncidencia: false }
     ];
 
-    let currentCategory = 'all';
+    // Función para renderizar la grilla en el DOM
+    function renderizarGrilla() {
+      const contenedor = document.getElementById('gridWebs');
+      contenedor.innerHTML = '';
 
-    function initApp() {
-      localStorage.setItem('edustatus_platforms_v3', JSON.stringify(masterPlatforms));
-      renderGrid();
-    }
+      listaWebs.forEach((item, index) => {
+        const card = document.createElement('div');
+        card.className = `card ${item.tieneIncidencia ? 'incidencia' : ''}`;
 
-    function resetAppCache() {
-      localStorage.removeItem('edustatus_platforms_v3');
-      location.reload();
-    }
-
-    function renderPlatformLogoHTML(p) {
-      const faviconUrl = `https://www.google.com/s2/favicons?domain=${p.domain}&sz=128`;
-      const initials = p.name.substring(0, 2).toUpperCase();
-
-      return `
-        <div class="w-12 h-12 rounded-xl bg-slate-950 p-1.5 border border-slate-800 flex items-center justify-center overflow-hidden relative group-hover:border-yellow-400/50 transition-all flex-shrink-0">
-          <img src="${faviconUrl}" alt="${p.name}" class="w-full h-full object-contain rounded-lg" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-          <div class="hidden absolute inset-0 bg-gradient-to-br from-slate-800 to-slate-950 text-yellow-400 font-extrabold items-center justify-center text-xs flex-col">
-            <i class="fa-solid ${p.icon} text-sm mb-0.5"></i>
-            <span class="text-[9px] text-gray-300 font-bold">${initials}</span>
-          </div>
-        </div>
-      `;
-    }
-
-    function renderGrid() {
-      const grid = document.getElementById('gridView');
-      const searchVal = document.getElementById('searchInput').value.toLowerCase();
-      grid.innerHTML = '';
-
-      const filtered = masterPlatforms.filter(p => {
-        const matchSearch = p.name.toLowerCase().includes(searchVal) || p.url.toLowerCase().includes(searchVal);
-        const matchCategory = (currentCategory === 'all') || (p.category === currentCategory);
-        return matchSearch && matchCategory;
-      });
-
-      if (filtered.length === 0) {
-        grid.innerHTML = `
-          <div class="col-span-full text-center py-12 text-gray-500">
-            <i class="fa-solid fa-circle-exclamation text-3xl mb-2 text-yellow-400"></i>
-            <p class="text-sm font-semibold">No se encontraron plataformas que coincidan con la búsqueda.</p>
-          </div>
+        card.innerHTML = `
+          <h3>${item.url}</h3>
+          <p>Estado: <span class="status">${item.estado}</span></p>
+          <button onclick="reportarIncidencia(${index})">
+            ${item.tieneIncidencia ? 'Resolver Incidencia' : 'Reportar Incidencia'}
+          </button>
         `;
+
+        contenedor.appendChild(card);
+      });
+    }
+
+    // Función para que el usuario agregue una nueva web
+    function agregarWeb() {
+      const input = document.getElementById('urlInput');
+      const url = input.value.trim();
+
+      if (url === '') {
+        alert('Por favor, ingresa una URL válida.');
         return;
       }
 
-      filtered.forEach(p => {
-        let statusBadge = '';
-        if (p.status === 'operativo') {
-          statusBadge = `<span class="inline-flex items-center space-x-1.5 px-2.5 py-1 rounded-full bg-emerald-500/10 text-emerald-400 text-xs font-bold border border-emerald-500/20"><span class="w-2 h-2 rounded-full bg-emerald-400 status-pulse-green"></span><span>Operativo</span></span>`;
-        } else if (p.status === 'inestable') {
-          statusBadge = `<span class="inline-flex items-center space-x-1.5 px-2.5 py-1 rounded-full bg-amber-500/10 text-amber-400 text-xs font-bold border border-amber-500/20"><span class="w-2 h-2 rounded-full bg-amber-400"></span><span>Lentitud</span></span>`;
-        } else {
-          statusBadge = `<span class="inline-flex items-center space-x-1.5 px-2.5 py-1 rounded-full bg-rose-500/10 text-rose-400 text-xs font-bold border border-rose-500/20"><span class="w-2 h-2 rounded-full bg-rose-400 status-pulse-red"></span><span>Caído</span></span>`;
-        }
+      listaWebs.push({
+        url: url,
+        estado: 'Normal',
+        tieneIncidencia: false
+      });
 
-        let barColor = 'bg-emerald-500';
-        if (p.qualityScore < 50) barColor = 'bg-rose-50
+      input.value = '';
+      renderizarGrilla();
+    }
+
+    // Función para alternar estado de incidencia
+    function reportarIncidencia(index) {
+      listaWebs[index].tieneIncidencia = !listaWebs[index].tieneIncidencia;
+      listaWebs[index].estado = listaWebs[index].tieneIncidencia ? 'Con Incidencia' : 'Normal';
+      renderizarGrilla();
+    }
+
+    // Carga inicial
+    document.addEventListener('DOMContentLoaded', renderizarGrilla);
+  </script>
+
+</body>
+</html>
